@@ -4,7 +4,9 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
 
-  belongs_to :post 
-  has_many :posts
+  belongs_to :in_reply_to_post, foreign_key: "post_id", class_name: "Post"
+  has_many :post_replies, foreign_key: "post_id", class_name: "Post"
+
+  has_many :comments
 
 end
