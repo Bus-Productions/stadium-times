@@ -30,6 +30,7 @@ gem 'jquery-rails'
 
 
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'koala', :git => 'https://github.com/arsduo/koala.git'
 
 
