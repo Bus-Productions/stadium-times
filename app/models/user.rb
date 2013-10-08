@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :provider, :uid, :screen_name
 
   has_many :posts
+  has_many :topic_follows
+  has_many :topics, :through => :topic_follows
 
 
   def self.from_omniauth(auth)

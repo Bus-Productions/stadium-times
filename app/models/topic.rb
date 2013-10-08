@@ -8,4 +8,7 @@ class Topic < ActiveRecord::Base
   has_many :reverse_topic_pairings, foreign_key: "child_id", class_name: "TopicPairing"
   has_many :parents, :through => :reverse_topic_pairings, :source => "parent"
 
+  has_many :topic_follows
+  has_many :users, :through => :topic_follows
+
 end
