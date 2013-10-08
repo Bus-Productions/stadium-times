@@ -1,5 +1,8 @@
 StadiumTimes::Application.routes.draw do
 
+  resources :topic_pairings
+
+
   resources :topics
 
 

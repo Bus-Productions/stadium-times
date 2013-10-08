@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008204203) do
+ActiveRecord::Schema.define(:version => 20131008205120) do
 
   create_table "posts", :force => true do |t|
     t.string   "post_type"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20131008204203) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "post_id"
+  end
+
+  create_table "topic_pairings", :force => true do |t|
+    t.integer  "parent"
+    t.integer  "child"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "topics", :force => true do |t|

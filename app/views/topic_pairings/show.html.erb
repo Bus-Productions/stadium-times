@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Parent:</b>
+  <%= @topic_pairing.parent %>
+</p>
+
+<p>
+  <b>Child:</b>
+  <%= @topic_pairing.child %>
+</p>
+
+
+<%= link_to 'Edit', edit_topic_pairing_path(@topic_pairing) %> |
+<%= link_to 'Back', topic_pairings_path %>
