@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   # GET /posts
   # GET /posts.json
   def index
@@ -13,7 +14,16 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+
+    @user = current_user
+
     @post = Post.find(params[:id])
+
+    if @user
+      @post.add_postview_for_user(@user.id)
+    else
+      @post.add_postview_for_user(0)      
+    end
 
     respond_to do |format|
       format.html # show.html.erb

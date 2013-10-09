@@ -13,4 +13,10 @@ class Post < ActiveRecord::Base
 
   has_many :postviews
 
+
+
+  def add_postview_for_user(user_id)
+    Postview.create({:user_id => user_id, :post_id => self.id})
+  end
+
 end
