@@ -1,5 +1,8 @@
 StadiumTimes::Application.routes.draw do
 
+  resources :postviews
+
+
   resources :comment_votes
 
 

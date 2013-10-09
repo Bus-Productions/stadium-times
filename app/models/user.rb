@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :comment_votes
 
+  has_many :postviews
+
   has_many :topic_follows
   has_many :topics, :through => :topic_follows
 

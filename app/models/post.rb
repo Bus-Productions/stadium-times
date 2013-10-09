@@ -11,4 +11,6 @@ class Post < ActiveRecord::Base
 
   has_many :post_votes
 
+  has_many :postviews
+
 end
