@@ -15,6 +15,9 @@ class Comment < ActiveRecord::Base
 
   validates_length_of :comment_text, :minimum => 1, :maximum => 200, :allow_blank => false
 
+  def mine?(user_id)
+    self.user_id == user_id
+  end
 
 
   #VOTING

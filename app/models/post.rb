@@ -18,6 +18,10 @@ class Post < ActiveRecord::Base
 
   validates_length_of :title, :minimum => 1, :minimum => 200, :allow_blank => false
 
+  def mine?(user_id)
+    self.user_id == user_id
+  end
+
 
 
   #POSTVIEWS

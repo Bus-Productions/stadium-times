@@ -24,6 +24,9 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
+
+    current_user_or_redirect ? nil : return
+
     @comment = Comment.new
 
     respond_to do |format|
@@ -40,7 +43,11 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+
+    current_user_or_redirect ? nil : return
+
     @comment = Comment.new(params[:comment])
+    @comment.user_id = @current_user.id
 
     respond_to do |format|
       if @comment.save
@@ -72,7 +79,16 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+
+    current_user_or_redirect ? nil : return
+
     @comment = Comment.find(params[:id])
+
+    if !@comment.mine?(@current_user.id)
+      redirect_to root_path
+      return
+    end
+
     @comment.destroy
 
     respond_to do |format|

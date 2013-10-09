@@ -15,12 +15,10 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
 
-    @user = current_user
-
     @post = Post.find(params[:id])
 
-    if @user
-      @post.add_postview_for_user(@user.id)
+    if current_user
+      @post.add_postview_for_user(@current_user.id)
     else
       @post.add_postview_for_user(0)
     end
@@ -34,6 +32,9 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
+
+    current_user_or_redirect ? nil : return
+
     @post = Post.new
 
     respond_to do |format|
@@ -44,13 +45,26 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+
+    current_user_or_redirect ? nil : return
+
     @post = Post.find(params[:id])
+
+    if !@post.mine?(@current_user.id)
+      redirect_to root_path
+      return
+    end
+
   end
 
   # POST /posts
   # POST /posts.json
   def create
+
+    current_user_or_redirect ? nil : return
+
     @post = Post.new(params[:post])
+    @post.user_id = @current_user.id
 
     respond_to do |format|
       if @post.save
@@ -61,12 +75,21 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /posts/1
   # PUT /posts/1.json
   def update
+
+    current_user_or_redirect ? nil : return
+
     @post = Post.find(params[:id])
+
+    if !@post.mine?(@current_user.id)
+      redirect_to root_path
+      return
+    end
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -82,8 +105,18 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+
+    current_user_or_redirect ? nil : return
+
     @post = Post.find(params[:id])
+
+    if !@post.mine?(@current_user.id)
+      redirect_to root_path
+      return
+    end
+
     @post.destroy
+
 
     respond_to do |format|
       format.html { redirect_to posts_url }
