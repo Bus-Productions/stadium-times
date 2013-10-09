@@ -25,6 +25,12 @@ class Post < ActiveRecord::Base
   end
 
 
+  # SCOPES
+
+  scope :live, -> { where('status = ?', 'live') }
+  scope :draft, -> { where('status = ?', 'draft') }
+
+
   #SCORE
 
   def current_score
@@ -59,7 +65,7 @@ class Post < ActiveRecord::Base
   end
 
   def unpublish_post
-    self.change_to_status('private')
+    self.change_to_status('draft')
   end
 
   def delete_post
