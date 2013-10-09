@@ -37,10 +37,8 @@ class Comment < ActiveRecord::Base
 
   #VOTING
 
-  def vote_for_user(vote, user_id)
-    v = CommentVote.find_or_initialize_by_comment_id_and_user_id({:comment_id => self.id, :user_id => user_id})
-    v.vote = vote
-    v.save!
+  def add_vote(vote)
+    vote == "up" ? self.update_attribute(:upvotes, self.upvotes+1) : self.update_attribute(:downvotes, self.downvotes+1)
   end
   
 end

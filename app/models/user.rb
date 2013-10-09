@@ -40,4 +40,31 @@ class User < ActiveRecord::Base
     end
   end
 
+
+
+  # TOPICS
+
+  def follow_topic(topic)
+    self.topics.include?(topic) ? nil : self.topics << topic
+  end
+
+  def unfollow_topic(topic)
+    self.topics.include?(topic) ? self.topics.delete(topic) : nil
+  end
+
+
+  # VOTING
+
+  def vote_on_post(vote, post)
+    v = self.post_votes.find_by_post_id(post.id)
+    v ? v.update_attribute(:vote, vote) : PostVote.create({:vote => vote, :user_id => self.id, :post_id => post.id})
+    v ? nil : post.add_vote(vote)
+  end
+
+  def vote_on_comment(vote, comment)
+    v = self.comment_votes.find_by_comment_id(comment.id)
+    v ? v.update_attribute(:vote, vote) : CommentVote.create({:vote => vote, :user_id => self.id, :comment_id => comment.id})
+    v ? nil : comment.add_vote(vote)
+  end
+
 end

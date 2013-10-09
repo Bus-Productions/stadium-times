@@ -46,21 +46,8 @@ class Post < ActiveRecord::Base
 
   #VOTING
 
-  def vote_for_user(vote, user_id)
-    v = PostVote.find_or_initialize_by_post_id_and_user_id({:post_id => self.id, :user_id => user_id})
-    if !v.id
-      self.add_vote_to_self(vote)
-    end
-    v.vote = vote
-    v.save!
-  end
-
-  def add_vote_to_self(vote)
-    if vote == 'up'
-      self.upvotes = self.upvotes+1
-    elsif vote == 'down'
-      self.downvotes = self.downvotes+1
-    end
+  def add_vote(vote)
+    vote == "up" ? self.update_attribute(:upvotes, self.upvotes+1) : self.update_attribute(:downvotes, self.downvotes+1)
   end
 
   #STATUS CHANGES
