@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :comment_id, :comment_text, :post_id, :user_id
+
+  attr_accessible :comment_id, :comment_text, :post_id, :user_id, :upvotes, :downvotes, :score
 
   belongs_to :post 
 
@@ -17,6 +18,20 @@ class Comment < ActiveRecord::Base
 
   def mine?(user_id)
     self.user_id == user_id
+  end
+
+
+  #SCORE
+
+  def current_score
+    p = self.vote_difference
+    t = (Time.now.to_i - self.created_at.to_time.to_i)/3600.0
+    g = 1.8
+    return (p-1)/((t+2)**g)
+  end
+
+  def vote_difference
+    self.upvotes-self.downvotes
   end
 
 
