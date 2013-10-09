@@ -9,5 +9,14 @@ class Comment < ActiveRecord::Base
 
   belongs_to :in_reply_to_comment, foreign_key: "comment_id", class_name: "Comment"
   has_many :comment_replies, foreign_key: "comment_id", class_name: "Comment"
+
+
+  #VOTING
+
+  def vote_for_user(vote, user_id)
+    v = CommentVote.find_or_initialize_by_comment_id_and_user_id({:comment_id => self.id, :user_id => user_id})
+    v.vote = vote
+    v.save!
+  end
   
 end

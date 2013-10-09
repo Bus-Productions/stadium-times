@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     if @user
       @post.add_postview_for_user(@user.id)
     else
-      @post.add_postview_for_user(0)      
+      @post.add_postview_for_user(0)
     end
 
     respond_to do |format|
