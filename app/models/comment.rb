@@ -5,6 +5,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :comment_votes
+
   belongs_to :in_reply_to_comment, foreign_key: "comment_id", class_name: "Comment"
   has_many :comment_replies, foreign_key: "comment_id", class_name: "Comment"
   
