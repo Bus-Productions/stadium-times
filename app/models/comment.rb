@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
 
-  attr_accessible :comment_id, :comment_text, :post_id, :user_id, :upvotes, :downvotes, :score
+  attr_accessible :comment_id, :comment_text, :post_id, :user_id, :upvotes, :downvotes, :score, :spam_count
 
   belongs_to :post 
 
@@ -10,6 +10,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :in_reply_to_comment, foreign_key: "comment_id", class_name: "Comment"
   has_many :comment_replies, foreign_key: "comment_id", class_name: "Comment"
+
+  has_many :spams
 
   
   #VALIDATIONS
@@ -39,6 +41,17 @@ class Comment < ActiveRecord::Base
 
   def add_vote(vote)
     vote == "up" ? self.update_attribute(:upvotes, self.upvotes+1) : self.update_attribute(:downvotes, self.downvotes+1)
+  end
+
+
+  # SPAM
+
+  def spam?
+    self.spam_count > 3
+  end
+
+  def increment_spam
+    self.spam_count = self.spam_count+1
   end
   
 end

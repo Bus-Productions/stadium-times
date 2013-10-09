@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @spam.user_id %>
+</p>
+
+<p>
+  <b>Post:</b>
+  <%= @spam.post_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @spam.comment_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_spam_path(@spam) %> |
+<%= link_to 'Back', spams_path %>

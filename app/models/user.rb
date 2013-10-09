@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :provider, :uid, :screen_name
+  attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :provider, :uid, :screen_name, :profile_picture
 
   has_many :posts
 
@@ -14,13 +14,17 @@ class User < ActiveRecord::Base
   has_many :topic_follows
   has_many :topics, :through => :topic_follows
 
+  has_many :spams
+
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      p auth
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
       user.screen_name = auth.info.nickname
+      user.profile_picture = user.fix_profile_picture_string(auth.info.image)
       if user.provider == 'facebook'
         user.email = auth.info.email.downcase
         user.oauth_expires_at = Time.at(auth.credentials.expires_at)
@@ -32,11 +36,21 @@ class User < ActiveRecord::Base
   end
 
 
+  # USER INFO
+
   def vanity_url
     if self.provider == 'twitter'
       "http://twitter.com/#{self.screen_name}"
     elsif self.provider == 'facebook'
       "http://facebook.com/#{self.screen_name}"
+    end
+  end
+
+  def fix_profile_picture_string(string)
+    if self.provider == 'twitter'
+      return string.gsub("normal", "bigger")
+    elsif self.provider == 'facebook'
+      return string.gsub("type=square", "width=200&height=200")
     end
   end
 
@@ -66,5 +80,25 @@ class User < ActiveRecord::Base
     v ? v.update_attribute(:vote, vote) : CommentVote.create({:vote => vote, :user_id => self.id, :comment_id => comment.id})
     v ? nil : comment.add_vote(vote)
   end
+
+
+  # SPAM
+
+  def mark_post_as_spam(post)
+    s = self.spams.find_by_post_id(post.id)
+    if !s
+      Spam.create({:user_id => self.id, :post_id => post.id})
+      post.increment_spam
+    end
+  end
+
+  def mark_comment_as_spam(comment)
+    s = self.spams.find_by_comment_id(comment.id)
+    if !s
+      Spam.create({:user_id => self.id, :comment_id => comment.id})
+      comment.increment_spam
+    end
+  end
+
 
 end

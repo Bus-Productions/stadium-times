@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-  attr_accessible :link, :post_type, :text, :title, :user_id, :post_id, :status, :upvotes, :downvotes, :score
+  attr_accessible :link, :post_type, :text, :title, :user_id, :post_id, :status, :upvotes, :downvotes, :score, :spam_count
 
   belongs_to :user
 
@@ -12,6 +12,8 @@ class Post < ActiveRecord::Base
   has_many :post_votes
 
   has_many :postviews
+
+  has_many :spams
 
 
   #VALIDATIONS
@@ -66,6 +68,17 @@ class Post < ActiveRecord::Base
 
   def change_to_status(new_status)
     self.update_attribute(:status, new_status)
+  end
+
+
+  # SPAM
+
+  def spam?
+    self.spam_count > 3
+  end
+
+  def increment_spam
+    self.spam_count = self.spam_count+1
   end
 
 end

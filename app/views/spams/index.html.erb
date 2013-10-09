@@ -1,0 +1,27 @@
+<h1>Listing spams</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Post</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @spams.each do |spam| %>
+  <tr>
+    <td><%= spam.user_id %></td>
+    <td><%= spam.post_id %></td>
+    <td><%= spam.comment_id %></td>
+    <td><%= link_to 'Show', spam %></td>
+    <td><%= link_to 'Edit', edit_spam_path(spam) %></td>
+    <td><%= link_to 'Destroy', spam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Spam', new_spam_path %>
