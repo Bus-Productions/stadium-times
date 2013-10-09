@@ -10,6 +10,12 @@ class Comment < ActiveRecord::Base
   belongs_to :in_reply_to_comment, foreign_key: "comment_id", class_name: "Comment"
   has_many :comment_replies, foreign_key: "comment_id", class_name: "Comment"
 
+  
+  #VALIDATIONS
+
+  validates_length_of :comment_text, :minimum => 1, :maximum => 200, :allow_blank => false
+
+
 
   #VOTING
 

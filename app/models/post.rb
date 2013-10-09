@@ -14,6 +14,13 @@ class Post < ActiveRecord::Base
   has_many :postviews
 
 
+  #VALIDATIONS
+
+  validates_length_of :title, :minimum => 1, :minimum => 200, :allow_blank => false
+
+
+
+  #POSTVIEWS
 
   def add_postview_for_user(user_id)
     Postview.create({:user_id => user_id, :post_id => self.id})
