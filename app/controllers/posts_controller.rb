@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     @body_class = 'home'
 
     @posts = Post.all
+    @highlighted_article = Post.highlighted_article.first
 
     respond_to do |format|
       format.html # index.html.erb

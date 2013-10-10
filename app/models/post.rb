@@ -35,6 +35,7 @@ class Post < ActiveRecord::Base
   scope :deleted, -> { where('status = ?', 'deleted') }
 
   scope :top, ->(count) { order('score DESC').limit(count) }
+  scope :highlighted_article, ->{ where("text is NOT NULL").order('score DESC').limit(1) }
 
 
   #SCORE
