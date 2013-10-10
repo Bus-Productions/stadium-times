@@ -23,6 +23,11 @@ class Comment < ActiveRecord::Base
   end
 
 
+  # SCOPES
+
+  scope :top, ->(count) { order('score DESC').limit(count) }
+
+
   #SCORE
 
   def current_score

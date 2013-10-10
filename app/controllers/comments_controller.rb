@@ -46,8 +46,7 @@ class CommentsController < ApplicationController
 
     current_user_or_redirect ? nil : return
 
-    @comment = Comment.new(params[:comment])
-    @comment.user_id = @current_user.id
+    @comment = @current_user.comment_on_post(params[:comment])
 
     respond_to do |format|
       if @comment.save

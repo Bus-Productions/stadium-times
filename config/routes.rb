@@ -27,7 +27,7 @@ StadiumTimes::Application.routes.draw do
   resources :posts
 
 
-  root :to => "user#index"
+  root :to => "posts#index"
 
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')

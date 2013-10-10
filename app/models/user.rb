@@ -67,6 +67,14 @@ class User < ActiveRecord::Base
   end
 
 
+  # COMMENTING
+
+  def comment_on_post(params)
+    post = Post.find_by_id(params[:post_id])
+    Comment.new({:user_id => self.id, :post_id => post.id, :comment_id => params[:comment_id], :comment_text => params[:comment_text]})
+  end
+
+
   # VOTING
 
   def vote_on_post(vote, post)

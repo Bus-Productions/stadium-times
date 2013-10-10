@@ -29,6 +29,9 @@ class Post < ActiveRecord::Base
 
   scope :live, -> { where('status = ?', 'live') }
   scope :draft, -> { where('status = ?', 'draft') }
+  scope :deleted, -> { where('status = ?', 'deleted') }
+
+  scope :top, ->(count) { order('score DESC').limit(count) }
 
 
   #SCORE

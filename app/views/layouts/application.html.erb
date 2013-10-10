@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 9]> <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 <head>
-  <title>StadiumTimes</title>
+  <!-- Meta -->
+  <meta charset='UTF-8'>
+  <meta content='width=device-width,initial-scale=1' name='viewport'>
+  <title>Stadium Times</title>
+  <meta content='Stadium Times, the ultimate sports news source.' name='description'>
+  <meta content='Stadium Times, Stadium Stock Exchange, Bus Productions, sports, stock, exchange, news, source, resource, articles, football, stadium, university, play, game, points, qb' name='keywords'>
+  <meta content='Stadium Times' name='author'>
+  <meta content='Stadium Times | The Ultimate Sports News Source' property='og:title'>
+  <meta content='Stadium Times' property='og:site_name'>
+  <meta content='website' property='og:type'>
+  <meta content='../assets/images/logos-icons/og-image_stadiumtimes.png' property='og:image'>
+
+  
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-</head>
-<body>
 
+  <link href='../assets/images/logos-icons/favicon.ico' rel='icon' type='images/png'>
+  <!-- Style -->
+  
+
+  <script rel='javascript' src='//use.typekit.net/bar5cpd.js'></script>
+  <script>
+    try{Typekit.load();}catch(e){}
+  </script>
+
+</head>
+
+<%= render 'layouts/header' %>
 <%= yield %>
 <%= render 'shared/login_display' %>
 

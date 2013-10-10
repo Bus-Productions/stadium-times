@@ -24,6 +24,11 @@ class PostVotesController < ApplicationController
   # GET /post_votes/new
   # GET /post_votes/new.json
   def new
+
+    current_user_or_redirect ? nil : return
+
+    @post = Post.first
+
     @post_vote = PostVote.new
 
     respond_to do |format|
