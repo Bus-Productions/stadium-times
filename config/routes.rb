@@ -1,5 +1,8 @@
 StadiumTimes::Application.routes.draw do
 
+  resources :post_and_topic_pairings
+
+
   resources :spams
 
 

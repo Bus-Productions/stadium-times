@@ -1,0 +1,2 @@
+module PostAndTopicPairingsHelper
+end

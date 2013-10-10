@@ -1,0 +1,25 @@
+<h1>Listing post_and_topic_pairings</h1>
+
+<table>
+  <tr>
+    <th>Post</th>
+    <th>Topic</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @post_and_topic_pairings.each do |post_and_topic_pairing| %>
+  <tr>
+    <td><%= post_and_topic_pairing.post_id %></td>
+    <td><%= post_and_topic_pairing.topic_id %></td>
+    <td><%= link_to 'Show', post_and_topic_pairing %></td>
+    <td><%= link_to 'Edit', edit_post_and_topic_pairing_path(post_and_topic_pairing) %></td>
+    <td><%= link_to 'Destroy', post_and_topic_pairing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Post and topic pairing', new_post_and_topic_pairing_path %>

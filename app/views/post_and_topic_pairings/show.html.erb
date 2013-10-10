@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Post:</b>
+  <%= @post_and_topic_pairing.post_id %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%= @post_and_topic_pairing.topic_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_and_topic_pairing_path(@post_and_topic_pairing) %> |
+<%= link_to 'Back', post_and_topic_pairings_path %>

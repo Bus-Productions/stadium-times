@@ -11,6 +11,7 @@ class Topic < ActiveRecord::Base
   has_many :topic_follows
   has_many :users, :through => :topic_follows
 
-  has_many :posts
+  has_many :post_and_topic_pairings
+  has_many :posts, :through => :post_and_topic_pairings
 
 end

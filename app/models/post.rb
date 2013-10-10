@@ -15,7 +15,8 @@ class Post < ActiveRecord::Base
 
   has_many :spams
 
-  has_many :topics
+  has_many :post_and_topic_pairings
+  has_many :topics, :through => :post_and_topic_pairings
 
 
   #VALIDATIONS
