@@ -1,7 +1,7 @@
         <article>
           <header>
             <h2>
-              <a href=''><%= @post.title %></a>
+              <a href='<%= post_url(@post) %>'><%= @post.title %></a>
             </h2>
             <div class='article-controls'>
               <div class='btn-group'>
@@ -17,7 +17,9 @@
               </a>
             </div>
           </header>
-          <p><%= @post.text %></p>
+          <% if @post.text %>
+            <p><%= @post.text %></p>
+          <% end %>
           <small class='meta'>
             <p>
               shared by
@@ -29,15 +31,15 @@
                 <% if i == 0 %>in <% end %>
                 <a href='<%= topic_path(t) %>'>
                   <%= t.topic_name %>
-                </a>
+                </a> 
               <% end %>
 
 
             </p>
             <em>
               <span class='ss-link'></span>
-              7 hours ago
-              <a href='#'>
+              <%= time_ago_in_words(@post.created_at) %> ago
+              <a href='<%= post_url(@post) %>'>
                 <span class='ss-chat'></span>
                 View Conversation
               </a>

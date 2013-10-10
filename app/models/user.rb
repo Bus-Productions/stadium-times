@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :provider, :uid, :screen_name, :profile_picture
+  attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :provider, :uid, :screen_name, :profile_picture, :bio
 
   has_many :posts
 
@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
 
 
   # USER INFO
+
+  def vanity_username
+    if self.provider == 'twitter'
+      "@#{self.screen_name}"
+    elsif self.provider == 'facebook'
+      "Facebook: #{self.screen_name}"
+    end
+  end
 
   def vanity_url
     if self.provider == 'twitter'

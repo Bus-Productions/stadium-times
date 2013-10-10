@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010211811) do
+ActiveRecord::Schema.define(:version => 20131010214313) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "user_id"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20131010211811) do
     t.datetime "updated_at",       :null => false
     t.string   "screen_name"
     t.string   "profile_picture"
+    t.string   "bio"
   end
 
 end
