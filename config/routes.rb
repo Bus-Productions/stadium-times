@@ -27,6 +27,10 @@ StadiumTimes::Application.routes.draw do
   resources :posts
 
 
+  resources :user, only: [:index, :show]
+
+
+
   root :to => "posts#index"
 
   match 'auth/:provider/callback', to: 'sessions#create'

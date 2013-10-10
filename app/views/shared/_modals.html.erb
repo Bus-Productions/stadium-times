@@ -1,0 +1,28 @@
+    <!-- Modals -->
+    <!-- Search Modal -->
+    <div aria-hidden='true' aria-labelledby='searchModalLabel' class='modal fade' id='searchModal' role='dialog' tabindex='-1'>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <header class='modal-header'>
+            <h4 class='modal-title'>Search</h4>
+          </header>
+          <section class='modal-body'>
+            <div class='form-group'>
+              <input class='form-control' placeholder='What are you looking for?' type='text'>
+            </div>
+            
+            <ul class='list'>
+
+              <%= render 'shared/modal_content/result_element' %>
+
+            </ul>
+
+
+            <div class='fade-off-text'></div>
+          </section>
+          <footer class='modal-footer'>
+            <button class='btn light' data-dismiss='modal' type='button'>Close</button>
+          </footer>
+        </div>
+      </div>
+    </div>

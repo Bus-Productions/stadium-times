@@ -1,0 +1,161 @@
+!!! 5
+-# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 9] <html lang="en" class="no-js lt-ie9">
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+%head
+    / Meta
+    %meta{:charset => "UTF-8"}
+    %meta{:name=>"viewport", :content=>"width=device-width,initial-scale=1"}
+
+    %title Stadium Times | Example Type + More
+    %meta{:name=>"description", :content=>"Stadium Times, the ultimate sports news source."}
+    %meta{:name=>"keywords", :content=>"Stadium Times, Stadium Stock Exchange, Bus Productions, sports, stock, exchange, news, source, resource, articles, football, stadium, university, play, game, points, qb"}
+    %meta{:name=>"author", :content=>"Stadium Times"}
+
+    %meta{:property=>"og:title", :content=>"Stadium Times | The Ultimate Sports News Source"}
+    %meta{:property=>"og:site_name", :content=>"Stadium Times"}
+    %meta{:property=>"og:type", :content=>"website"}
+    %meta{:property=>"og:image", :content=>"../assets/images/logos-icons/og-image_stadiumtimes.png"}
+
+    %link{:rel => "icon", :type => "images/png", :href => "../assets/images/logos-icons/favicon.ico"}/
+
+    / Style
+    %link{:rel => "stylesheet", :href => "../assets/css/site.css"}
+    %link{:rel => "stylesheet", :href => "../assets/fonts/ss-block/webfonts/ss-symbolicons-block.css"}
+
+    /[if lt IE 9 ]
+        %link{:rel => "stylesheet", :href => "../assets/css/ie.css"}/
+
+    / Scripts
+    %script{:rel => "javascript", :src => "../assets/js/modernizr.min.js"}
+    %script{:rel => "javascript", :src => "//use.typekit.net/bar5cpd.js"}
+    %script
+        try{Typekit.load();}catch(e){}
+
+
+
+%body
+    /[if lt IE 7 ]
+        %p.chromeframe
+            You're using an
+            %strong
+                outdated
+            browser. Please
+            %a{:href => "http://browsehappy.com/", :target => "_blank"} upgrade your browser
+            or
+            %a{:href => "http://www.google.com/chromeframe/?redirect=true", :target => "_blank"} activate Google Chromeframe
+            to improve your experience.
+
+
+    #site-wrap
+
+
+        %h2 Signed Out
+        %hr/
+        %br/
+
+        %header#site-header
+            %nav.navbar.navbar-default{:role=>'navigation'}
+                .navbar-wrap
+                    .navbar-header
+                        %button.navbar-toggle{:'data-toggle'=>'collapse', :'data-target'=>'.navbar-collapse'}
+                            %span.icon-bar
+                            %span.icon-bar
+                            %span.icon-bar
+                        %a.navbar-brand.brand{:href => "/"}
+                            %span Stadium
+                            %span Times
+
+                    .collapse.navbar-collapse
+                        %ul.nav.navbar-nav
+                            %li.search
+                                %a.ss-search{:href=>'#searchModal', 'data-toggle'=>'modal'}
+                                    %span Search
+                            %li
+                                Want to join?
+                                %a{:href => "#"} Sign Up
+                            %li
+                                %a.btn.dark{:href => "#"} Sign In
+
+
+        %br/
+        %hr/
+        %h2 Signed In
+        %hr/
+        %br/
+
+        %header#site-header
+            %nav.navbar.navbar-default{:role=>'navigation'}
+                .navbar-wrap
+                    .navbar-header
+                        %button.navbar-toggle{:'data-toggle'=>'collapse', :'data-target'=>'.navbar-collapse'}
+                            %span.icon-bar
+                            %span.icon-bar
+                            %span.icon-bar
+                        %a.navbar-brand.brand{:href => "/"}
+                            %span Stadium
+                            %span Times
+
+                    .collapse.navbar-collapse
+                        %ul.nav.navbar-nav.navbar-right
+                            %li.search
+                                %a.ss-search{:href=>'#searchModal', 'data-toggle'=>'modal'}
+                                    %span Search
+                            %li.profile
+                                %a.go-to-profile{:href => ""}
+                                    .avatar
+                                        %img.img-circle{:src => "http://images.ak.instagram.com/profiles/profile_1169398_75sq_1378660650.jpg", :alt => "Lindsey Bradford"}/
+
+                                    Holly Golightly
+
+                                %li.dropdown
+                                    %a#profile-menu.dropdown-toggle{:role=>'button', :'data-toggle'=>'dropdown', :href=>'#'}
+                                        %span.caret
+                                    %ul.dropdown-menu{:role=>'menu', :'aria-labelledby'=>'profile-menu'}
+                                        %li
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Settings
+                                        %li.divider
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Help
+                                        %li
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} About Stadium Times
+                                        %li
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Legal Terms
+                                        %li.divider
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Sign in to Stadium Stock Exchange
+                                        %li.divider
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Sign Out
+
+
+
+
+
+        / Modals
+        / -------------------------
+
+        / Search Modal
+        .modal.fade#searchModal{:tabindex=>'-1',:role=>'dialog',:'aria-labelledby'=>'searchModalLabel',:'aria-hidden'=>'true'}
+            .modal-dialog
+                .modal-content
+                    %header.modal-header
+                        %h4.modal-title Search
+
+                    %section.modal-body
+                    %footer.modal-footer
+                        %button.btn.light{:type=>'button',:'data-dismiss'=>'modal'} Close
+                        %button.btn.light{:type=>'button'} Search
+
+
+
+        %script{:rel => "javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+        %script
+            window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/carousel.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/collapse.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/dropdown.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/modal.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/transition.js"}
+        %script{:rel => "javascript", :src => "../assets/js/app.js"}
+
+
+

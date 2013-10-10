@@ -1,0 +1,134 @@
+//
+// Layout: Filter Nav
+// --------------------------------------------------
+
+
+header#site-header {
+    z-index:3;
+    position: relative;
+
+
+    // Prevents content bumping when nav becomes fixed
+    .filter-nav-spacer {
+        height: 35px;
+    }
+
+    nav.filter-navbar {
+        background: $neutral;
+        margin-top: -35px;
+
+
+        .label {
+            display: inline-block;
+            font-family: $font-family-sans-serif;
+            color: $light;
+            font-size: emCalc(15);
+            margin-right: 4px;
+            font-weight: 200;
+            text-transform: none;
+        }
+
+        li {
+            list-style: none;
+
+            a:hover, &.active a{
+                color: $light;
+            }
+        }
+
+        h5 {
+            display: inline-block;
+            margin-top: ($line-height-computed / 4);
+            margin-bottom: ($line-height-computed / 4);
+        }
+
+        a {
+            color: $neutral-compliment;
+        }
+
+        // Toggle
+        a.accordion-toggle {
+            span.toggle-down {
+                @include transform(rotate(180deg));
+            }
+        }
+        a.accordion-toggle.collapsed {
+            span.toggle-down {
+                @include transform(rotate(0deg));
+            }
+        }
+    }
+
+
+
+    // Filter List
+    .panel-body {
+        @include clearfix();
+        margin-top: ($line-height-computed / 2);
+        padding-bottom: ($line-height-computed / 2);
+    }
+
+
+    .list-title {
+        border-bottom: 1px solid $light;
+
+        a {
+            color: $light !important;
+        }
+    }
+
+    ul.filter-list {
+        @include span-columns(3,12);
+        padding-left:0;
+
+        &:last-child {
+            @include span-columns(3 omega,12);
+        }
+    }
+
+    // Filter Carousel
+    .filter-slider-list {
+        @include span-columns(6,12);
+        margin: 0 0 48px;
+
+        .column {
+            @include span-columns(6,12);
+
+            &:last-child {
+                @include span-columns(6 omega,12);
+            }
+        }
+    }
+
+    #carousel-filter-slider-list {
+        a {
+            display: block;
+        }
+    }
+
+    @include breakpoint(lt-ipad-portrait) {
+        .filter-slider-list, .filter-slider-list .column, .filter-slider-list .column:last-child,
+        ul.filter-list, ul.filter-list:last-child {
+            @include span-columns(12,12);
+        }
+    }
+
+    @include breakpoint(lt-phone-landscape) {
+        .filter-slider-list {
+            display: none;
+        }
+    }
+
+
+}
+
+
+// Affix
+
+
+.affix {
+    position: fixed;
+    width: 100%;
+    top: 35px;
+    @include box-shadow(0px 5px 10px rgba(51, 51, 51, 0.28));
+}

@@ -15,6 +15,8 @@ class Post < ActiveRecord::Base
 
   has_many :spams
 
+  has_many :topics
+
 
   #VALIDATIONS
 

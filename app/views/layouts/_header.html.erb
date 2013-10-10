@@ -1,203 +1,164 @@
-<!--[if lt IE 7 ]>
-  <p class='chromeframe'>
-    You're using an
-    <strong>
-      outdated
-    </strong>
-    browser. Please
-    <a href='http://browsehappy.com/' target='_blank'>upgrade your browser</a>
-    or
-    <a href='http://www.google.com/chromeframe/?redirect=true' target='_blank'>activate Google Chromeframe</a>
-    to improve your experience.
-  </p>
-<![endif]-->
-<div class='wrap' id='site-wrap'>
-  <header id='site-header'>
-    <nav class='navbar navbar-default' role='navigation'>
-      <div class='navbar-wrap'>
-        <div class='navbar-header'>
-          <button class='navbar-toggle' data-target='.navbar-collapse' data-toggle='collapse'>
-            <span class='icon-bar'></span>
-            <span class='icon-bar'></span>
-            <span class='icon-bar'></span>
-          </button>
-          <a class='navbar-brand brand' href='/'>
-            <span>Stadium</span>
-            <span>Times</span>
-          </a>
-        </div>
-        <div class='collapse navbar-collapse'>
-          <ul class='nav navbar-nav navbar-right'>
-            <li class='search'>
-              <a class='ss-search' data-toggle='modal' href='#searchModal'>
-                <span>Search</span>
-              </a>
-            </li>
-            <li class='profile'>
-              <a class='go-to-profile' href='profilePublicView'>
-                <div class='avatar'>
-                  <img alt='Holly Golightly' class='img-circle' src='https://lh4.googleusercontent.com/-Ns94wH2z5sk/AAAAAAAAAAI/AAAAAAAAABA/jFN6SPVm_3U/s120-c/photo.jpg'>
-                </div>
-                Holly Golightly
-              </a>
-              <li class='dropdown'>
-                <a class='dropdown-toggle' data-toggle='dropdown' href='#' id='profile-menu' role='button'>
-                  <span class='caret'></span>
-                </a>
-                <ul aria-labelledby='profile-menu' class='dropdown-menu' role='menu'>
-                  <li>
-                    <a href='#' role='menuitem' tabindex='-1'>Settings</a>
-                  </li>
-                  <li class='divider'>
-                    <a href='#' role='menuitem' tabindex='-1'>Help</a>
-                  </li>
-                  <li>
-                    <a href='#' role='menuitem' tabindex='-1'>About Stadium Times</a>
-                  </li>
-                  <li>
-                    <a href='#' role='menuitem' tabindex='-1'>Legal Terms</a>
-                  </li>
-                  <li class='divider'>
-                    <a href='#' role='menuitem' tabindex='-1'>Sign in to Stadium Stock Exchange</a>
-                  </li>
-                  <li class='divider'>
-                    <a href='#' role='menuitem' tabindex='-1'>Sign Out</a>
-                  </li>
-                </ul>
-              </li>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class='filter-nav-spacer'></div>
-    <nav class='filter-navbar' data-offset-top='60' data-spy='affix' id='accordion'>
-      <div class='navbar-wrap'>
-        <header>
-          <h5>
-            <a class='accordion-toggle collapsed' data-parent='#accordion' data-toggle='collapse' href='#filter-navbar-collapse'>
-              <span class='label'>
-                Browsing:
-              </span>
-              <h5 class='tag'>
-                NCAA Football
-              </h5>
-              <span class='toggle-down'>
-                <span class='caret'></span>
-              </span>
+    
+    <header id='site-header'>
+      <nav class='navbar navbar-default' role='navigation'>
+        <div class='navbar-wrap'>
+          <div class='navbar-header'>
+            <button class='navbar-toggle' data-target='.navbar-collapse' data-toggle='collapse'>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand brand' href='/'>
+              <span>Stadium</span>
+              <span>Times</span>
             </a>
-          </h5>
-        </header>
-        <div class='panel-collapse collapse' id='filter-navbar-collapse'>
-          <div class='panel-body'>
-            <ul class='filter-list'>
-              <li class='list-title'>
-                <h5 class='tag'>
-                  <a href='#'>Filter</a>
-                </h5>
+          </div>
+          <div class='collapse navbar-collapse'>
+            <ul class='nav navbar-nav'>
+              <li class='active'></li>
+              <li class='search'>
+                <a class='ss-search' data-toggle='modal' href='#searchModal'>
+                  <span>Search</span>
+                </a>
               </li>
-              <li>
-                <a href='#'>Trending</a>
-              </li>
-              <li>
-                <a href='#'>Popular</a>
-              </li>
-              <li>
-                <a href='#'>Newest</a>
-              </li>
-              <li>
-                <a href='#'>-- Filter --</a>
-              </li>
+              
+              <% if current_user %>
+                <%= render 'shared/header_content/logged_in_header_inside' %>
+              <% else %>
+                <%= render 'shared/header_content/logged_out_header_inside' %>
+              <% end %>
+
             </ul>
-            <ul class='filter-list'>
-              <li class='list-title'>
+          </div>
+        </div>
+      </nav>
+      <div class='filter-nav-spacer'></div>
+      <nav class='filter-navbar' data-offset-top='60' data-spy='affix' id='accordion'>
+        <div class='navbar-wrap'>
+          <header>
+            <h5>
+              <a class='accordion-toggle collapsed' data-parent='#accordion' data-toggle='collapse' href='#filter-navbar-collapse'>
+                <span class='label'>
+                  Browsing:
+                </span>
                 <h5 class='tag'>
-                  <a href='#'>Lists</a>
+                  NCAA Football
                 </h5>
-              </li>
-              <li class='active'>
-                <a href='listConferences'>Conferences</a>
-              </li>
-              <li>
-                <a href='listTeams'>Teams</a>
-              </li>
-              <li>
-                <a href='listTopics'>Topics</a>
-              </li>
-              <li>
-                <a href='listSavedArticles'>Saved Articles</a>
-              </li>
-            </ul>
-            <div class='filter-slider-list'>
-              <div class='list-title'>
-                <h5 class='tag'>
-                  <a href='#'>Highlight Reel</a>
-                </h5>
-              </div>
-              <div class='carousel slide' id='carousel-filter-slider-list'>
-                <div class='carousel-inner'>
-                  <div class='item active'>
-                    <div class='column'>
-                      <li>
-                        <a href='#'>Dee Ford expected to miss opener</a>
-                      </li>
-                      <li>
-                        <a href='#'>Wake Forest dismisses Duran Lowe</a>
-                      </li>
-                      <li>
-                        <a href='#'>Purdue tabs Rob Henry starting QB</a>
-                      </li>
-                      <li>
-                        <a href='#'>High hopes for DL Spence, Washington</a>
-                      </li>
-                    </div>
-                    <div class='column'>
-                      <li>
-                        <a href='#'>Stadium ios video</a>
-                      </li>
-                      <li>
-                        <a href='#'>James Franklin will call your boss</a>
-                      </li>
-                      <li>
-                        <a href='#'>Teams looking to recover in 2013</a>
-                      </li>
-                      <li>
-                        <a href='#'>Ricky Jefferson pleads guilty</a>
-                      </li>
-                    </div>
-                  </div>
-                  <div class='item'>
-                    <div class='column'>
-                      <li>
-                        <a href='#'>Stadium ios video</a>
-                      </li>
-                      <li>
-                        <a href='#'>James Franklin will call your boss</a>
-                      </li>
-                      <li>
-                        <a href='#'>Teams looking to recover in 2013</a>
-                      </li>
-                      <li>
-                        <a href='#'>Ricky Jefferson pleads guilty</a>
-                      </li>
-                    </div>
-                    <div class='column'>
-                      <a href='#'>Dee Ford expected to miss opener</a>
-                      <a href='#'>Wake Forest dismisses Duran Lowe</a>
-                      <a href='#'>Purdue tabs Rob Henry starting QB</a>
-                      <a href='#'>High hopes for DL Spence, Washington</a>
-                    </div>
-                  </div>
+                <span class='toggle-down'>
+                  <span class='caret'></span>
+                </span>
+              </a>
+            </h5>
+          </header>
+          <div class='panel-collapse collapse' id='filter-navbar-collapse'>
+            <div class='panel-body'>
+              <ul class='filter-list'>
+                <li class='list-title'>
+                  <h5 class='tag'>
+                    <a href='#'>Filter</a>
+                  </h5>
+                </li>
+                <li>
+                  <a href='#'>Trending</a>
+                </li>
+                <li>
+                  <a href='#'>Popular</a>
+                </li>
+                <li>
+                  <a href='#'>Newest</a>
+                </li>
+                <li>
+                  <a href='#'>-- Filter --</a>
+                </li>
+              </ul>
+              <ul class='filter-list'>
+                <li class='list-title'>
+                  <h5 class='tag'>
+                    <a href='#'>Lists</a>
+                  </h5>
+                </li>
+                <li class='active'>
+                  <a href='listConferences'>Conferences</a>
+                </li>
+                <li>
+                  <a href='listTeams'>Teams</a>
+                </li>
+                <li>
+                  <a href='listTopics'>Topics</a>
+                </li>
+                <li>
+                  <a href='listSavedArticles'>Saved Articles</a>
+                </li>
+              </ul>
+              <div class='filter-slider-list'>
+                <div class='list-title'>
+                  <h5 class='tag'>
+                    <a href='#'>Highlight Reel</a>
+                  </h5>
                 </div>
-                <ol class='carousel-indicators'>
-                  <li class='active' data-slide-to='0' data-target='#carousel-filter-slider-list'></li>
-                  <li data-slide-to='1' data-target='#carousel-filter-slider-list'></li>
-                </ol>
+                <div class='carousel slide' id='carousel-filter-slider-list'>
+                  <div class='carousel-inner'>
+                    <div class='item active'>
+                      <div class='column'>
+                        <li>
+                          <a href='#'>Dee Ford expected to miss opener</a>
+                        </li>
+                        <li>
+                          <a href='#'>Wake Forest dismisses Duran Lowe</a>
+                        </li>
+                        <li>
+                          <a href='#'>Purdue tabs Rob Henry starting QB</a>
+                        </li>
+                        <li>
+                          <a href='#'>High hopes for DL Spence, Washington</a>
+                        </li>
+                      </div>
+                      <div class='column'>
+                        <li>
+                          <a href='#'>Stadium ios video</a>
+                        </li>
+                        <li>
+                          <a href='#'>James Franklin will call your boss</a>
+                        </li>
+                        <li>
+                          <a href='#'>Teams looking to recover in 2013</a>
+                        </li>
+                        <li>
+                          <a href='#'>Ricky Jefferson pleads guilty</a>
+                        </li>
+                      </div>
+                    </div>
+                    <div class='item'>
+                      <div class='column'>
+                        <li>
+                          <a href='#'>Stadium ios video</a>
+                        </li>
+                        <li>
+                          <a href='#'>James Franklin will call your boss</a>
+                        </li>
+                        <li>
+                          <a href='#'>Teams looking to recover in 2013</a>
+                        </li>
+                        <li>
+                          <a href='#'>Ricky Jefferson pleads guilty</a>
+                        </li>
+                      </div>
+                      <div class='column'>
+                        <a href='#'>Dee Ford expected to miss opener</a>
+                        <a href='#'>Wake Forest dismisses Duran Lowe</a>
+                        <a href='#'>Purdue tabs Rob Henry starting QB</a>
+                        <a href='#'>High hopes for DL Spence, Washington</a>
+                      </div>
+                    </div>
+                  </div>
+                  <ol class='carousel-indicators'>
+                    <li class='active' data-slide-to='0' data-target='#carousel-filter-slider-list'></li>
+                    <li data-slide-to='1' data-target='#carousel-filter-slider-list'></li>
+                  </ol>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-</div>
+      </nav>
+    </header>

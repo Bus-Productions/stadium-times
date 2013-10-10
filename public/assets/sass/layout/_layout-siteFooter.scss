@@ -1,0 +1,43 @@
+
+
+// Layout: Site Footer
+// ------------------------
+
+footer#site-footer {
+    background: lighten($light-med, 4%);
+    background: url(../images/patterns-bgs/footer-bg.jpg) repeat;
+    border-top: 1px solid darken($light-dark, 4%);
+    margin: 0;
+    @include clearfix();
+    clear:both;
+    z-index:2;
+
+    ul {
+        float:right;
+        text-align: center;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        display: inline-block;
+
+        a {
+            text-transform: uppercase;
+            color: $text-med;
+            padding: 16px 12px;
+            display: inline-block;
+            @extend .h5;
+
+            &:hover, &:focus {
+                color: $link;
+            }
+        }
+    }
+
+    @include breakpoint(lt-ipad-portrait) {
+        ul {
+            float: none;
+        }
+    }
+}

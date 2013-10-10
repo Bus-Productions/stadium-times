@@ -1,0 +1,442 @@
+!!! 5
+-# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 9] <html lang="en" class="no-js lt-ie9">
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+%head
+    / Meta
+    %meta{:charset => "UTF-8"}
+    %meta{:name=>"viewport", :content=>"width=device-width,initial-scale=1"}
+
+    %title Stadium Times | Saved Articles
+    %meta{:name=>"description", :content=>"Stadium Times, the ultimate sports news source."}
+    %meta{:name=>"keywords", :content=>"Stadium Times, Stadium Stock Exchange, Bus Productions, sports, stock, exchange, news, source, resource, articles, football, stadium, university, play, game, points, qb"}
+    %meta{:name=>"author", :content=>"Stadium Times"}
+
+    %meta{:property=>"og:title", :content=>"Stadium Times | The Ultimate Sports News Source"}
+    %meta{:property=>"og:site_name", :content=>"Stadium Times"}
+    %meta{:property=>"og:type", :content=>"website"}
+    %meta{:property=>"og:image", :content=>"../assets/images/logos-icons/og-image_stadiumtimes.png"}
+
+    %link{:rel => "icon", :type => "images/png", :href => "../assets/images/logos-icons/favicon.ico"}/
+
+    / Style
+    %link{:rel => "stylesheet", :href => "../assets/css/site.css"}
+    %link{:rel => "stylesheet", :href => "../assets/fonts/ss-block/webfonts/ss-symbolicons-block.css"}
+
+    /[if lt IE 9 ]
+        %link{:rel => "stylesheet", :href => "../assets/css/ie.css"}/
+
+    / Scripts
+    %script{:rel => "javascript", :src => "../assets/js/modernizr.min.js"}
+    %script{:rel => "javascript", :src => "//use.typekit.net/bar5cpd.js"}
+    %script
+        try{Typekit.load();}catch(e){}
+
+
+
+%body
+    /[if lt IE 7 ]
+        %p.chromeframe
+            You're using an
+            %strong
+                outdated
+            browser. Please
+            %a{:href => "http://browsehappy.com/", :target => "_blank"} upgrade your browser
+            or
+            %a{:href => "http://www.google.com/chromeframe/?redirect=true", :target => "_blank"} activate Google Chromeframe
+            to improve your experience.
+
+
+
+
+    #site-wrap.wrap
+
+        %header#site-header
+            %nav.navbar.navbar-default{:role=>'navigation'}
+                .navbar-wrap
+                    .navbar-header
+                        %button.navbar-toggle{:'data-toggle'=>'collapse', :'data-target'=>'.navbar-collapse'}
+                            %span.icon-bar
+                            %span.icon-bar
+                            %span.icon-bar
+                        %a.navbar-brand.brand{:href => "/"}
+                            %span Stadium
+                            %span Times
+
+                    .collapse.navbar-collapse
+                        %ul.nav.navbar-nav.navbar-right
+                            %li.search
+                                %a.ss-search{:href=>'#searchModal', 'data-toggle'=>'modal'}
+                                    %span Search
+                            %li.profile
+                                %a.go-to-profile{:href => "profilePublicView"}
+                                    .avatar
+                                        %img.img-circle{:src => "https://lh4.googleusercontent.com/-Ns94wH2z5sk/AAAAAAAAAAI/AAAAAAAAABA/jFN6SPVm_3U/s120-c/photo.jpg", :alt => "Holly Golightly"}/
+
+                                    Paul Varjak
+
+                                %li.dropdown
+                                    %a#profile-menu.dropdown-toggle{:role=>'button', :'data-toggle'=>'dropdown', :href=>'#'}
+                                        %span.caret
+                                    %ul.dropdown-menu{:role=>'menu', :'aria-labelledby'=>'profile-menu'}
+                                        %li
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Settings
+                                        %li.divider
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Help
+                                        %li
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} About Stadium Times
+                                        %li
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Legal Terms
+                                        %li.divider
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Sign in to Stadium Stock Exchange
+                                        %li.divider
+                                            %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Sign Out
+
+
+
+
+
+
+
+
+            .filter-nav-spacer
+
+
+            %nav.filter-navbar#accordion{:'data-spy'=>"affix", :'data-offset-top'=>"60"}
+                .navbar-wrap
+
+                    %header
+                        %h5
+                            %a.accordion-toggle.collapsed{:href => "#filter-navbar-collapse", :'data-toggle'=>'collapse', :'data-parent'=>'#accordion'}
+                                %span.label
+                                    Browsing:
+                                %h5.tag
+                                    Saved Articles
+                                %span.toggle-down
+                                    %span.caret
+
+                    #filter-navbar-collapse.panel-collapse.collapse
+                        .panel-body
+                            %ul.filter-list
+                                %li.list-title
+                                    %h5.tag
+                                        %a{:href => "#"} Filter
+                                %li
+                                    %a{:href => "#"} Trending
+
+                                %li
+                                    %a{:href => "#"} Popular
+
+                                %li
+                                    %a{:href => "#"} Newest
+
+                                %li
+                                    %a{:href => "#"} -- Filter --
+
+                            %ul.filter-list
+                                %li.list-title
+                                    %h5.tag
+                                        %a{:href => "#"} Lists
+                                %li
+                                    %a{:href => "listConferences"} Conferences
+
+                                %li
+                                    %a{:href => "listTeams"} Teams
+
+                                %li
+                                    %a{:href => "listTopics"} Topics
+
+                                %li.active
+                                    %a{:href => "listSavedArticles"} Saved Articles
+
+
+                            .filter-slider-list
+                                .list-title
+                                    %h5.tag
+                                        %a{:href => "#"} Highlight Reel
+
+                                #carousel-filter-slider-list.carousel.slide
+                                    .carousel-inner
+                                        .item.active
+                                            .column
+                                                %li
+                                                    %a{:href => "#"} Dee Ford expected to miss opener
+
+                                                %li
+                                                    %a{:href => "#"} Wake Forest dismisses Duran Lowe
+
+                                                %li
+                                                    %a{:href => "#"} Purdue tabs Rob Henry starting QB
+
+                                                %li
+                                                    %a{:href => "#"} High hopes for DL Spence, Washington
+
+
+                                            .column
+                                                %li
+                                                    %a{:href => "#"} Stadium ios video
+
+                                                %li
+                                                    %a{:href => "#"} James Franklin will call your boss
+
+                                                %li
+                                                    %a{:href => "#"} Teams looking to recover in 2013
+
+                                                %li
+                                                    %a{:href => "#"} Ricky Jefferson pleads guilty
+
+
+                                        .item
+                                            .column
+                                                %li
+                                                    %a{:href => "#"} Stadium ios video
+
+                                                %li
+                                                    %a{:href => "#"} James Franklin will call your boss
+
+                                                %li
+                                                    %a{:href => "#"} Teams looking to recover in 2013
+
+                                                %li
+                                                    %a{:href => "#"} Ricky Jefferson pleads guilty
+
+
+                                            .column
+                                                %a{:href => "#"} Dee Ford expected to miss opener
+                                                %a{:href => "#"} Wake Forest dismisses Duran Lowe
+                                                %a{:href => "#"} Purdue tabs Rob Henry starting QB
+                                                %a{:href => "#"} High hopes for DL Spence, Washington
+
+                                    %ol.carousel-indicators
+                                        %li.active{:'data-target'=>'#carousel-filter-slider-list', :'data-slide-to'=>'0'}
+                                        %li{:'data-target'=>'#carousel-filter-slider-list', :'data-slide-to'=>'1'}
+
+
+
+        %main#content-wrap.main{:role => "main"}
+
+            %section.main-content
+                %header.main-header
+                    .title
+                        %h3 Saved Articles
+                        .btn-toolbar
+                            .btn-group
+                                %a.btn.light{:href => "#"} Edit
+
+                    %hr/
+
+                %ul.saved-articles.list
+
+                    %li
+                        .link-detail
+                            %header
+                                %a{:href => "#"}
+                                    %h4 Tide always wearing a bull's-eye
+                                %small.meta
+                                    %p
+                                        via
+                                        %a{:href => "#"} nspn.go.com
+
+                            %small.meta
+                                %dl.tags
+                                    %dt
+                                        Tags:
+                                        %dd
+                                            %a{:href => "#"} NCAA Football
+                                        %dd
+                                            %a{:href => "#"} Draft Picks
+                                        %dd
+                                            %a{:href => "#"} Rootbeer
+
+
+                                %em
+                                    %span.ss-link
+                                    7 hours ago
+
+                                    %a{:href => "#"}
+                                        %span.ss-chat
+                                        12 Replies
+
+                        .profile-detail
+                            .avatar
+                                %img.img-circle{:src => "https://lh4.googleusercontent.com/-Ns94wH2z5sk/AAAAAAAAAAI/AAAAAAAAABA/jFN6SPVm_3U/s120-c/photo.jpg", :alt => "Holly Golightly"}/
+
+
+                    %li
+                        .link-detail
+                            %header
+                                %a{:href => "#"}
+                                    %h4 Wake Forest dismisses Duran Lowe
+                                %small.meta
+                                    %p
+                                        via
+                                        %a{:href => "#"} bleacherreport.com
+
+                            %small.meta
+                                %dl.tags
+                                    %dt
+                                        Tags:
+                                        %dd
+                                            %a{:href => "#"} NCAA Football
+                                        %dd
+                                            %a{:href => "#"} Draft Picks
+                                        %dd
+                                            %a{:href => "#"} Rootbeer
+
+
+                                %em
+                                    %span.ss-link
+                                    7 hours ago
+
+                                    %a{:href => "#"}
+                                        %span.ss-chat
+                                        12 Replies
+
+                        .profile-detail
+                            .avatar
+                                %img.img-circle{:src => "https://lh4.googleusercontent.com/-Ns94wH2z5sk/AAAAAAAAAAI/AAAAAAAAABA/jFN6SPVm_3U/s120-c/photo.jpg", :alt => "Holly Golightly"}/
+
+
+                    %li
+                        .link-detail
+                            %header
+                                %a{:href => "#"}
+                                    %h4 James Franklin will call your boss.
+
+                                %small.meta
+                                    %p
+                                        via
+                                        %a{:href => "#"} bleacherreport.com
+
+                            %small.meta
+                                %dl.tags
+                                    %dt
+                                        Tags:
+                                        %dd
+                                            %a{:href => "#"} NCAA Football
+                                        %dd
+                                            %a{:href => "#"} Draft Picks
+                                        %dd
+                                            %a{:href => "#"} Rootbeer
+
+
+                                %em
+                                    %span.ss-link
+                                    7 hours ago
+
+                                    %a{:href => "#"}
+                                        %span.ss-chat
+                                        12 Replies
+
+                        .profile-detail
+                            .avatar
+                                %img.img-circle{:src => "https://lh4.googleusercontent.com/-Ns94wH2z5sk/AAAAAAAAAAI/AAAAAAAAABA/jFN6SPVm_3U/s120-c/photo.jpg", :alt => "Holly Golightly"}/
+
+
+
+
+        %footer#site-footer
+            %nav
+                %ul
+                    %li
+                        %a{:href => "#"} Leagues
+                    %li
+                        %a{:href => "#"} Conferences
+                    %li
+                        %a{:href => "#"} About
+
+
+
+
+
+        / Modals
+        / -------------------------
+
+        / Search Modal
+        .modal.fade#searchModal{:tabindex=>'-1',:role=>'dialog',:'aria-labelledby'=>'searchModalLabel',:'aria-hidden'=>'true'}
+            .modal-dialog
+                .modal-content
+                    %header.modal-header
+                        %h4.modal-title Search
+
+                    %section.modal-body
+
+                        .form-group
+                            %input.form-control{:type => "text", :placeholder => "What are you looking for?"}/
+
+
+                        %ul.list
+                            %li
+                                %a{:href => "#"}
+                                    %h3 Stadium Releases New Platform
+                                    %p
+                                        Eddie Lacy's primary backup in 2012. Like Gurley, Yeldon has the same ability between the tackles and probably more top-end speed and agility.
+                                    %small.meta
+                                        %dl.tags
+                                            %dt
+                                                Tags:
+                                                %dd
+                                                    %a{:href => "#"} NCAA Football
+                                                %dd
+                                                    %a{:href => "#"} Draft Picks
+                                                %dd
+                                                    %a{:href => "#"} %Rootbeer
+
+                            %li
+                                %a{:href => "#"}
+                                    %h3 Stadium Releases New Platform
+                                    %p
+                                        Eddie Lacy's primary backup in 2012. Like Gurley, Yeldon has the same ability between the tackles and probably more top-end speed and agility.
+                                    %small.meta
+                                        %dl.tags
+                                            %dt
+                                                Tags:
+                                                %dd
+                                                    %a{:href => "#"} NCAA Football
+                                                %dd
+                                                    %a{:href => "#"} Draft Picks
+                                                %dd
+                                                    %a{:href => "#"} %Rootbeer
+
+                            %li
+                                %a{:href => "#"}
+                                    %h3 Stadium Releases New Platform
+                                    %p
+                                        Eddie Lacy's primary backup in 2012. Like Gurley, Yeldon has the same ability between the tackles and probably more top-end speed and agility.
+                                    %small.meta
+                                        %dl.tags
+                                            %dt
+                                                Tags:
+                                                %dd
+                                                    %a{:href => "#"} NCAA Football
+                                                %dd
+                                                    %a{:href => "#"} Draft Picks
+                                                %dd
+                                                    %a{:href => "#"} %Rootbeer
+
+
+                        .fade-off-text
+
+
+                    %footer.modal-footer
+                        %button.btn.light{:type=>'button',:'data-dismiss'=>'modal'} Close
+
+
+
+        %script{:rel => "javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+        %script
+            window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/carousel.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/affix.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/dropdown.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/collapse.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/modal.js"}
+        %script{:rel => "javascript", :src => "../assets/js/bootstrap/transition.js"}
+        %script{:rel => "javascript", :src => "../assets/js/pushy/pushy.min.js"}
+        %script{:rel => "javascript", :src => "http://zurb.com/playground/projects/off-canvas/javascripts/foundation/jquery.offcanvas.js"}
+
+        %script{:rel => "javascript", :src => "../assets/js/app.js"}
+
+
+

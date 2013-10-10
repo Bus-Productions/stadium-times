@@ -1,0 +1,67 @@
+// Custom Buttons
+// --------------------------------------------------
+
+.btn {
+    @include transition(all .15s ease-in-out);
+
+    &.primary {
+        background: $link;
+        color: $light;
+        font-weight: 200;
+        letter-spacing: .1em;
+        @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-base, $line-height-large, $border-radius-base);
+
+        &:hover,&:focus, &:active,&.active {
+            background: darken($link, 5%);
+        }
+    }
+
+    &.light {
+        background: darken(#fff, 5%);
+        color: $text-med;
+        font-weight: 200;
+        border-color: $text-lighter;
+        @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
+
+        &:hover,&:focus, &:active,&.active {
+            background: darken(#fff, 8%);
+        }
+    }
+
+    &.dark {
+        background: $link-compliment;
+        color: $light;
+        font-weight: 200;
+        letter-spacing: .1em;
+        @include button-size($padding-small-vertical, 15px, $font-size-small, $line-height-small, $border-radius-small);
+
+        &:hover,&:focus, &:active,&.active {
+            background: darken($link-compliment, 4%);
+        }
+    }
+
+    &.primary.highlight {
+        background: none;
+        text-transform: uppercase;
+        border: 1px solid $light;
+        border-width:2px;
+        font-weight: 600;
+
+        &:hover {
+            border-color: $highlight;
+            color: $highlight;
+        }
+    }
+
+    span {
+      position: relative;
+      top: 2px;
+      margin-right:4px;
+    }
+
+    &#spam {
+        background: #ffffff;
+        color: lighten($text-med, 15%);
+        border-color:lighten($text-med, 25%);
+    }
+}

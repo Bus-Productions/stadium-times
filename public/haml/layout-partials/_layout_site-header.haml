@@ -1,0 +1,171 @@
+
+/[if lt IE 7 ]
+    %p.chromeframe
+        You're using an
+        %strong
+            outdated
+        browser. Please
+        %a{:href => "http://browsehappy.com/", :target => "_blank"} upgrade your browser
+        or
+        %a{:href => "http://www.google.com/chromeframe/?redirect=true", :target => "_blank"} activate Google Chromeframe
+        to improve your experience.
+
+
+
+
+#site-wrap.wrap
+
+    %header#site-header
+        %nav.navbar.navbar-default{:role=>'navigation'}
+            .navbar-wrap
+                .navbar-header
+                    %button.navbar-toggle{:'data-toggle'=>'collapse', :'data-target'=>'.navbar-collapse'}
+                        %span.icon-bar
+                        %span.icon-bar
+                        %span.icon-bar
+                    %a.navbar-brand.brand{:href => "/"}
+                        %span Stadium
+                        %span Times
+
+                .collapse.navbar-collapse
+                    %ul.nav.navbar-nav.navbar-right
+                        %li.search
+                            %a.ss-search{:href=>'#searchModal', 'data-toggle'=>'modal'}
+                                %span Search
+                        %li.profile
+                            %a.go-to-profile{:href => "profilePublicView"}
+                                .avatar
+                                    %img.img-circle{:src => "https://lh4.googleusercontent.com/-Ns94wH2z5sk/AAAAAAAAAAI/AAAAAAAAABA/jFN6SPVm_3U/s120-c/photo.jpg", :alt => "Holly Golightly"}/
+
+                                Holly Golightly
+
+                            %li.dropdown
+                                %a#profile-menu.dropdown-toggle{:role=>'button', :'data-toggle'=>'dropdown', :href=>'#'}
+                                    %span.caret
+                                %ul.dropdown-menu{:role=>'menu', :'aria-labelledby'=>'profile-menu'}
+                                    %li
+                                        %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Settings
+                                    %li.divider
+                                        %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Help
+                                    %li
+                                        %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} About Stadium Times
+                                    %li
+                                        %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Legal Terms
+                                    %li.divider
+                                        %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Sign in to Stadium Stock Exchange
+                                    %li.divider
+                                        %a{:href => "#", :role=>'menuitem', :tabindex=>'-1'} Sign Out
+
+
+        .filter-nav-spacer
+
+
+        %nav.filter-navbar#accordion{:'data-spy'=>"affix", :'data-offset-top'=>"60"}
+            .navbar-wrap
+
+                %header
+                    %h5
+                        %a.accordion-toggle.collapsed{:href => "#filter-navbar-collapse", :'data-toggle'=>'collapse', :'data-parent'=>'#accordion'}
+                            %span.label
+                                Browsing:
+                            %h5.tag
+                                NCAA Football
+                            %span.toggle-down
+                                %span.caret
+
+                #filter-navbar-collapse.panel-collapse.collapse
+                    .panel-body
+                        %ul.filter-list
+                            %li.list-title
+                                %h5.tag
+                                    %a{:href => "#"} Filter
+                            %li
+                                %a{:href => "#"} Trending
+
+                            %li
+                                %a{:href => "#"} Popular
+
+                            %li
+                                %a{:href => "#"} Newest
+
+                            %li
+                                %a{:href => "#"} -- Filter --
+
+                        %ul.filter-list
+                            %li.list-title
+                                %h5.tag
+                                    %a{:href => "#"} Lists
+                            %li.active
+                                %a{:href => "listConferences"} Conferences
+
+                            %li
+                                %a{:href => "listTeams"} Teams
+
+                            %li
+                                %a{:href => "listTopics"} Topics
+
+                            %li
+                                %a{:href => "listSavedArticles"} Saved Articles
+
+
+                        .filter-slider-list
+                            .list-title
+                                %h5.tag
+                                    %a{:href => "#"} Highlight Reel
+
+                            #carousel-filter-slider-list.carousel.slide
+                                .carousel-inner
+                                    .item.active
+                                        .column
+                                            %li
+                                                %a{:href => "#"} Dee Ford expected to miss opener
+
+                                            %li
+                                                %a{:href => "#"} Wake Forest dismisses Duran Lowe
+
+                                            %li
+                                                %a{:href => "#"} Purdue tabs Rob Henry starting QB
+
+                                            %li
+                                                %a{:href => "#"} High hopes for DL Spence, Washington
+
+
+                                        .column
+                                            %li
+                                                %a{:href => "#"} Stadium ios video
+
+                                            %li
+                                                %a{:href => "#"} James Franklin will call your boss
+
+                                            %li
+                                                %a{:href => "#"} Teams looking to recover in 2013
+
+                                            %li
+                                                %a{:href => "#"} Ricky Jefferson pleads guilty
+
+
+                                    .item
+                                        .column
+                                            %li
+                                                %a{:href => "#"} Stadium ios video
+
+                                            %li
+                                                %a{:href => "#"} James Franklin will call your boss
+
+                                            %li
+                                                %a{:href => "#"} Teams looking to recover in 2013
+
+                                            %li
+                                                %a{:href => "#"} Ricky Jefferson pleads guilty
+
+
+                                        .column
+                                            %a{:href => "#"} Dee Ford expected to miss opener
+                                            %a{:href => "#"} Wake Forest dismisses Duran Lowe
+                                            %a{:href => "#"} Purdue tabs Rob Henry starting QB
+                                            %a{:href => "#"} High hopes for DL Spence, Washington
+
+                                %ol.carousel-indicators
+                                    %li.active{:'data-target'=>'#carousel-filter-slider-list', :'data-slide-to'=>'0'}
+                                    %li{:'data-target'=>'#carousel-filter-slider-list', :'data-slide-to'=>'1'}
+

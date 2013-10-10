@@ -1,0 +1,82 @@
+
+
+// Home
+// ------
+
+
+body.home {
+    background: $dark;
+
+    // Grid
+
+    #content-wrap {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    section.highlight-wrap {
+        @include span-columns(5 alpha,12);
+    }
+
+    section.article-index, .article-index-bg {
+        @include span-columns(7 omega,12);
+    }
+
+
+    footer#site-footer {
+        position:fixed;
+        background: rgba(255, 255, 255, 0.96) !important;
+
+        @include span-columns(7 omega,12);
+        bottom:0;
+        right: 0;
+    }
+
+
+    // Design
+    section.highlight-wrap {
+        padding-right: 2em;
+        padding-left: 2em;
+    }
+    .article-index {
+        position: relative;
+        z-index: 2;
+        padding-left: 2em;
+    }
+
+    .article-index-bg {
+        background: $light;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        height:100%;
+    }
+
+
+    footer#site-footer, {
+        @include box-shadow(1px -1px 10px rgba(51, 51, 51, 0.28));
+    }
+
+
+    @include breakpoint(lt-ipad-portrait) {
+        section.article-index {
+            background: $light;
+        }
+
+        .article-index-bg {display:none;}
+
+        section.article-index, section.highlight-wrap {
+            @include span-columns(12,12);
+            padding-top: 2em;
+            padding-bottom: 4em;
+        }
+
+        footer#site-footer {
+            width: 100%;
+        }
+
+    }
+}
+
+

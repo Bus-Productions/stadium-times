@@ -1,0 +1,171 @@
+!!! 5
+-# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 9] <html lang="en" class="no-js lt-ie9">
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+%head
+    / Meta
+    %meta{:charset => "UTF-8"}
+    %meta{:name=>"viewport", :content=>"width=device-width,initial-scale=1"}
+
+    %title Stadium Times | Templates &amp; Examples
+    %meta{:name=>"description", :content=>"Stadium Times, the ultimate sports news source."}
+    %meta{:name=>"keywords", :content=>"Stadium Times, Stadium Stock Exchange, Bus Productions, sports, stock, exchange, news, source, resource, articles, football, stadium, university, play, game, points, qb"}
+    %meta{:name=>"author", :content=>"Stadium Times"}
+
+    %meta{:property=>"og:title", :content=>"Stadium Times | The Ultimate Sports News Source"}
+    %meta{:property=>"og:site_name", :content=>"Stadium Times"}
+    %meta{:property=>"og:type", :content=>"website"}
+    %meta{:property=>"og:image", :content=>"assets/images/logos-icons/og-image_stadiumtimes.png"}
+
+    %link{:rel => "icon", :type => "images/png", :href => "../assets/images/logos-icons/favicon.ico"}/
+
+    / Style
+    %link{:rel => "stylesheet", :href => "assets/css/site.css"}
+    %link{:rel => "stylesheet", :href => "assets/fonts/ss-block/webfonts/ss-symbolicons-block.css"}
+
+    /[if lt IE 9 ]
+        %link{:rel => "stylesheet", :href => "assets/css/ie.css"}/
+
+    / Scripts
+    %script{:rel => "javascript", :src => "assets/js/modernizr.min.js"}
+    %script{:rel => "javascript", :src => "//use.typekit.net/bar5cpd.js"}
+    %script
+        try{Typekit.load();}catch(e){}
+
+
+
+%body
+    /[if lt IE 7 ]
+        %p.chromeframe
+            You're using an
+            %strong
+                outdated
+            browser. Please
+            %a{:href => "http://browsehappy.com/", :target => "_blank"} upgrade your browser
+            or
+            %a{:href => "http://www.google.com/chromeframe/?redirect=true", :target => "_blank"} activate Google Chromeframe
+            to improve your experience.
+
+
+
+
+    #site-wrap.wrap
+
+
+
+        %main#content-wrap.main{:role => "main"}
+
+            %section.main-content
+                %header.main-header
+                    .title
+                        %h3 Docs: Examples & Templates
+                        .btn-toolbar
+                            .btn-group
+                                %a.btn.light{:href => "#"} Edit
+
+                    %hr/
+
+                %table.table
+                    %thead
+                        %tr
+                            %th Name
+                            %th Type
+
+                    %tbody
+                        %tr
+                            %td
+                                %a{:href => "templates/articleFocus.html"} Article Focus
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/composeArticle.html"} Compose Article
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/composeLink.html"} Compose Link
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/home.html"} Home
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/listConferenceRelated.html"} List - Conference Related
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/listConferences.html"} List - Conferences
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/listSavedArticles.html"} List - Saved Articles
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/listTeams.html"} List - Teams
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/profilePublicView.html"} Profile - Public View
+                            %td
+                                Layout Example
+
+                        %tr
+                            %td
+                                %a{:href => "templates/profilePublicView-comments.html"} Profile - Public View + Comments
+                            %td
+                                Layout Example
+
+
+
+
+
+
+        %footer#site-footer
+            %nav
+                %ul
+                    %li
+                        %a{:href => "#"} Leagues
+                    %li
+                        %a{:href => "#"} Conferences
+                    %li
+                        %a{:href => "#"} About
+
+
+
+
+
+
+
+        %script{:rel => "javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+        %script
+            window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')
+        %script{:rel => "javascript", :src => "assets/js/bootstrap/carousel.js"}
+        %script{:rel => "javascript", :src => "assets/js/bootstrap/dropdown.js"}
+        %script{:rel => "javascript", :src => "assets/js/bootstrap/collapse.js"}
+        %script{:rel => "javascript", :src => "assets/js/bootstrap/modal.js"}
+        %script{:rel => "javascript", :src => "assets/js/bootstrap/transition.js"}
+        %script{:rel => "javascript", :src => "assets/js/pushy/pushy.min.js"}
+        %script{:rel => "javascript", :src => "http://zurb.com/playground/projects/off-canvas/javascripts/foundation/jquery.offcanvas.js"}
+
+        %script{:rel => "javascript", :src => "assets/js/app.js"}
+
+
+

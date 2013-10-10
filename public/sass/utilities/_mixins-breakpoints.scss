@@ -1,0 +1,106 @@
+
+
+
+// Breakpoints are Rad
+// --------------------------------------------
+@mixin breakpoint($point) {
+  // Monitors
+  // ---------
+  @if $point == large-screens {
+    @media (max-width: 1824px) { @content; }
+  }
+  @else if $point == desktops-laptops {
+    @media (max-width: 1224px) { @content; }
+  }
+
+  // Ipad
+  // ---------
+  @else if $point == ipad-all {
+    @media only screen and (min-width : 768px) and (max-width : 1024px)
+    { @content; }
+  }
+  @else if $point == ipad-portrait {
+    @media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait)
+    { @content; }
+  }
+  @else if $point == ipad-landscape {
+    @media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape)
+    { @content; }
+  }
+
+
+  // Phones
+  // ---------
+  @else if $point == phones-all {
+    @media only screen and (min-width : 320px) and (max-width : 480px)
+    { @content; }
+  }
+  @else if $point == phones-portrait {
+    @media only screen and (max-width : 320px)
+    { @content; }
+  }
+  @else if $point == phones-landscape {
+    @media only screen and (min-width : 321px)
+    { @content; }
+  }
+
+
+  // General Points
+  // ---------------
+  @else if $point == gt-large-screens {
+    @media (min-width : 1824px)
+    { @content; }
+  }
+
+  @else if $point == gt-desktop {
+    @media (min-width : 1224px)
+    { @content; }
+  }
+
+  @else if $point == lt-ipad-landscape {
+    @media (max-width : 1024px)
+    { @content; }
+  }
+
+  @else if $point == lt-ipad-portrait {
+    @media (max-width : 768px)
+    { @content; }
+  }
+
+  @else if $point == lt-phone-landscape {
+    @media (max-width : 480px)
+    { @content; }
+  }
+
+
+}
+
+
+
+
+// @mixin breakpoint($point) {
+//   @if $point == large-monitors {
+//     @media (min-width: 1250px) { @content; }
+//   }
+//   @else if $point == ultra-Wide {
+//     @media (min-width: 1400px)  { @content; }
+//   }
+//   @else if $point == correct-Wide {
+//     @media (min-width: 1000px)  { @content; }
+//   }
+//   @else if $point == point-N {
+//     @media (max-width: 1064px) { @content; }
+//   }
+//   @else if $point == tablet-H {
+//     @media (max-width: 979px) { @content; }
+//   }
+//   @else if $point == tablet-V {
+//     @media (max-width: 768px)  { @content; }
+//   }
+
+//   @else if $point == phones {
+//     @media (max-width: 480px)  { @content; }
+//   }
+// }
+
+

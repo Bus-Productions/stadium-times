@@ -1,0 +1,76 @@
+
+@import "susy";
+
+// ------------------------------------------------------------
+// -- LAYOUTS - Basic Start: Move to partials if this grows --
+
+
+// Wrap primary parent elements within 1260 grid
+#content-wrap, .navbar-wrap, #site-footer nav {
+    @include container;
+    // max-width: 94em;
+    // _width: 94em;
+    // padding-left: 2em;
+    // padding-right: 2em;
+    // margin-left: auto;
+}
+
+// body.off-canvas {
+//     #content-wrap, .navbar-wrap, #site-footer nav {
+//         margin-right: 0 !important;
+//     }
+// }
+
+// .navbar-wrap, .navbar, .navbar-collapse, .navbar-header {
+//     &:before, &:after {
+//         content: none !important;
+//         display:inline-block;
+//     }
+// }
+
+// Layout: Article Focus
+section.main-content {
+    @include span-columns(6 alpha,12);
+    margin-bottom: ($line-height-computed * 2);
+}
+aside.aside-content{
+    @include span-columns(4 omega,12);
+    margin-top: 32px;
+    float:left;
+}
+
+
+
+
+// For a World of Devices ---------------
+@include breakpoint(lt-ipad-landscape) {
+    aside.profile-detail {
+        float:right;
+    }
+    section.article-focus {
+        @include span-columns(8, 12);
+    }
+}
+
+@include breakpoint(lt-ipad-portrait) {
+    aside.aside-content, section.main-content {
+        @include span-columns(12, 12);
+    }
+}
+
+
+
+
+// ------------------------------------------------------------
+// -- DETAILS --
+
+// Exceptions
+body.home {
+    #content-wrap {
+        padding-top: 0px
+    }
+}
+#content-wrap {
+    padding-top: 24px
+}
+

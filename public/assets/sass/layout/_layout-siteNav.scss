@@ -1,0 +1,153 @@
+//
+// Layout: Site Nav
+// --------------------------------------------------
+
+
+header#site-header {
+
+    .navbar-default {
+        background: url(../images/patterns-bgs/navbar-bg.jpg) repeat;
+    }
+
+    .navbar-header {
+        height: $navbar-height;
+    }
+
+    // Nav Items
+    .navbar-nav {
+        float: right;
+        color: $neutral-compliment;
+
+        > li {
+            list-style: none;
+            padding-right:6px;
+            padding-left:6px;
+
+            > a {
+                display: inline-block;
+
+                // Buttons
+                &.btn {
+                    margin-top: 15px;
+
+                    &:hover {
+                        background: $neutral-compliment;
+                        color: white !important;
+                    }
+                }
+
+                &:hover {
+                    color: $highlight !important;
+                }
+            }
+        }
+    }
+
+    // Nav Item: Search
+    .navbar li.search {
+        a {
+            color: $neutral-compliment;
+            font-size: emCalc(24);
+            padding-right:13px;
+            padding-left:20px;
+            border-left: 1px solid darken($dark, 3%);
+            border-right: 1px solid darken($dark, 3%);
+        }
+
+        span {
+            display: inline-block;
+            text-indent: -9999px;
+        }
+    }
+
+    // Nav Item: Profile Dropdown
+    .navbar li.profile {
+
+        a.go-to-profile {
+            color: $neutral-compliment;
+            text-transform: uppercase;
+            padding: 16px 0;
+            display: inline-block;
+        }
+
+    }
+
+    // Dropdown
+    .navbar-default .navbar-nav > .dropdown {
+        display: inline-block;
+
+        ul.dropdown-menu {
+            margin-right: 52px;
+        }
+
+        &:hover {
+            .caret {
+                border-top-color: $highlight;
+            }
+        }
+
+         > a .caret {
+            display: inline-block;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 7px solid $neutral-compliment;
+            margin: 0px;
+         }
+    }
+
+    // For a World of Devices ---------------
+    @include breakpoint(lt-ipad-portrait) {
+
+        .navbar-nav {
+            float:none;
+            padding:0;
+            text-align: center;
+
+            > li {
+                margin:0px 0 10px;
+
+                a {
+                    padding-top:0;
+                    display: block;
+                    text-align: center;
+                    border:none !important;
+                    border-bottom: 1px solid darken($dark, 3%) !important;
+                }
+
+                 &.search {
+                    margin:20px 0 10px;
+                    a {
+                        padding-top:10px;
+                    }
+                }
+
+                .btn {
+                    padding: 10px 15px;
+                }
+
+                &.dropdown {
+                    width: 80%;
+                    a {
+                        border-bottom: 0 !important;
+                    }
+                }
+                .dropdown-menu {
+                    margin-right: 0 !important;
+                }
+                .go-to-profile {
+                    width: 100%;
+                    padding:6px 0 0px !important;
+                    border:none !important;
+                }
+            }
+
+
+
+             // .navbar-nav > li a
+        }
+
+    }
+
+
+
+}

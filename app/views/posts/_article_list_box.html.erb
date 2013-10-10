@@ -1,0 +1,46 @@
+        <article>
+          <header>
+            <h2>
+              <a href=''><%= @post.title %></a>
+            </h2>
+            <div class='article-controls'>
+              <div class='btn-group'>
+                <a class='btn small light' href='#' id='vote-up'>
+                  <span class='ss-like'></span>
+                </a>
+                <a class='btn small light' href='#' id='vote-down'>
+                  <span class='ss-dislike'></span>
+                </a>
+              </div>
+              <a class='btn small light' href='#'>
+                <span class='ss-action'></span>
+              </a>
+            </div>
+          </header>
+          <p><%= @post.text %></p>
+          <small class='meta'>
+            <p>
+              shared by
+              <a href='#'>
+                <%= @post.user.name %>
+              </a>
+
+              <% @post.topics.each_with_index do |t, i| %>
+                <% if i == 0 %>in <% end %>
+                <a href='<%= topic_path(t) %>'>
+                  <%= t.topic_name %>
+                </a>
+              <% end %>
+
+
+            </p>
+            <em>
+              <span class='ss-link'></span>
+              7 hours ago
+              <a href='#'>
+                <span class='ss-chat'></span>
+                View Conversation
+              </a>
+            </em>
+          </small>
+        </article>

@@ -1,0 +1,306 @@
+//
+// Layout: Components
+// --------------------------------------------------
+
+
+
+// Aside: Detail Panel
+// ---------------------
+aside.detail-panel {
+    ul.list li a {
+        text-transform: uppercase;
+        color: $text-med;
+        display: inline-block;
+
+        &:hover, &:focus {
+            color: $link;
+        }
+    }
+}
+
+
+
+
+// Aside: Profile Badge
+// ---------------------
+aside.profile-badge {
+    margin-top: ($line-height-computed * 1.6);
+    margin-bottom: ($line-height-computed * 2);
+    text-align: center;
+    color: $text-light;
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .avatar {
+        width:100px
+    }
+
+    header {
+        margin-top: ($line-height-computed / 4);
+
+        h3 {
+            margin: 0;
+            color: $text-dark;
+            font-size: emCalc(20);
+        }
+    }
+
+    p {
+        margin-bottom: 2px;
+    }
+
+    a {
+        display: block;
+    }
+
+    .meta {
+        font-style: italic;
+        line-height: 20px;
+        margin-bottom: $line-height-computed;
+    }
+
+    @include breakpoint(lt-ipad-portrait) {
+        padding-top: ($line-height-computed * 2);
+        margin-top: ($line-height-computed * 3);
+        border-top: 1px solid $light-dark;
+        clear:both;
+    }
+}
+
+
+
+// Article: Highlight
+// ---------------------
+article.highlight-article {
+    text-align: center !important;
+
+    h2 {
+        color:$highlight;
+    }
+
+    p {
+        color: $light;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top:32px;
+    }
+}
+
+
+
+
+
+// Section: Main Header (main page header)
+// -------------------------------------
+header.main-header {
+
+    .title {
+        @include clearfix();
+        h3 {
+            float:left;
+            display: inline-block;
+        }
+
+        .btn-toolbar {
+            float: right;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    }
+}
+
+
+
+
+// UL: List (add on)
+// ---------------------
+ul.list {
+    padding:0;
+
+    li {
+        list-style: none;
+        border-bottom: 1px solid $light-dark;
+        margin:0 16px;
+        padding: 16px 32px 16px 0;
+        @include clearfix();
+
+        &:last-child {
+            border-bottom:0;
+        }
+
+        header {
+            @include clearfix();
+
+            h4 {
+                margin: 6px 0 0px 0;
+            }
+
+        }
+    }
+    @include breakpoint(phones-all) {
+        li {
+            margin: 0;
+        }
+    }
+}
+
+
+
+
+// UL: Saved Articles
+// ---------------------
+ul.saved-articles {
+
+    // Link Detail
+    .link-detail {
+        @include span-columns(10 alpha,12);
+
+    }
+
+    // Profile Detail
+    .profile-detail {
+        @include span-columns(2 omega,12);
+        width:30px;
+        display: inline;
+        margin:6px 0 0;
+    }
+
+}
+
+
+
+// Aside: Conversation
+// ---------------------
+aside.conversation {
+    padding-bottom:40px;
+    clear:both;
+
+    ul.comment-list {
+        background: lighten($light-med, 3%);
+        overflow:scroll;
+        &:before {
+        position: absolute;
+        content: '';
+        background: url(../images/patterns-bgs/bottom-fade.png) 0 - 40px;
+        bottom: 50px;
+        left: 0;
+        width: 100%;
+        z-index:100;
+        height:100px;
+      }
+    }
+}
+
+ul.comment-list {
+    padding-top:34px;
+
+    li {
+        padding: 16px 24px 16px 60px;
+        margin: 0;
+
+        &.alpha {
+            padding-left: 24px;
+            padding-bottom:32px;
+        }
+
+        .profile-detail {
+            float:left;
+            margin: 0;
+            .avatar {
+                margin: 0;
+                display: block;
+            }
+        }
+
+        .comment-detail {
+            width:88.978723%;
+            padding-left: 6px;
+            float:right;
+
+
+            header {
+                @include clearfix();
+
+                h4 {
+                    float:left;
+                }
+                em {
+                    margin: 0 0 0 6px;
+                    line-height: 32px;
+                    display: inline-block;
+                }
+            }
+        }
+
+        @include breakpoint(lt-ipad-landscape) {
+            // ul.comment-list line-height-computed
+            padding: 16px 16px 16px 40px;
+
+            &.alpha {
+                padding-left: 20px;
+            }
+
+            .comment-detail {
+                width: 100%;
+
+            }
+
+            .profile-detail, .profile-detail .avatar{
+                margin: 0 auto 6px;float:none;
+            }
+        }
+
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.6em;
+    }
+}
+
+
+
+
+// Tables
+// ---------------------
+table.table {
+    @extend .table-striped;
+    @extend .table-hover;
+}
+
+
+
+
+// Toggle Down
+// ---------------------
+span.toggle-down {
+    text-align: center;
+    background: $neutral-compliment;
+    @include border-radius(100px, 100px);
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    margin: 0px 0 0 2px;
+    @include transition(all .1s ease-in-out);
+}
+span.caret {
+    border-top: 4px solid $neutral;
+    position: relative;
+    left:-2px;
+    top:-1px;
+}
+
+
+
+
+// Avatar
+// ---------------------
+.avatar {
+    display: inline-block;
+    width:30px;
+    margin: 0 6px 0 0 ;
+}

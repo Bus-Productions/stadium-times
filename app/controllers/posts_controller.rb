@@ -3,6 +3,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+
+    @body_class = 'home'
+
     @posts = Post.all
 
     respond_to do |format|

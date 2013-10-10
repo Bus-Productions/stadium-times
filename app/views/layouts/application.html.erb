@@ -6,6 +6,7 @@
   <meta charset='UTF-8'>
   <meta content='width=device-width,initial-scale=1' name='viewport'>
   <title>Stadium Times</title>
+
   <meta content='Stadium Times, the ultimate sports news source.' name='description'>
   <meta content='Stadium Times, Stadium Stock Exchange, Bus Productions, sports, stock, exchange, news, source, resource, articles, football, stadium, university, play, game, points, qb' name='keywords'>
   <meta content='Stadium Times' name='author'>
@@ -14,15 +15,18 @@
   <meta content='website' property='og:type'>
   <meta content='../assets/images/logos-icons/og-image_stadiumtimes.png' property='og:image'>
 
-  
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
 
   <link href='../assets/images/logos-icons/favicon.ico' rel='icon' type='images/png'>
   <!-- Style -->
-  
-
+  <link href='../assets/css/site.css' rel='stylesheet'>
+  <link href='../assets/fonts/ss-block/webfonts/ss-symbolicons-block.css' rel='stylesheet'>
+  <!-- Video -->
+  <!-- %link{:rel => "stylesheet", :href => "http://dfcb.github.io/BigVideo.js/bower_components/BigVideo/css/bigvideo.css"}/ -->
+  <!--[if lt IE 9 ]>
+    <link href='../assets/css/ie.css' rel='stylesheet'>
+  <![endif]-->
+  <!-- Scripts -->
+  <script rel='javascript' src='../assets/js/modernizr.min.js'></script>
   <script rel='javascript' src='//use.typekit.net/bar5cpd.js'></script>
   <script>
     try{Typekit.load();}catch(e){}
@@ -30,9 +34,49 @@
 
 </head>
 
-<%= render 'layouts/header' %>
-<%= yield %>
-<%= render 'shared/login_display' %>
+<% if @body_class %>
+<body class="<%= @body_class %>">
+<% else %>
+<body>
+<% end %>
+
+  <%= render 'layouts/content_wrap' %>
+
+    <%= render 'layouts/header' %>
+
+    <%= render 'layouts/main_content_wrap' %>
+
+      <%= yield %>
+
+    <%= render 'layouts/end_main_content_wrap' %>
+
+    <%= render 'layouts/footer' %>
+
+    <%= render 'shared/modals' %>
+
+    <script rel='javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+    <script>
+      window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')
+    </script>
+    <script rel='javascript' src='../assets/js/bootstrap/affix.js'></script>
+    <script rel='javascript' src='../assets/js/bootstrap/carousel.js'></script>
+    <script rel='javascript' src='../assets/js/bootstrap/collapse.js'></script>
+    <script rel='javascript' src='../assets/js/bootstrap/modal.js'></script>
+    <script rel='javascript' src='../assets/js/bootstrap/transition.js'></script>
+    <script rel='javascript' src='../assets/js/pushy/pushy.min.js'></script>
+    <script rel='javascript' src='http://zurb.com/playground/projects/off-canvas/javascripts/foundation/jquery.offcanvas.js'></script>
+    <script rel='javascript' src='../assets/js/app.js'></script>
+    <!-- / Big Video -->
+    <!-- / %script{:rel => "javascript", :src => "http://dfcb.github.io/BigVideo.js/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"} -->
+    <!-- / %script{:rel => "javascript", :src => "http://vjs.zencdn.net/4.0/video.js"} -->
+    <!-- / %script{:rel => "javascript", :src => "http://dfcb.github.io/BigVideo.js/bower_components/BigVideo/lib/bigvideo.js"} -->
+    <!-- / %script -->
+    <!-- /     $(function() { -->
+    <!-- /     var BV = new $.BigVideo(); -->
+    <!-- /     BV.init(); -->
+    <!-- /     BV.show('http://video-js.zencoder.com/oceans-clip.mp4',{ambient:true}); -->
+    <!-- /     }); -->
+
+  <%= render 'layouts/end_content_wrap' %>
 
 </body>
-</html>

@@ -1,0 +1,2 @@
+// Scripts for Stadium Times
+$(".carousel").carousel();$(function(){$("#sidebarButton").click(function(){$(this).text(function(e,t){return t==="Join the Conversation"?"Hide the Conversation":"Join the Conversation"})})});var h=document.getElementById("content-wrap").offsetHeight;document.getElementById("comment-list").style.height=h+"px";$(".filter-navbar#accordian").affix({offset:{top:0,bottom:function(){return this.bottom=$("#site-footer").outerHeight(!0)}}});
