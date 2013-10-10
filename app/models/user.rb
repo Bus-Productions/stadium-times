@@ -28,7 +28,9 @@ class User < ActiveRecord::Base
       if user.provider == 'facebook'
         user.email = auth.info.email.downcase
         user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+        user.bio = auth.info.bio
       elsif user.provider == 'twitter'
+        user.bio = auth.info.description
       end
       user.oauth_token = auth.credentials.token
       user.save!

@@ -93,4 +93,11 @@ class Post < ActiveRecord::Base
     self.spam_count = self.spam_count+1
   end
 
+
+  # LINK
+
+  def link_for_post
+    self.link ? self.link : post_path(self)
+  end
+
 end
