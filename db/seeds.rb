@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+# YOU MUST CREATE A USER BEFORE SEEDING THE DB
+
 # POSTS
 
 p = Post.new(:post_type => "link", :user_id => 1, :title => "Florida is da bomb", :status => "live", :upvotes => 25, :downvotes => 1, :spam_count => 1, :post_id => nil, :link => "http://espn.go.com")
@@ -15,7 +17,7 @@ p.score = p.current_score
 p.save!
 
 15.times do
-	post_type = ["link", "long"].sample
+	post_type = ["link", "text"].sample
 	user_id = 1
 	title = Faker::Company.catch_phrase
 	text = Faker::Lorem.paragraphs
