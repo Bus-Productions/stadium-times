@@ -20,12 +20,7 @@
 
             <div class='article-controls'>
               <div class='btn-group'>
-                <a class='btn small light' href='#' id='vote-up'>
-                  <span class='ss-like'></span>  <%= @post.upvote_count_text %>
-                </a>
-                <a class='btn small light' href='#' id='vote-down'>
-                  <span class='ss-dislike'></span>  <%= @post.downvote_count_text %>
-                </a>
+                <%= render 'shared/vote_up_or_down_links', post: @post %>
               </div>
               <a class='btn small light' href='#'>
                 <span class='ss-redo circle'></span>

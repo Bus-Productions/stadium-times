@@ -1,0 +1,3 @@
+<%= link_to content_tag(:span, nil, :class => 'ss-like') + "#{post.upvote_count_text}", vote_path(post, current_user, "up"), :class => 'btn small light', :remote => true %>
+
+<%= link_to content_tag(:span, nil, :class => 'ss-dislike') + "#{post.downvote_count_text}", vote_path(post, current_user, "down"), :class => 'btn small light', :remote => true %>
