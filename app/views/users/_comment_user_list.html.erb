@@ -1,4 +1,4 @@
-        <ul class='comment-list list'>
+        <ul class='comment-list list backend-user-container'>
             <% @comments.each do |comment| %>
               <%= render 'comments_written_by_user', :comment => comment, :user => comment.user %>
             <% end %>

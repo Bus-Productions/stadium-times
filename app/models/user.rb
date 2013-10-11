@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :post_votes
 
+  has_many :upvoted_posts, :through => :post_votes, :source => :post
+
   has_many :comment_votes
 
   has_many :postviews
@@ -16,6 +18,7 @@ class User < ActiveRecord::Base
 
   has_many :spams
 
+  
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -116,6 +119,13 @@ class User < ActiveRecord::Base
       Spam.create({:user_id => self.id, :comment_id => comment.id})
       comment.increment_spam
     end
+  end
+
+
+  # POSTS
+
+  def liked_posts
+    self.posts.where('')
   end
 
 

@@ -33,6 +33,7 @@ class Post < ActiveRecord::Base
   scope :live, -> { where('status = ?', 'live') }
   scope :draft, -> { where('status = ?', 'draft') }
   scope :deleted, -> { where('status = ?', 'deleted') }
+  scope :new, -> { where('status = ?', 'new') }
 
   scope :top, ->(count) { order('score DESC').limit(count) }
   scope :highlighted_article, ->{ where("text is NOT NULL").order('score DESC').limit(1) }

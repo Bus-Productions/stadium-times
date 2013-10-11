@@ -7,6 +7,7 @@
                 <div class='btn-group'>
                   <%= link_to "Articles", users_display_path(@user, 'articles'), remote: true, :class => "btn light active", :id => "article_button" %>
                   <%= link_to "Comments", users_display_path(@user, 'comments'), remote: true, :class => "btn light", :id => "comment_button" %>
+                  <%= link_to "Upvotes", users_display_path(@user, 'upvoted'), remote: true, :class => "btn light", :id => "upvote_button" %>
                 </div>
               </div>
             </div>

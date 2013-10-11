@@ -1,4 +1,4 @@
-          <ul class='saved-articles list'>
+          <ul class='saved-articles list backend-user-container'>
             <% @posts.each do |post| %>
               <%= render 'post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>
             <% end %>

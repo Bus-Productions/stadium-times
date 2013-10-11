@@ -522,9 +522,12 @@ output { display: block; padding-top: 7px; font-size: 14px; line-height: 1.42857
 .form-control:-ms-input-placeholder { color: #959595; }
 .form-control::-webkit-input-placeholder { color: #959595; }
 
-.form-control { display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.428571429; color: #707070; vertical-align: middle; background-color: white; background-image: none; border: 0; border-bottom: 1px solid #cccccc; }
+.form-control { display: block; width: 100%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.428571429; color: #707070; vertical-align: middle; background-color: white; background-image: none; border: 0; }
 .form-control:focus { border-color: #66afe9; outline: 0; -webkit-box-shadow: none !important; box-shadow: none !important; }
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control { cursor: not-allowed; background-color: #959595; }
+
+.title-form-box {font-size: 1.625em; font-weight:600;}
+.body-form-box {font-size: 1.25em; line-height:1.75em; font-family: "ff-tisa-web-pro", Georgia, "Times New Roman-", Times, serif; }
 
 textarea.form-control { height: auto; min-height: 160px; }
 

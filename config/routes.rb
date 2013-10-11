@@ -1,5 +1,8 @@
 StadiumTimes::Application.routes.draw do
 
+  root :to => "posts#index"
+  
+
   resources :post_and_topic_pairings
 
 
@@ -28,14 +31,12 @@ StadiumTimes::Application.routes.draw do
 
 
   resources :posts
+  match "posts/new/:post_type", to: "posts#new", as: "new_link"
 
 
   resources :users, only: [:index, :show, :edit]
   match "users/:id/:display", to: "users#show", as: "users_display"
 
-
-
-  root :to => "posts#index"
 
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')

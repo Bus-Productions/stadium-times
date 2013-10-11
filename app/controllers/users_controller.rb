@@ -7,7 +7,16 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
 
-    params[:display] == 'comments' ? @comments = @user.comments : @posts = @user.posts
+    @case = 'posts'
+    if params[:display] == 'comments'
+      @comments = @user.comments
+      @case = 'comments'
+    elsif params[:display] == 'upvoted'
+      @posts = @user.upvoted_posts
+      @case = 'upvotes'
+    else
+      @posts = @user.posts
+    end
 
     respond_to do |format|
       format.js

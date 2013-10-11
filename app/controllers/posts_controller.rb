@@ -40,7 +40,8 @@ class PostsController < ApplicationController
 
     current_user_or_redirect ? nil : return
 
-    @post = Post.new
+    type = 'text'
+    @post = Post.create({:post_type => type, :user_id => @current_user.id, :status => 'new'})
 
     respond_to do |format|
       format.html # new.html.erb
