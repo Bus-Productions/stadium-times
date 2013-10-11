@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def index
 
     @body_class = 'home'
+    @browsing = 'Popular Articles'
 
     @posts = Post.all
     @highlighted_article = Post.highlighted_article.first

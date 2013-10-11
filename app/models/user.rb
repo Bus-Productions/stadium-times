@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
     if self.provider == 'twitter'
       "@#{self.screen_name}"
     elsif self.provider == 'facebook'
-      "Facebook: #{self.screen_name}"
+      "#{self.screen_name}"
     end
   end
 

@@ -37,6 +37,9 @@ class Post < ActiveRecord::Base
   scope :top, ->(count) { order('score DESC').limit(count) }
   scope :highlighted_article, ->{ where("text is NOT NULL").order('score DESC').limit(1) }
 
+  scope :most_upvotes, ->(count) { order('upvotes DESC').limit(count) }
+  scope :today, -> { where('created_at > ?', 24.hours.ago) }
+
 
   #SCORE
 
@@ -99,6 +102,17 @@ class Post < ActiveRecord::Base
 
   def link_for_post
     self.link ? self.link : post_path(self)
+  end
+
+
+  # LINK
+
+  def first_topic_text
+    if self.topics.count > 0
+      self.topics.first.topic_name
+    else
+      "The Best Sports News"
+    end
   end
 
 end

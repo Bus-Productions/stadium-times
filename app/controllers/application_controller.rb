@@ -19,4 +19,13 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user_or_redirect
 
+
+  # POSTS
+
+  private
+  def popular_posts
+    @popular_posts = Post.most_upvotes(16)
+  end
+  helper_method :popular_posts
+
 end
