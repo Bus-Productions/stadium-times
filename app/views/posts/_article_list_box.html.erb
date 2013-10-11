@@ -1,15 +1,15 @@
         <article>
           <header>
             <h2>
-              <a href='<%= post_url(post) %>'><%= post.title %></a>
+              <a href='<%= post.link_for_post %>'><%= post.title %></a>
             </h2>
             <div class='article-controls'>
               <div class='btn-group'>
                 <a class='btn small light' href='#' id='vote-up'>
-                  <span class='ss-like'></span>
+                  <span class='ss-like'></span>  <%= post.upvote_count_text %>
                 </a>
                 <a class='btn small light' href='#' id='vote-down'>
-                  <span class='ss-dislike'></span>
+                  <span class='ss-dislike'></span>  <%= post.downvote_count_text %>
                 </a>
               </div>
               <a class='btn small light' href='#'>

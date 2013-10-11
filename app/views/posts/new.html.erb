@@ -1,5 +1,52 @@
-<h1>New post</h1>
+  <%= render 'layouts/main_content_wrap' %>
 
-<%= render 'form' %>
+      <section class='main-content'>
+        <form role='form'>
+          <!-- <div class='btn-toolbar'>
+            <div class='btn-group'>
+              <div class='btn light'>
+                <strong>Bold</strong>
+              </div>
+              <div class='btn light'>
+                <em>
+                  Italic
+                </em>
+              </div>
+              <div class='btn light'>
+                <div class='underline'>
+                  Underline
+                </div>
+              </div>
+            </div>
+            <div class='btn-group'>
+              <div class='btn light'>
+                <div class='ss-list'></div>
+              </div>
+              <div class='btn light'>
+                <div class='ss-list'></div>
+              </div>
+              <div class='btn light'>
+                <div class='ss-list'></div>
+              </div>
+            </div>
+          </div> -->
+          <div class='form-group'>
+            <input class='form-control' placeholder='Article Title' type='text'>
+          </div>
+          <div class='form-group'>
+            <textarea class='form-control' placeholder='Article Body'></textarea>
+          </div>
+          <div class='form-group'>
+            <input class='form-control' placeholder='Teams: tmu, smu, …' type='text'>
+          </div>
+          <button class='btn primary' type='submit'>Publish</button>
+        </form>
+      </section>
 
-<%= link_to 'Back', posts_path %>
+      
+
+      <%= render 'shared/author_box', :user => current_user %>
+
+  <%= render 'layouts/end_main_content_wrap' %>
+
+

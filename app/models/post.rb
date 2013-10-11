@@ -68,6 +68,26 @@ class Post < ActiveRecord::Base
     vote == "up" ? self.update_attribute(:upvotes, self.upvotes+1) : self.update_attribute(:downvotes, self.downvotes+1)
   end
 
+  def upvote_count_text
+    self.format_count_number(upvotes)
+  end
+
+  def downvote_count_text
+    self.format_count_number(downvotes)
+  end
+
+  def format_count_number(number)
+    if number < 1000
+      number
+    elsif number < 1000000
+      n = number/1000
+      "#{n}k"
+    else
+      n = number/1000000
+      "#{n}M"
+    end
+  end
+
   #STATUS CHANGES
 
   def publish_post
@@ -101,7 +121,7 @@ class Post < ActiveRecord::Base
   # LINK
 
   def link_for_post
-    self.link ? self.link : post_path(self)
+    self.post_type == 'link' ? self.link : "/posts/#{self.id}"
   end
 
 
