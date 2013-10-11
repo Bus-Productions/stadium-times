@@ -6,9 +6,7 @@
       <section class='article-index'>
 
         <% @posts.each do |p| %>
-          <% @post = p %>
-          <% @author = p.user %>
-          <%= render 'article_list_box' %>
+          <%= render 'article_list_box', :author => p.user, :post => p %>
         <% end %>
 
       </section>
