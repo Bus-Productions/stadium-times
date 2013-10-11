@@ -23,8 +23,8 @@
           <small class='meta'>
             <p>
               shared by
-              <a href='#'>
-                <%= @post.user.name %>
+              <a href='<%= user_path(@author) %>'>
+                <%= @author.name %>
               </a>
 
               <% @post.topics.each_with_index do |t, i| %>

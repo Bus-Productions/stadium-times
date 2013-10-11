@@ -834,6 +834,7 @@ body.home { background: #1e2128; }
 body.home #content-wrap { padding-left: 0; padding-right: 0; }
 body.home section.highlight-wrap { width: 40.425531915%; float: left; margin-right: 2.127659574%; display: inline; }
 body.home section.article-index, body.home .article-index-bg { width: 57.446808511%; float: right; margin-right: 0; *margin-left: -2em; display: inline; }
+body footer#site-footer { position: fixed; background: rgba(255, 255, 255, 0.96) !important; width: 100%; float: right; margin-right: 0; *margin-left: -2em; display: inline; bottom: 0; right: 0; }
 body.home footer#site-footer { position: fixed; background: rgba(255, 255, 255, 0.96) !important; width: 57.446808511%; float: right; margin-right: 0; *margin-left: -2em; display: inline; bottom: 0; right: 0; }
 body.home section.highlight-wrap { padding-right: 2em; padding-left: 2em; }
 body.home .article-index { position: relative; z-index: 2; padding-left: 2em; }

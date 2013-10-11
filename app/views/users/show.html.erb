@@ -1,0 +1,22 @@
+<%= render 'layouts/main_content_wrap' %>
+        <section class='main-content'>
+          <header class='main-header'>
+            <div class='title'>
+              <h3><%= @user.name %></h3>
+              <div class='btn-toolbar'>
+                <div class='btn-group'>
+                  <%= link_to "Articles", users_display_path(@user, 'articles'), remote: true, :class => "btn light active", :id => "article_button" %>
+                  <%= link_to "Comments", users_display_path(@user, 'comments'), remote: true, :class => "btn light", :id => "comment_button" %>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </header>
+          
+          <%= render 'post_user_list' %>
+          
+        </section>
+        
+        <%= render 'author_box', :user => @user %>
+
+  <%= render 'layouts/end_main_content_wrap' %>

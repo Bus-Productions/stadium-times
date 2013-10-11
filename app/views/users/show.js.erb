@@ -1,0 +1,9 @@
+<% if @posts %>
+  $('#article_button').addClass('active');
+  $('#comment_button').removeClass('active');
+  $('.comment-list').replaceWith('<%= j render("post_user_list") %>');
+<% else %>
+  $('#comment_button').addClass('active');
+  $('#article_button').removeClass('active');
+  $('.saved-articles').replaceWith('<%= j render("comment_user_list") %>');
+<% end %>

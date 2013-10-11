@@ -1,0 +1,15 @@
+      
+      <aside class='profile-badge detail-panel'>
+        <div class='avatar'>
+          <img alt='<%= user.name %>' class='img-circle' src='<%= user.profile_picture %>'>
+        </div>
+        <header>
+          <p>Shared By</p>
+          <h3><%= user.name %></h3>
+          <hr class='elipsis'>
+        </header>
+        <small class='meta'>
+          <%= user.bio %>
+          <a href='<%= user.vanity_url %>'><%= user.vanity_username %></a>
+        </small>
+      </aside>

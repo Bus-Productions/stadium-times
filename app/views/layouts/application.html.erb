@@ -16,17 +16,22 @@
   <meta content='../assets/images/logos-icons/og-image_stadiumtimes.png' property='og:image'>
 
 
-  <link href='../assets/images/logos-icons/favicon.ico' rel='icon' type='images/png'>
+  <%= csrf_meta_tags %>
+
+
+  <link href='/assets/images/logos-icons/favicon.ico' rel='icon' type='images/png'>
   <!-- Style -->
-  <link href='../assets/css/site.css' rel='stylesheet'>
-  <link href='../assets/fonts/ss-block/webfonts/ss-symbolicons-block.css' rel='stylesheet'>
+  <link href='/assets/css/site.css' rel='stylesheet'>
+  <link href='/assets/fonts/ss-block/webfonts/ss-symbolicons-block.css' rel='stylesheet'>
   <!-- Video -->
   <!-- %link{:rel => "stylesheet", :href => "http://dfcb.github.io/BigVideo.js/bower_components/BigVideo/css/bigvideo.css"}/ -->
   <!--[if lt IE 9 ]>
     <link href='../assets/css/ie.css' rel='stylesheet'>
   <![endif]-->
   <!-- Scripts -->
-  <script rel='javascript' src='../assets/js/modernizr.min.js'></script>
+
+  <%= javascript_include_tag "application" %>
+  <script rel='javascript' src='/assets/js/modernizr.min.js'></script>
   <script rel='javascript' src='//use.typekit.net/bar5cpd.js'></script>
   <script>
     try{Typekit.load();}catch(e){}
@@ -54,18 +59,16 @@
 
     <%= render 'shared/modals' %>
 
-    <script rel='javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-    <script>
-      window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')
-    </script>
-    <script rel='javascript' src='../assets/js/bootstrap/affix.js'></script>
-    <script rel='javascript' src='../assets/js/bootstrap/carousel.js'></script>
-    <script rel='javascript' src='../assets/js/bootstrap/collapse.js'></script>
-    <script rel='javascript' src='../assets/js/bootstrap/modal.js'></script>
-    <script rel='javascript' src='../assets/js/bootstrap/transition.js'></script>
-    <script rel='javascript' src='../assets/js/pushy/pushy.min.js'></script>
+    
+    <script rel='javascript' src='/assets/js/bootstrap/affix.js'></script>
+    <script rel='javascript' src='/assets/js/bootstrap/carousel.js'></script>
+    <script rel='javascript' src='/assets/js/bootstrap/dropdown.js'></script>
+    <script rel='javascript' src='/assets/js/bootstrap/collapse.js'></script>
+    <script rel='javascript' src='/assets/js/bootstrap/modal.js'></script>
+    <script rel='javascript' src='/assets/js/bootstrap/transition.js'></script>
+    <script rel='javascript' src='/assets/js/pushy/pushy.min.js'></script>
     <script rel='javascript' src='http://zurb.com/playground/projects/off-canvas/javascripts/foundation/jquery.offcanvas.js'></script>
-    <script rel='javascript' src='../assets/js/app.js'></script>
+    <script rel='javascript' src='/assets/js/app.js'></script>
     <!-- / Big Video -->
     <!-- / %script{:rel => "javascript", :src => "http://dfcb.github.io/BigVideo.js/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"} -->
     <!-- / %script{:rel => "javascript", :src => "http://vjs.zencdn.net/4.0/video.js"} -->

@@ -1,0 +1,35 @@
+            <li>
+              <div class='link-detail'>
+                <header>
+                  <a href='#'>
+                    <h4><%= post.title %></h4>
+                  </a>
+                  <small>
+                    <em>(espn.go.com)</em>
+                  </small>
+                </header>
+                <small class='meta'>
+                  <dl class='tags'>
+                    <dt>
+                      Topics:
+                      <% topics.each do |topic| %>
+                        <%= render 'topic', :topic => topic %>
+                      <% end %>
+                    </dt>
+                  </dl>
+                  <em>
+                    <span class='ss-link'></span>
+                    <%= time_ago_in_words(post.created_at) %>
+                    <a href='#'>
+                      <span class='ss-chat'></span>
+                      <%= post.post_replies.count %> replies
+                    </a>
+                  </em>
+                </small>
+              </div>
+              <div class='profile-detail'>
+                <div class='avatar'>
+                  <img alt='<%= user.name %>' class='img-circle' src='<%= user.profile_picture %>'>
+                </div>
+              </div>
+            </li>
