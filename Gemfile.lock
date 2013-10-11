@@ -53,6 +53,8 @@ GEM
     coffee-script-source (1.6.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    faker (1.1.2)
+      i18n (~> 0.5)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     hashie (2.0.5)
@@ -148,6 +150,7 @@ DEPENDENCIES
   backstretch-rails
   bootstrap-sass
   coffee-rails (~> 3.2.1)
+  faker
   jquery-rails
   koala!
   omniauth-facebook
