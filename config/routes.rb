@@ -13,7 +13,7 @@ StadiumTimes::Application.routes.draw do
 
 
   resources :post_votes, only: [:create]
-  match 'post_votes/:post_id/:user_id/:vote', to: 'post_votes#create', as: 'vote'
+  match 'post_votes/:post_id/:vote', to: 'post_votes#create', as: 'vote'
 
   resources :comments
 

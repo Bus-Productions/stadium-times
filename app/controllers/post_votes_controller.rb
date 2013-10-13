@@ -5,7 +5,7 @@ class PostVotesController < ApplicationController
   def create
     @vote = params[:vote]
     @post = Post.find(params[:post_id])
-    current_user.vote_on_post(@vote, @post)
+    current_user.vote_on_post(@vote, @post) if current_user
 
     respond_to do |format|
       format.js
