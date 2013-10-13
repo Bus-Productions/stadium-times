@@ -5,7 +5,7 @@
 
           <header>
             <h3>
-              <a href='<%= @post.link_for_post %>' target="_blank">
+              <a href='<%= @post.link_for_post %>' target="<%= determine_target(@post) %>">
                 <%= @post.title %>
               </a>
             </h3>
