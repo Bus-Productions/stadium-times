@@ -88,6 +88,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def voted_on(user_id)
+    PostVote.find_by_post_id_and_user_id(self.id, user_id)
+  end
+
   #STATUS CHANGES
 
   def publish_post

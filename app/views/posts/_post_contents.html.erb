@@ -20,7 +20,7 @@
 
             <div class='article-controls'>
               <div class='btn-group' id="votes_<%= @post.id %>">
-                <%= render 'shared/vote_up_or_down_links', post: @post, button_class: determine_vote_button_class(@post.id)%>
+                <%= render 'shared/vote_up_or_down_links', post: @post %>
               </div>
               <a class='btn small light' href='#'>
                 <span class='ss-redo circle'></span>

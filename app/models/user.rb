@@ -99,10 +99,6 @@ class User < ActiveRecord::Base
     v ? nil : comment.add_vote(vote)
   end
 
-  def post_voted_on(post_id)
-    PostVote.find_by_user_id_and_post_id(self.id, post_id)
-  end
-
 
   # SPAM
 
