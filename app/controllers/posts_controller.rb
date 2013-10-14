@@ -8,6 +8,8 @@ class PostsController < ApplicationController
     @browsing = 'Popular Articles'
 
     @posts = Post.live
+    @topics = Topic.all
+    
     @highlighted_article = Post.highlighted_article.first
 
     respond_to do |format|

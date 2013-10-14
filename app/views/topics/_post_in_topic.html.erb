@@ -1,0 +1,35 @@
+<li>
+  <div class='link-detail'>
+    <header>
+      <a href='<%= post_path(post) %>'>
+        <h4><%= post.title %></h4>
+      </a>
+      <small>
+        <em><%= post.link %></em>
+      </small>
+    </header>
+    <small class='meta'>
+      <dl class='tags'>
+        <dt>
+          Topics:
+          <% post.topics.each do |topic| %>
+            <%= render 'related_topics', :topic => topic %>
+          <% end %>
+        </dt>
+      </dl>
+      <em>
+        <span class='ss-link'></span>
+        <%= time_ago_in_words(post.created_at) %> ago
+        <a href='#'>
+          <span class='ss-chat'></span>
+          <%= post.post_replies.count %> Replies
+        </a>
+      </em>
+    </small>
+  </div>
+  <div class='profile-detail'>
+    <div class='avatar'>
+      <img alt='<%= post.user.name %>' class='img-circle' src='<%= post.user.profile_picture %>'>
+    </div>
+  </div>
+</li>

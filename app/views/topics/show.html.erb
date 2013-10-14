@@ -1,20 +1,8 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/main_content_wrap' %>
 
-<p>
-  <b>Topic name:</b>
-  <%= @topic.topic_name %>
-</p>
+    <%= render 'topic_contents' %>
 
-<p>
-  <b>User:</b>
-  <%= @topic.user_id %>
-</p>
+    <%= render 'shared/author_box', :user => current_user %>
 
-<p>
-  <b>Featured:</b>
-  <%= @topic.featured %>
-</p>
+<%= render 'layouts/end_main_content_wrap' %>
 
-
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
