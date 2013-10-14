@@ -122,11 +122,4 @@ class User < ActiveRecord::Base
   end
 
 
-  # POSTS
-
-  def liked_posts
-    self.posts.where('')
-  end
-
-
 end

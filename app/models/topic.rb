@@ -19,4 +19,8 @@ class Topic < ActiveRecord::Base
 
   scope :featured, ->(count) { where("featured = ?", true).limit(count) }
 
+  def followed_by(user_id)
+    TopicFollow.find_by_topic_id_and_user_id(self.id, user_id)
+  end
+
 end
