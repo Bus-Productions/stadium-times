@@ -1,0 +1,16 @@
+<aside class='detail-panel aside-content'>
+  <div class='panel-body'>
+    <ul class='list'>
+      <li>
+        <h4>Related Topics</h4>
+      </li>
+      <% if top = topic.related_topics %>
+        <% top.each do |t| %>
+          <li>
+            <a href='<%= topic_path(t) %>'><%= t.topic_name %></a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</aside>

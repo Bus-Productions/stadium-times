@@ -2,7 +2,7 @@
 
     <%= render 'topic_contents' %>
 
-    <%= render 'shared/author_box', :user => current_user if current_user %>
+    <%= render 'other_topics_to_browse', :topic => @topic %>
 
 <%= render 'layouts/end_main_content_wrap' %>
 
