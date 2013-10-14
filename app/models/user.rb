@@ -92,14 +92,25 @@ class User < ActiveRecord::Base
 
   def vote_on_post(vote, post)
     v = self.post_votes.find_by_post_id(post.id)
-    v ? v.update_attribute(:vote, vote) : PostVote.create({:vote => vote, :user_id => self.id, :post_id => post.id})
-    v ? nil : post.add_vote(vote)
+    if v
+      v.vote = vote
+      v.save!
+    else
+      PostVote.create({:vote => vote, :user_id => self.id, :post_id => post.id})
+      post.add_vote(vote)
+    end
   end
 
   def vote_on_comment(vote, comment)
     v = self.comment_votes.find_by_comment_id(comment.id)
     v ? v.update_attribute(:vote, vote) : CommentVote.create({:vote => vote, :user_id => self.id, :comment_id => comment.id})
     v ? nil : comment.add_vote(vote)
+  end
+
+
+  def upvoted_posts
+    post_votes = PostVote.where("user_id = ? AND vote = ?", self.id, "up").includes(:post)
+    post_votes.inject([]) { |result, pv| result << pv.post }
   end
 
 

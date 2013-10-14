@@ -23,4 +23,8 @@ class Topic < ActiveRecord::Base
     TopicFollow.find_by_topic_id_and_user_id(self.id, user_id)
   end
 
+  def related_topics
+    (self.children + self.parents).sample(10)
+  end
+
 end

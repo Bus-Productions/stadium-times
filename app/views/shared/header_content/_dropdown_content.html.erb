@@ -11,6 +11,8 @@
                     <%= @browsing %>
                   <% elsif @post %>
                     <%= @post.first_topic_text %>
+                  <% elsif @topic %>
+                    <%= @topic.topic_name %>
                   <% else %>
                     The Best Sports News
                   <% end %>
