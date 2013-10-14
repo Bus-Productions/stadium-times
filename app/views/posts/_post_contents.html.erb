@@ -11,7 +11,7 @@
             </h3>
           </header>
           
-          <%= @post.text.html_safe %>
+          <%= @post.text.html_safe if @post.text %>
 
 
           <footer>
