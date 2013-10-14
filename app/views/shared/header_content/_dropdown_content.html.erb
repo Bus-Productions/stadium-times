@@ -73,6 +73,11 @@
 
                       <% popular_posts.each_with_index do |post, index| %>
 
+                        <% if index%8 == 0 && index != 0 %>
+                          </div>
+                          <div class="item">
+                        <% end %>
+
                         <% if index%4 == 0 %>
                           <div class='column'>
                         <% end %>

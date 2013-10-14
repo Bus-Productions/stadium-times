@@ -105,19 +105,19 @@ class User < ActiveRecord::Base
 
   # SPAM
 
-  def mark_post_as_spam(post)
-    s = self.spams.find_by_post_id(post.id)
+  def mark_post_as_spam(post_id)
+    s = self.spams.find_by_post_id(post_id)
     if !s
-      Spam.create({:user_id => self.id, :post_id => post.id})
-      post.increment_spam
+      Spam.create({:user_id => self.id, :post_id => post_id})
+      Post.find(post_id).increment_spam
     end
   end
 
-  def mark_comment_as_spam(comment)
-    s = self.spams.find_by_comment_id(comment.id)
+  def mark_comment_as_spam(comment_id)
+    s = self.spams.find_by_comment_id(comment_id)
     if !s
-      Spam.create({:user_id => self.id, :comment_id => comment.id})
-      comment.increment_spam
+      Spam.create({:user_id => self.id, :comment_id => comment_id})
+      Comment.find(comment_id).increment_spam
     end
   end
 

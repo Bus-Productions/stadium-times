@@ -92,6 +92,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def voted_on(user_id)
+    PostVote.find_by_post_id_and_user_id(self.id, user_id)
+  end
+
   #STATUS CHANGES
 
   def publish_post
@@ -119,6 +123,11 @@ class Post < ActiveRecord::Base
 
   def increment_spam
     self.spam_count = self.spam_count+1
+    self.save!
+  end
+
+  def marked_as_spam(user_id)
+    Spam.find_by_post_id_and_user_id(self.id, user_id)
   end
 
 

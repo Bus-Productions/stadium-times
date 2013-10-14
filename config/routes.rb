@@ -7,6 +7,7 @@ StadiumTimes::Application.routes.draw do
 
 
   resources :spams
+  match 'spams/:post_id/:comment_id', to: 'spams#create', as: 'spam'
 
 
   resources :postviews
@@ -15,8 +16,8 @@ StadiumTimes::Application.routes.draw do
   resources :comment_votes
 
 
-  resources :post_votes
-
+  resources :post_votes, only: [:create]
+  match 'post_votes/:post_id/:vote', to: 'post_votes#create', as: 'vote'
 
   resources :comments
 

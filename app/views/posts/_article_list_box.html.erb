@@ -1,16 +1,11 @@
         <article>
           <header>
             <h2>
-              <a href='<%= post.link_for_post %>'><%= post.title %></a>
+              <a href='<%= post.link_for_post %>' target="<%= determine_target(post) %>"><%= post.title %></a>
             </h2>
             <div class='article-controls'>
-              <div class='btn-group'>
-                <a class='btn small light' href='#' id='vote-up'>
-                  <span class='ss-like'></span>  <%= post.upvote_count_text %>
-                </a>
-                <a class='btn small light' href='#' id='vote-down'>
-                  <span class='ss-dislike'></span>  <%= post.downvote_count_text %>
-                </a>
+              <div class='btn-group' id="votes_<%= post.id %>">
+                <%= render 'shared/vote_up_or_down_links', post: post %>
               </div>
               <a class='btn small light' href='#'>
                 <span class='ss-action'></span>

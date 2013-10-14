@@ -4,7 +4,11 @@
         <article>
 
           <header>
-            <%= @post.title.html_safe %>
+            <h3>
+              <a href='<%= @post.link_for_post %>' target="<%= determine_target(@post) %>">
+                <%= @post.title %>
+              </a>
+            </h3>
           </header>
           
           <%= @post.text.html_safe %>
@@ -13,13 +17,8 @@
           <footer>
 
             <div class='article-controls'>
-              <div class='btn-group'>
-                <a class='btn small light' href='#' id='vote-up'>
-                  <span class='ss-like'></span>  <%= @post.upvote_count_text %>
-                </a>
-                <a class='btn small light' href='#' id='vote-down'>
-                  <span class='ss-dislike'></span>  <%= @post.downvote_count_text %>
-                </a>
+              <div class='btn-group' id="votes_<%= @post.id %>">
+                <%= render 'shared/vote_up_or_down_links', post: @post %>
               </div>
               <a class='btn small light' href='#'>
                 <span class='ss-redo circle'></span>
@@ -29,10 +28,7 @@
                 <span class='ss-action'></span>
                 Share
               </a>
-              <a class='btn small light' href='#' id='spam'>
-                <span class='ss-flag'></span>
-                Flag as Spam
-              </a>
+              <%= render 'shared/spam', received_obj: @post %>
             </div>
             <a class='btn primary' href='#sidebar' id='sidebarButton'>Join the Conversation</a>
 
