@@ -92,8 +92,13 @@ class User < ActiveRecord::Base
 
   def vote_on_post(vote, post)
     v = self.post_votes.find_by_post_id(post.id)
-    v ? v.update_attribute(:vote, vote) : PostVote.create({:vote => vote, :user_id => self.id, :post_id => post.id})
-    v ? nil : post.add_vote(vote)
+    if v
+      v.vote = vote
+      v.save!
+    else
+      PostVote.create({:vote => vote, :user_id => self.id, :post_id => post.id})
+      post.add_vote(vote)
+    end
   end
 
   def vote_on_comment(vote, comment)
