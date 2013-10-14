@@ -13,6 +13,12 @@ $(function() {
         delay: 1000
     });
 
+    $('#top-title-div').bind('keypress', function(e) {
+      if ((e.keyCode || e.which) == 13) {
+        return false;
+      }
+    });
+
 });
 
 function update_post(id) {
