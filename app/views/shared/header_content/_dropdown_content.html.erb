@@ -26,21 +26,12 @@
               <ul class='filter-list'>
                 <li class='list-title'>
                   <h5 class='tag'>
-                    <a href='#'>Topics</a>
+                    <a href='<%= topics_path %>'>Topics</a>
                   </h5>
                 </li>
-                <li>
-                  <a href='#'>Alabama</a>
-                </li>
-                <li>
-                  <a href='#'>Popular</a>
-                </li>
-                <li>
-                  <a href='#'>Newest</a>
-                </li>
-                <li>
-                  <a href='#'>-- Filter --</a>
-                </li>
+                <% @topics.each do |topic| %>
+                  <%= render 'shared/header_content/topic_in_dropdown', :topic => topic %>
+                <% end %>
               </ul>
               <ul class='filter-list'>
                 <li class='list-title'>

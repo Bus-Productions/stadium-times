@@ -1,0 +1,18 @@
+      <section class='main-content'>
+        <header class='main-header'>
+          <div class='title'>
+            <h3><%= @topic.topic_name %></h3>
+            <div class='btn-toolbar'>
+              <div class='btn-group'>
+                <a class='btn light' href='#'>Follow Topic</a>
+              </div>
+            </div>
+          </div>
+          <hr>
+        </header>
+        <ul class='saved-articles list'>
+          <% @topic.posts.each do |post| %>
+            <%= render 'post_in_topic', :post => post %>
+          <% end %>
+        </ul>
+      </section>
