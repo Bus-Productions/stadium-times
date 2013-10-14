@@ -33,6 +33,7 @@ StadiumTimes::Application.routes.draw do
 
   resources :posts
   match "posts/new/:post_type", to: "posts#new", as: "new_link"
+  match 'posts/:id/publish', to: 'posts#publish', as: 'publish_post'
 
 
   resources :users, only: [:index, :show, :edit]

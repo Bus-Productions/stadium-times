@@ -118,6 +118,36 @@ class PostsController < ApplicationController
     end
   end
 
+
+  # POST /posts/1/publish
+  # POST /posts/1/publish.json
+  def publish
+
+    current_user_or_redirect ? nil : return
+
+    @post = Post.find(params[:id])
+
+    if !@post.mine?(@current_user.id)
+      redirect_to root_path
+      return
+    end
+
+    @post.status = 'live'
+
+    respond_to do |format|
+      if @post.update_attributes(params[:post])
+        format.html { redirect_to @post, notice: 'Post was successfully published.' }
+        format.json { head :no_content }
+        format.js
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js
+      end
+    end
+  end
+
+
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy

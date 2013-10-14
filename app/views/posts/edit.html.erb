@@ -32,7 +32,7 @@
                 <div class="btn-group">
                   <a id="save-status" class="btn light active" href="#">Saved!</a>
                   <a class="btn light" href="#">Delete</a>
-                  <a class="btn light" href="#">Publish</a>
+                  <a class="btn light" href="<%= publish_post_path(@post) %>">Publish</a>
                 </div>
               </div>
           </div>
@@ -40,7 +40,7 @@
 
         <header class="main-header">
           <div class="editable-post-field title" id ="top-title-div" onClick="this.contentEditable='true';">
-              <h3 id="top-title-span"><%= @post.title || 'Type your title' %></h3>
+              <h3 id="top-title-span"><%= (@post.title && (@post.title.length > 0)) ? @post.title : 'Type your title' %></h3>
           </div>
         </header>
 

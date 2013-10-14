@@ -51,6 +51,13 @@ class Post < ActiveRecord::Base
   scope :edited_recent, -> { order('updated_at DESC') }
 
 
+  # ATTRIBUTES
+
+  def display_title
+    (self.title && (self.title.length > 0)) ? self.title : 'Untitled'
+  end
+
+
   #SCORE
 
   def current_score
