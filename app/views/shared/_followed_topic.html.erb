@@ -1,0 +1,9 @@
+<% if current_user %>
+	<% topic_followed = topic.followed_by(current_user.id) %>
+<% end %>
+
+<% if topic_followed %>
+	<a class='btn light active' href='<%= unfollow_topic_path(topic) %>' data-remote="true" id="follow_a_topic">Unfollow Topic</a>
+<% else %>
+	<a class='btn light' href='<%= follow_topic_path(topic) %>' data-remote="true" id="follow_a_topic">Follow Topic</a>
+<% end %>

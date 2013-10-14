@@ -71,11 +71,11 @@ class User < ActiveRecord::Base
 
   # TOPICS
 
-  def follow_topic(topic)
+  def follow_topic(topic) 
     self.topics.include?(topic) ? nil : self.topics << topic
   end
 
-  def unfollow_topic(topic)
+  def unfollow_topic(topic)  
     self.topics.include?(topic) ? self.topics.delete(topic) : nil
   end
 
@@ -119,13 +119,6 @@ class User < ActiveRecord::Base
       Spam.create({:user_id => self.id, :comment_id => comment_id})
       Comment.find(comment_id).increment_spam
     end
-  end
-
-
-  # POSTS
-
-  def liked_posts
-    self.posts.where('')
   end
 
 
