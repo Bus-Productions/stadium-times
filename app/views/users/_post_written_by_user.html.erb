@@ -1,7 +1,7 @@
             <li>
               <div class='link-detail'>
                 <header>
-                  <a href='#'>
+                  <a href='<%= post_path(post) %>'>
                     <h4><%= post.title %></h4>
                   </a>
                   <small>
@@ -19,7 +19,7 @@
                   </dl>
                   <em>
                     <span class='ss-link'></span>
-                    <%= time_ago_in_words(post.created_at) %>
+                    <%= time_ago_in_words(post.created_at) %> ago
                     <a href='#'>
                       <span class='ss-chat'></span>
                       <%= post.post_replies.count %> replies

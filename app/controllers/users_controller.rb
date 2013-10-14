@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @posts = @user.upvoted_posts
       @case = 'upvotes'
     elsif params[:display] == 'drafts'
-      @posts = @user.posts.draft
+      @posts = @user.posts.draft.edited_recent
       @case = 'drafts'
     else
       @posts = @user.posts.live

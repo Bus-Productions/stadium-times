@@ -1,6 +1,61 @@
-<h1>Editing post</h1>
+  <%= render 'layouts/main_content_wrap' %>
 
-<%= render 'form' %>
+      <section class='main-content'>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+
+        <%= form_for(@post) do |f| %>
+          <% if @post.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+              <ul>
+              <% @post.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          
+            
+            <%= f.hidden_field :post_type, :value => 'text' %>
+          
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+
+            <%= f.hidden_field :id, :value => @post.id, id: 'current-post-id' %>
+          
+            <%= f.hidden_field :post_id, :value => @reply_to_post %>
+
+        <header class="main-header">
+          <div class="title">
+              <div class="btn-toolbar">
+                <div class="btn-group">
+                  <a id="save-status" class="btn light active" href="#">Saved!</a>
+                  <a class="btn light" href="#">Delete</a>
+                  <a class="btn light" href="#">Publish</a>
+                </div>
+              </div>
+          </div>
+        </header>
+
+        <header class="main-header">
+          <div class="editable-post-field title" id ="top-title-div" onClick="this.contentEditable='true';">
+              <h3 id="top-title-span"><%= @post.title || 'Type your title' %></h3>
+          </div>
+        </header>
+
+          <div class="editable-post-field" id="body-text-div" onClick="this.contentEditable='true';">
+              <%= @post.text ? @post.text.html_safe : '<p id="body-text-span">Type your thoughts</p>'.html_safe %>
+          </div>
+          
+        <% end %>
+
+      </section>
+
+      
+
+      <%= render 'shared/author_box', :user => current_user %>
+
+  <%= render 'layouts/end_main_content_wrap' %>
+
+

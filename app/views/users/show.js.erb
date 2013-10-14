@@ -2,15 +2,24 @@
   $('#article_button').addClass('active');
   $('#comment_button').removeClass('active');
   $('#upvote_button').removeClass('active');
+  $('#drafts_button').removeClass('active');
+  $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
+<% elsif @case == 'drafts' %>
+  $('#drafts_button').addClass('active');
+  $('#article_button').removeClass('active');
+  $('#comment_button').removeClass('active');
+  $('#upvote_button').removeClass('active');
   $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
 <% elsif @case == 'comments' %>
   $('#comment_button').addClass('active');
   $('#article_button').removeClass('active');
   $('#upvote_button').removeClass('active');
+  $('#drafts_button').removeClass('active');
   $('.backend-user-container').replaceWith('<%= j render("comment_user_list") %>');
 <% elsif @case == 'upvotes' %>
   $('#upvote_button').addClass('active');
   $('#comment_button').removeClass('active');
   $('#article_button').removeClass('active');
+  $('#drafts_button').removeClass('active');
   $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
 <% end %>

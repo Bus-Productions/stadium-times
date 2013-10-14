@@ -22,6 +22,11 @@ class PostsController < ApplicationController
 
     @post = Post.find(params[:id])
 
+    if @post.draft?
+      redirect_to edit_post_path(@post)
+      return
+    end
+
     if current_user
       @post.add_postview_for_user(@current_user.id)
     else
@@ -42,10 +47,8 @@ class PostsController < ApplicationController
 
     @post = Post.create({:user_id => @current_user.id, :post_type => 'text', :status => 'infant'})
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
+    redirect_to edit_post_path(@post)
+
   end
 
   # GET /posts/1/edit

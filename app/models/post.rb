@@ -31,6 +31,10 @@ class Post < ActiveRecord::Base
     PostVote.find_by_post_id_and_user_id(self.id, user.id)
   end
 
+  def draft?
+    self.status == 'draft'
+  end
+
   # SCOPES
 
   scope :live, -> { where('status = ?', 'live') }
@@ -43,6 +47,8 @@ class Post < ActiveRecord::Base
 
   scope :most_upvotes, ->(count) { order('upvotes DESC').limit(count) }
   scope :today, -> { where('created_at > ?', 24.hours.ago) }
+
+  scope :edited_recent, -> { order('updated_at DESC') }
 
 
   #SCORE

@@ -4,7 +4,7 @@ $(function() {
 
     $('.editable-post-field').typing({
         start: function (event, $elem) {
-          
+          $('#save-status').text('...saving...');
         },
         stop: function (event, $elem) {
           var id = $('#current-post-id').val();
@@ -24,9 +24,14 @@ function update_post(id) {
     data: {
       post: {
         id: id,
-        title: $('#top-title-div').html(),
+        title: $('#top-title-span').text(),
         text: $('#body-text-div').html(),
       }
+    },
+    success: function(response) {
+      alert('success function fired');
+      console.log(response);
+      eval(response);
     }
   });
 }
