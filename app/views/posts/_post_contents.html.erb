@@ -4,16 +4,10 @@
         <article>
 
           <header>
-            <h3>
-              <a href='<%= @post.link_for_post %>'>
-                <%= @post.title %>
-              </a>
-            </h3>
+            <%= @post.title.html_safe %>
           </header>
           
-          <p>
-          <%= @post.text %>
-          </p>
+          <%= @post.text.html_safe %>
 
 
           <footer>

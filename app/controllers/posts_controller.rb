@@ -96,6 +96,10 @@ class PostsController < ApplicationController
       return
     end
 
+    if @post.status == 'infant'
+      @posts.status = 'draft'
+    end
+
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
