@@ -109,8 +109,8 @@ class User < ActiveRecord::Base
 
 
   def upvoted_posts
-    post_votes = PostVote.where("user_id = ? AND vote = ?", self.id, "up")
-    post_votes.inject([]) { |result, pv| result << Post.find(pv.post_id) }
+    post_votes = PostVote.where("user_id = ? AND vote = ?", self.id, "up").includes(:post)
+    post_votes.inject([]) { |result, pv| result << pv.post }
   end
 
 
