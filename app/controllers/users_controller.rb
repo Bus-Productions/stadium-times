@@ -14,8 +14,11 @@ class UsersController < ApplicationController
     elsif params[:display] == 'upvoted'
       @posts = @user.upvoted_posts
       @case = 'upvotes'
+    elsif params[:display] == 'drafts'
+      @posts = @user.posts.draft
+      @case = 'drafts'
     else
-      @posts = @user.posts
+      @posts = @user.posts.live
     end
 
     respond_to do |format|

@@ -21,19 +21,22 @@ class Post < ActiveRecord::Base
 
   #VALIDATIONS
 
-  validates_length_of :title, :minimum => 1, :maximum => 200, :allow_blank => false
+  validates_length_of :title, :maximum => 200, :allow_blank => false
 
   def mine?(user_id)
     self.user_id == user_id
   end
 
+  def user_vote(user)
+    PostVote.find_by_post_id_and_user_id(self.id, user.id)
+  end
 
   # SCOPES
 
   scope :live, -> { where('status = ?', 'live') }
   scope :draft, -> { where('status = ?', 'draft') }
   scope :deleted, -> { where('status = ?', 'deleted') }
-  scope :new, -> { where('status = ?', 'new') }
+  scope :infant, -> { where('status = ?', 'infant') }
 
   scope :top, ->(count) { order('score DESC').limit(count) }
   scope :highlighted_article, ->{ where("text is NOT NULL").order('score DESC').limit(1) }

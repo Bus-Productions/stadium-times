@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @body_class = 'home'
     @browsing = 'Popular Articles'
 
-    @posts = Post.all
+    @posts = Post.live
     @highlighted_article = Post.highlighted_article.first
 
     respond_to do |format|
@@ -40,8 +40,7 @@ class PostsController < ApplicationController
 
     current_user_or_redirect ? nil : return
 
-    type = 'text'
-    @post = Post.create({:post_type => type, :user_id => @current_user.id, :status => 'new'})
+    @post = Post.create({:user_id => @current_user.id, :post_type => 'text', :status => 'infant'})
 
     respond_to do |format|
       format.html # new.html.erb
