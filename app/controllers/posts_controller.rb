@@ -97,16 +97,18 @@ class PostsController < ApplicationController
     end
 
     if @post.status == 'infant'
-      @posts.status = 'draft'
+      @post.status = 'draft'
     end
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

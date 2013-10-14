@@ -529,6 +529,9 @@ output { display: block; padding-top: 7px; font-size: 14px; line-height: 1.42857
 .title-form-box {font-size: 1.625em; font-weight:600;}
 .body-form-box {font-size: 1.25em; line-height:1.75em; font-family: "ff-tisa-web-pro", Georgia, "Times New Roman-", Times, serif; }
 
+div {outline:0px solid transparent;}
+div:focus {outline:0px solid transparent;}
+
 textarea.form-control { height: auto; min-height: 160px; }
 
 .form-group { margin-bottom: 15px; }
