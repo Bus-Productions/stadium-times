@@ -108,6 +108,12 @@ class User < ActiveRecord::Base
   end
 
 
+  def upvoted_posts
+    post_votes = PostVote.where("user_id = ? AND vote = ?", self.id, "up")
+    post_votes.inject([]) { |result, pv| result << Post.find(pv.post_id) }
+  end
+
+
   # SPAM
 
   def mark_post_as_spam(post_id)
