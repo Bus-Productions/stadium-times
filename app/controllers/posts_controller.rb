@@ -107,6 +107,12 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        if @post.text
+          t = @post.text.gsub("\n", "")
+          t = t.strip
+          @post.text = t
+          @post.save!
+        end
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
         format.js

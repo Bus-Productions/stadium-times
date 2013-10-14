@@ -45,7 +45,7 @@
         </header>
 
           <div class="editable-post-field" id="body-text-div" onClick="this.contentEditable='true';">
-              <%= @post.text ? @post.text.html_safe : '<p id="body-text-span">Type your thoughts</p>'.html_safe %>
+              <%= (@post.text && (@post.text.length > 0)) ? @post.text.html_safe : '<p id="body-text-span">Type your thoughts</p>'.html_safe %>
           </div>
           
         <% end %>
