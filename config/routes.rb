@@ -21,7 +21,7 @@ StadiumTimes::Application.routes.draw do
 
   resources :comments
 
-
+  match 'topic_follows/:topic_id/delete', to: 'topic_follows#destroy', as: 'unfollow_topic'
   match 'topic_follows/:topic_id', to: 'topic_follows#create', as: 'follow_topic'
   resources :topic_follows
 

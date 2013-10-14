@@ -71,11 +71,11 @@ class User < ActiveRecord::Base
 
   # TOPICS
 
-  def follow_topic(topic)
+  def follow_topic(topic) 
     self.topics.include?(topic) ? nil : self.topics << topic
   end
 
-  def unfollow_topic(topic)
+  def unfollow_topic(topic)  
     self.topics.include?(topic) ? self.topics.delete(topic) : nil
   end
 

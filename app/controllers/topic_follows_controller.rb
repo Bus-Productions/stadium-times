@@ -13,4 +13,17 @@ class TopicFollowsController < ApplicationController
     end
   end
 
+  # DELETE /topic_follows/1
+  # DELETE /topic_follows/1.json
+  def destroy
+    if current_user
+      @topic = Topic.find(params[:topic_id])
+      current_user.unfollow_topic(@topic)
+    end
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
