@@ -20,18 +20,13 @@ function update_post(id) {
   $.ajax({
     type: 'PUT',
     url: url,
-    dataType: 'JSON',
+    dataType: 'script',
     data: {
       post: {
         id: id,
         title: $('#top-title-span').text(),
         text: $('#body-text-div').html(),
       }
-    },
-    success: function(response) {
-      alert('success function fired');
-      console.log(response);
-      eval(response);
     }
   });
 }
