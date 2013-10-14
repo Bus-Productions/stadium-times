@@ -4,6 +4,7 @@ StadiumTimes::Application.routes.draw do
 
 
   resources :spams
+  match 'spams/:post_id/:comment_id', to: 'spams#create', as: 'spam'
 
 
   resources :postviews

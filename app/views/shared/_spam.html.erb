@@ -1,0 +1,38 @@
+<% if current_user %>
+	<% spammed = received_obj.marked_as_spam(current_user.id) %>
+<% end %>
+
+
+<% if spammed %>
+	<% if received_obj.class.to_s == "Post" %>
+		<a class='btn small light active' href='<%= spam_path(received_obj, 0) %>' id='spam' data-remote="true">
+		  <span class='ss-flag'></span>
+		  Flag as Spam
+		</a>
+	<% else %>
+		<a class='btn small light active' href='<%= spam_path(0, received_obj) %>' id='spam' data-remote="true">
+		  <span class='ss-flag'></span>
+		  Flag as Spam
+		</a>
+	<% end %>
+<% else %>
+	<% if received_obj.class.to_s == "Post" %>
+		<a class='btn small light' href='<%= spam_path(received_obj, 0) %>' id='spam' data-remote="true">
+		  <span class='ss-flag'></span>
+		  Flag as Spam
+		</a>
+	<% else %>
+		<a class='btn small light' href='<%= spam_path(0, received_obj) %>' id='spam' data-remote="true">
+		  <span class='ss-flag'></span>
+		  Flag as Spam
+		</a>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+

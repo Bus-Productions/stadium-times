@@ -30,10 +30,7 @@
                 <span class='ss-action'></span>
                 Share
               </a>
-              <a class='btn small light' href='#' id='spam'>
-                <span class='ss-flag'></span>
-                Flag as Spam
-              </a>
+              <%= render 'shared/spam', received_obj: @post %>
             </div>
             <a class='btn primary' href='#sidebar' id='sidebarButton'>Join the Conversation</a>
 
