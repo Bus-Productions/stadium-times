@@ -1,81 +1,23 @@
 <%= render 'layouts/main_content_wrap' %>
 
       <section class='main-content'>
-        <header class='main-header'>
-          <div class='title'>
-            <h3>FBS Conferences</h3>
-            <div class='btn-toolbar'>
-              <div class='btn-group'>
-                <a class='btn light' href='#'>Add Conference</a>
-              </div>
-            </div>
-          </div>
-          <hr>
-        </header>
+        <%= render 'header_index' %>
         <table class='table'>
           <thead>
             <tr>
-              <th>School</th>
-              <th>Conference</th>
+              <th>Topics</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <a href='#'>Boston College</a>
-              </td>
-              <td>
-                <a href='#'>Atlantic Coast Conference</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href='#'>Clemson College</a>
-              </td>
-              <td>
-                <a href='#'>Atlantic Coast Conference</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href='#'>Duke College</a>
-              </td>
-              <td>
-                <a href='#'>Atlantic Coast Conference</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href='#'>Florida State University</a>
-              </td>
-              <td>
-                <a href='#'>Atlantic Coast Conference</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href='#'>Georgia College</a>
-              </td>
-              <td>
-                <a href='#'>Atlantic Coast Conference</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href='#'>North Caralina State University</a>
-              </td>
-              <td>
-                <a href='#'>Atlantic Coast Conference</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href='#'>Syracuse University</a>
-              </td>
-              <td>
-                <a href='#'>Atlantic Coast Conference</a>
-              </td>
-            </tr>
+            <% @topics.each_with_index do |topic, index| %>
+              <% if index%2 == 0 %>
+                <tr>
+                  <%= render 'topic_link_in_index', :topic => topic %>
+              <% else %>
+                <%= render 'topic_link_in_index', :topic => topic %>
+                </tr>
+              <% end %>
+            <% end %>
           </tbody>
         </table>
       </section>
