@@ -14,4 +14,9 @@ class Topic < ActiveRecord::Base
   has_many :post_and_topic_pairings
   has_many :posts, :through => :post_and_topic_pairings
 
+
+  # SCOPES 
+
+  scope :featured, ->(count) { where("featured = ?", true).limit(count) }
+
 end

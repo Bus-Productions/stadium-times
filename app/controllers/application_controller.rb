@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :set_featured_topics
 
 
   private
@@ -27,5 +28,12 @@ class ApplicationController < ActionController::Base
     @popular_posts = Post.most_upvotes(16)
   end
   helper_method :popular_posts
+
+
+  # TOPICS 
+  
+  def set_featured_topics
+    @topics = Topic.featured(4)
+  end
 
 end
