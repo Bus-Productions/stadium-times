@@ -31,7 +31,7 @@
               <div class="btn-toolbar">
                 <div class="btn-group">
                   <a id="save-status" class="btn light active" href="#">Saved!</a>
-                  <a class="btn light" href="#">Delete</a>
+                  <%= link_to "Delete", @post, :method => :delete, :class => "btn light" %>
                   <a class="btn light" href="<%= publish_post_path(@post) %>">Publish</a>
                 </div>
               </div>
@@ -39,12 +39,12 @@
         </header>
 
         <header class="main-header">
-          <div class="editable-post-field title" id ="top-title-div" onClick="this.contentEditable='true';">
+          <div class="editable-post-field title" id ="top-title-div" onClick="this.contentEditable='true';" tabindex=1>
               <h3 id="top-title-span"><%= (@post.title && (@post.title.length > 0)) ? @post.title : 'Type your title' %></h3>
           </div>
         </header>
 
-          <div class="editable-post-field" id="body-text-div" onClick="this.contentEditable='true';">
+          <div class="editable-post-field" id="body-text-div" onClick="this.contentEditable='true';" tabindex=2>
               <%= (@post.text && (@post.text.length > 0)) ? @post.text.html_safe : '<p id="body-text-span">Type your thoughts</p>'.html_safe %>
           </div>
           

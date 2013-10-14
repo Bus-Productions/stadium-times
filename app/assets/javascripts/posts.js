@@ -19,6 +19,8 @@ $(function() {
       }
     });
 
+    $('#top-title-div').focus();
+
 });
 
 function update_post(id) {
