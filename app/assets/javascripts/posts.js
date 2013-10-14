@@ -19,7 +19,7 @@ $(function() {
       }
     });
 
-    $('#top-title-div').focus();
+    $('#top-title-div').get(0).focus();
 
 });
 
