@@ -1,22 +1,45 @@
               <% if result %>
-                <li>
-                  <a href='<%= post_path(result) %>'>
-                    <h3><%= result.title %></h3>
-                    <p>
-                      <%= result.text || result.link %> 
-                    </p>
-                    <small class='meta'>
-                      <dl class='tags'>
-                        <% unless result.topics.empty? %>
-                          <dt>
-                            Topics:
-                            <% result.topics.each do |topic| %>
-                              <%= render 'shared/modal_content/topic_tag', :topic => topic %>
-                            <% end %>
-                          </dt>
-                        <% end %>
-                      </dl>
-                    </small>
-                  </a>
-                </li>
+                <% if class_type == "Post" %>
+                  <li>
+                    <a href='<%= post_path(result) %>'>
+                      <h3><%= result.title %></h3>
+                      <p>
+                        <%= result.text || result.link %> 
+                      </p>
+                      <small class='meta'>
+                        <dl class='tags'>
+                          <% unless result.topics.empty? %>
+                            <dt>
+                              Topics:
+                              <% result.topics.each do |topic| %>
+                                <%= render 'shared/modal_content/topic_tag', :topic => topic %>
+                              <% end %>
+                            </dt>
+                          <% end %>
+                        </dl>
+                      </small>
+                    </a>
+                  </li>
+                <% elsif class_type == "Topic" %>
+                  <li>
+                    <a href='<%= topic_path(result) %>'>
+                      <h3><%= result.topic_name %></h3>
+                      <p>
+                        This is filler so topics are clickable too 
+                      </p>
+                      <small class='meta'>
+                        <dl class='tags'>
+                          <% unless result.children.empty? %>
+                            <dt>
+                              Related Topics:
+                              <% result.children.each do |topic| %>
+                                <%= render 'shared/modal_content/topic_tag', :topic => topic %>
+                              <% end %>
+                            </dt>
+                          <% end %>
+                        </dl>
+                      </small>
+                    </a>
+                  </li>
+                <% end %>
               <% end %>

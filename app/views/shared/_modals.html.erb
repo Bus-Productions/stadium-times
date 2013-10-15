@@ -9,15 +9,14 @@
           <section class='modal-body'>
               <%= form_tag search_path, :remote => true do %>
                   <%= text_field_tag :search, params[:search], :class => 'form-control', :placeholder => "What are you looking for?" %>
-                  <%= submit_tag "Search", :name => nil %>
               <% end %>
             <ul class='list' id="search_results">
               <% if @results %>
-                <% @results.each do |result| %>
-                  <li class="result_items">
-                    <%= render 'shared/modal_content/result_element', :result => @result %>
-                  </li>
-                <% end %>
+                  <% @results.each_with_index do |result, index| %>
+                    <% if index == 0 %>
+                    <% end %>
+                    <%= render 'shared/modal_content/result_element', :result => result, :class_type => result.class.to_s %>
+                  <% end %>
               <% end %>
             </ul>
 

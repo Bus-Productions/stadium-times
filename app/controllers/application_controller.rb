@@ -47,11 +47,15 @@ class ApplicationController < ActionController::Base
   end
 
   def set_search_vars
-    @search = Post.search do
+    @post_search = Post.search do
       fulltext params[:search]
     end
 
-    @results = @search.results
+    @topic_search = Topic.search do 
+      fulltext params[:search]
+    end
+
+    @results = @post_search.results + @topic_search.results
   end
 
 end
