@@ -35,6 +35,9 @@ class PostsController < ApplicationController
       @post.add_postview_for_user(0)
     end
 
+
+    @body_class = 'off-canvas'
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
