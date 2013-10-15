@@ -9,6 +9,7 @@
                 <%= @post.display_title %>
               </a>
             </h3>
+            <%= @post.in_reply_to_post ? (render 'in_reply_to_post', :post => @post.in_reply_to_post) : nil %>
           </header>
           
           <%= @post.text.html_safe if @post.text %>
@@ -20,7 +21,7 @@
               <div class='btn-group' id="votes_<%= @post.id %>">
                 <%= render 'shared/vote_up_or_down_links', post: @post %>
               </div>
-              <a class='btn small light' href='#'>
+              <a class='btn small light' href='<%= new_post_path(:r => @post.id) %>'>
                 <span class='ss-redo circle'></span>
                 Respond
               </a>
@@ -30,7 +31,10 @@
               </a>
               <%= render 'shared/spam', received_obj: @post %>
             </div>
+
             <a class='btn primary' href='#sidebar' id='sidebarButton'>Join the Conversation</a>
+
+            <%= render 'response_posts' %>
 
             <small class='meta'>
 

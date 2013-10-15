@@ -53,7 +53,8 @@ class PostsController < ApplicationController
     if params[:post_type] && (params[:post_type] == 'link')
       @post = Post.new({:user_id => @current_user.id, :post_type => 'link'})
     else
-      @post = Post.create({:user_id => @current_user.id, :post_type => 'text', :status => 'infant'})
+      r = params[:r] ? params[:r] : nil
+      @post = Post.create({:user_id => @current_user.id, :post_type => 'text', :status => 'infant', :post_id => r})
       redirect_to edit_post_path(@post)
       return
     end

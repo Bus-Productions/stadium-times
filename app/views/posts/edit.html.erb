@@ -47,10 +47,11 @@
 
             <%= f.hidden_field :id, :value => @post.id, id: 'current-post-id' %>
           
-            <%= f.hidden_field :post_id, :value => @reply_to_post %>
+            <%= f.hidden_field :post_id, :value => @post.post_id %>
 
             <header class="main-header">
               <div class="title">
+                <%= @post.in_reply_to_post ? (render 'in_reply_to_post', :post => @post.in_reply_to_post) : '' %>
                   <div class="btn-toolbar">
                     <div class="btn-group">
                       <a id="save-status" class="btn light active" href="#">Saved!</a>
@@ -69,7 +70,7 @@
         </header>
 
         <article contenteditable="true" class="content editable-post-field" id="body-text-div" tabindex=2>
-          <%= (@post.text && (@post.text.length > 0)) ? @post.text.html_safe : '<p id="body-text-span">Type your thoughts</p>'.html_safe %>
+          <%= (@post.text && (@post.text != '<p></p>') && (@post.text != '<p><br></p>') && (@post.text.length > 0)) ? @post.text.html_safe : (render 'article_sample_instructions') %>
         </article>
 
       </section>

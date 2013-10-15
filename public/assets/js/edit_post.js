@@ -19,7 +19,45 @@ $(function() {
       }
     });
 
-    $('#top-title-span').get(0).focus();
+    //$('#top-title-span').get(0).focus();
+
+
+    var title_text_placeholder = 'Type your title'
+    var title_text = $('#top-title-span').text();
+    if (title_text == title_text_placeholder) {
+      $('#top-title-span').css('color', 'grey');
+    };
+    $('#top-title-span').click(function () {
+        var $this = $(this),
+            text = $.trim($this.text());
+
+        // Force cursor at the beginning
+        if (text === title_text_placeholder) {
+            $this.text('');
+            $this.focus();
+            $this.text(title_text_placeholder);
+        }
+    });
+
+    $('#top-title-span').keydown(function (event) {
+        var $this = $(this),
+            text = $.trim($this.text());
+
+        if (text === title_text_placeholder) {
+            $this.text('');
+            $this.css('color', 'black');
+        }
+    });
+    $('#top-title-span').keyup(function (event) {
+        var $this = $(this),
+            text = $.trim($this.text());
+
+        if (text === '') {
+            $this.text(title_text_placeholder);
+            $this.css('color', 'grey');
+        }
+    });
+
 
 });
 

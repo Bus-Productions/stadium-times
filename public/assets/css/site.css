@@ -762,6 +762,7 @@ article.highlight-article .btn { display: inline-block; margin-top: 32px; }
 
 header.main-header .title { overflow: hidden; *zoom: 1; }
 header.main-header .title h3 { float: left; display: inline-block; }
+header.main-header .title em { float: left; display: inline-block; margin-top: 20px; }
 header.main-header .title .btn-toolbar { float: right; display: inline-block; margin-top: 20px; }
 
 ul.list { padding: 0; }
