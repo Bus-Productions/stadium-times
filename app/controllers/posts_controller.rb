@@ -7,12 +7,6 @@ class PostsController < ApplicationController
     @body_class = 'home'
     @browsing = 'Popular Articles'
 
-    @search = Post.search do
-      fulltext params[:search]
-    end
-
-    @results = @search.results
-
     @posts = Post.live
     @topics = Topic.all
     
@@ -25,11 +19,6 @@ class PostsController < ApplicationController
   end
 
   def search
-    @search = Post.search do
-      fulltext params[:search]
-    end
-
-    @results = @search.results
 
     respond_to do |format|
       format.js
