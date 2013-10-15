@@ -1,3 +1,4 @@
+
   <%= render 'layouts/main_content_wrap' %>
 
       <section class='main-content'>
@@ -16,28 +17,34 @@
             </div>
           <% end %>
 
-          
-            
-            <%= f.hidden_field :post_type, :value => 'text' %>
+            <%= f.hidden_field :post_type, :value => 'link' %>
           
             <%= f.hidden_field :user_id, :value => current_user.id %>
-
-            <%= f.hidden_field :id, :value => @post.id, id: 'current-post-id' %>
           
             <%= f.hidden_field :post_id, :value => @reply_to_post %>
 
-          <div class="editable-post-field" id ="top-title-div" onClick="this.contentEditable='true';">
-              <h3 id="top-title-span">Type your title</h3>
-          </div>
+            <header class="main-header">
+              <div class="title">
+                  <div class="btn-toolbar">
+                    <div class="btn-group">
+                      <%= link_to "Delete", @post, :method => :delete, :class => "btn light" %>
+                      <%= link_to 'Share', "#", :onclick => "$('#new_post').submit()", :class => 'btn light' %>
+                    </div>
+                  </div>
+              </div>
+            </header>
 
-          <div class="editable-post-field" id="body-text-div" onClick="this.contentEditable='true';">
-              <p id="body-text-span">Type your article</p>
-          </div>
+            <header class="header main-header">
+              <%= f.text_field :title, :placeholder => 'Type the title', :class => 'title-form-box form-control h3' %>
+            </header>
+
+            <article class="content">
+              <%= f.text_field :link, :placeholder => 'Paste the link', :class => 'body-form-box form-control' %>
+            </article>
           
         <% end %>
 
       </section>
-
       
 
       <%= render 'shared/author_box', :user => current_user %>

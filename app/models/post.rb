@@ -35,6 +35,14 @@ class Post < ActiveRecord::Base
     self.status == 'draft'
   end
 
+  def link?
+    self.post_type == 'link'
+  end
+
+  def text?
+    self.post_type == 'text'
+  end
+
   # SCOPES
 
   scope :live, -> { where('status = ?', 'live') }

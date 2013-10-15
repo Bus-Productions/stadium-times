@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
     @post = Post.find(params[:id])
 
-    if @post.draft?
+    if @post.text? && @post.draft?
       redirect_to edit_post_path(@post)
       return
     end
@@ -50,9 +50,13 @@ class PostsController < ApplicationController
 
     current_user_or_redirect ? nil : return
 
-    @post = Post.create({:user_id => @current_user.id, :post_type => 'text', :status => 'infant'})
-
-    redirect_to edit_post_path(@post)
+    if params[:post_type] && (params[:post_type] == 'link')
+      @post = Post.new({:user_id => @current_user.id, :post_type => 'link'})
+    else
+      @post = Post.create({:user_id => @current_user.id, :post_type => 'text', :status => 'infant'})
+      redirect_to edit_post_path(@post)
+      return
+    end
 
   end
 
@@ -68,6 +72,11 @@ class PostsController < ApplicationController
       return
     end
 
+    if @post.link?
+      redirect_to post_path(@post)
+      return
+    end
+
   end
 
   # POST /posts
@@ -78,6 +87,10 @@ class PostsController < ApplicationController
 
     @post = Post.new(params[:post])
     @post.user_id = @current_user.id
+
+    if @post.link?
+      @post.status = 'live'
+    end
 
     respond_to do |format|
       if @post.save
