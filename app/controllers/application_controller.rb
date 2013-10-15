@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   private
   def popular_posts
-    @popular_posts = Post.most_upvotes(16)
+    @popular_posts = Post.most_upvotes(16).live.today
   end
   helper_method :popular_posts
 
