@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :set_featured_topics
+  before_filter :set_featured_topics, :set_search_vars
 
 
   private
@@ -44,6 +44,14 @@ class ApplicationController < ActionController::Base
   
   def set_featured_topics
     @topics = Topic.featured(4)
+  end
+
+  def set_search_vars
+    @search = Post.search do
+      fulltext params[:search]
+    end
+
+    @results = @search.results
   end
 
 end

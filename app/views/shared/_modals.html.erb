@@ -11,7 +11,7 @@
                   <%= text_field_tag :search, params[:search], :class => 'form-control', :placeholder => "What are you looking for?" %>
                   <%= submit_tag "Search", :name => nil %>
               <% end %>
-            <ul class='list'>
+            <ul class='list' id="search_results">
               <% if @results %>
                 <% @results.each do |result| %>
                   <li class="result_items">
