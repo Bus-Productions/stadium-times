@@ -46,9 +46,13 @@ class ApplicationController < ActionController::Base
     @topics = Topic.featured(4)
   end
 
+
+  # SEARCH
+
   def set_search_vars
     @post_search = Post.search do
       fulltext params[:search]
+      with(:status).equal_to("live")
     end
 
     @topic_search = Topic.search do 

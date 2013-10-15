@@ -31,7 +31,7 @@ class Topic < ActiveRecord::Base
   # SEARCH
 
   searchable do 
-    text :topic_name
+    text :topic_name, :boost => 3
   end
 
 end

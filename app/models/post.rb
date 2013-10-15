@@ -20,7 +20,9 @@ class Post < ActiveRecord::Base
 
   # SEARCH
   searchable do 
-    text :title, :text
+    text :title, :boost => 5
+    text :text
+    string :status
   end
 
 
