@@ -20,6 +20,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user_or_redirect
 
+  private
+  def me?(user_id)
+    if !current_user
+      false
+    else
+      user_id == current_user.id
+    end
+  end
+  helper_method :me?
+
 
   # POSTS
 
