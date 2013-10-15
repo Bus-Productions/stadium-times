@@ -1,24 +1,46 @@
-              <li>
-                <a href='#'>
-                  <h3>Stadium Releases New Platform</h3>
-                  <p>
-                    Eddie Lacy's primary backup in 2012. Like Gurley, Yeldon has the same ability between the tackles and probably more top-end speed and agility.
-                  </p>
-                  <small class='meta'>
-                    <dl class='tags'>
-                      <dt>
-                        Tags:
-                        <dd>
-                          <a href='#'>NCAA Football</a>
-                        </dd>
-                        <dd>
-                          <a href='#'>Draft Picks</a>
-                        </dd>
-                        <dd>
-                          <a href='#'>%Rootbeer</a>
-                        </dd>
-                      </dt>
-                    </dl>
-                  </small>
-                </a>
-              </li>
+              <% if result %>
+                <% if class_type == "Post" %>
+                  <li>
+                    <a href='<%= post_path(result) %>'>
+                      <h3><%= result.title %></h3>
+                      <p>
+                        <%= result.text || result.link %> 
+                      </p>
+                      <small class='meta'>
+                        <dl class='tags'>
+                          <% unless result.topics.empty? %>
+                            <dt>
+                              Topics:
+                              <% result.topics.each do |topic| %>
+                                <%= render 'shared/modal_content/topic_tag', :topic => topic %>
+                              <% end %>
+                            </dt>
+                          <% end %>
+                        </dl>
+                      </small>
+                    </a>
+                  </li>
+                <% elsif class_type == "Topic" %>
+                  <% related = result.children + result.parents %>
+                  <li>
+                    <a href='<%= topic_path(result) %>'>
+                      <h3><%= result.topic_name %></h3>
+                      <p>
+                        This is filler so topics are clickable too 
+                      </p>
+                      <small class='meta'>
+                        <dl class='tags'>
+                          <% unless related.empty? %>
+                            <dt>
+                              Related Topics:
+                              <% related.each do |topic| %>
+                                <%= render 'shared/modal_content/topic_tag', :topic => topic %>
+                              <% end %>
+                            </dt>
+                          <% end %>
+                        </dl>
+                      </small>
+                    </a>
+                  </li>
+                <% end %>
+              <% end %>

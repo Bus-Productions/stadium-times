@@ -18,8 +18,15 @@ class Post < ActiveRecord::Base
   has_many :post_and_topic_pairings
   has_many :topics, :through => :post_and_topic_pairings
 
+  # SEARCH
+  searchable do 
+    text :title, :boost => 5
+    text :text
+    string :status
+  end
 
-  #VALIDATIONS
+
+  # VALIDATIONS
 
   validates_length_of :title, :maximum => 200, :allow_blank => false
 

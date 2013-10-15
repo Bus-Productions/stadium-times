@@ -27,4 +27,11 @@ class Topic < ActiveRecord::Base
     (self.children + self.parents).sample(10)
   end
 
+
+  # SEARCH
+
+  searchable do 
+    text :topic_name, :boost => 3
+  end
+
 end

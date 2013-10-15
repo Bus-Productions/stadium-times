@@ -12,3 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+$(document).ready(function(){
+	$('.ss-search').on("click", function(e){
+		$.post("/posts/search", function(){
+			$('#search').val("");
+		});
+	});
+});
+	
