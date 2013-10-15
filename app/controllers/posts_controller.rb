@@ -7,6 +7,12 @@ class PostsController < ApplicationController
     @body_class = 'home'
     @browsing = 'Popular Articles'
 
+    @search = Post.search do
+      fulltext params[:search]
+    end
+
+    @results = @search.results
+
     @posts = Post.live
     @topics = Topic.all
     
@@ -14,7 +20,19 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @posts }
+      format.js
+    end
+  end
+
+  def search
+    @search = Post.search do
+      fulltext params[:search]
+    end
+
+    @results = @search.results
+    @result = @results.first
+    respond_to do |format|
+      format.js
     end
   end
 

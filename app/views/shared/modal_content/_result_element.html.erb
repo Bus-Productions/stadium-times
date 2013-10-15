@@ -1,13 +1,15 @@
               <li>
                 <a href='#'>
-                  <h3>Stadium Releases New Platform</h3>
+                  <% if result %>
+                  <h3><%= result.title %></h3>
                   <p>
-                    Eddie Lacy's primary backup in 2012. Like Gurley, Yeldon has the same ability between the tackles and probably more top-end speed and agility.
+                    <%= result.text %> 
                   </p>
+                  <% end %>
                   <small class='meta'>
                     <dl class='tags'>
                       <dt>
-                        Tags:
+                        Topics:
                         <dd>
                           <a href='#'>NCAA Football</a>
                         </dd>

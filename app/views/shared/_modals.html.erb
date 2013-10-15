@@ -7,14 +7,18 @@
             <h4 class='modal-title'>Search</h4>
           </header>
           <section class='modal-body'>
-            <div class='form-group'>
-              <input class='form-control' placeholder='What are you looking for?' type='text'>
-            </div>
-            
+              <%= form_tag search_path, :remote => true do %>
+                  <%= text_field_tag :search, params[:search], :class => 'form-control', :placeholder => "What are you looking for?" %>
+                  <%= submit_tag "Search", :name => nil %>
+              <% end %>
             <ul class='list'>
-
-              <%= render 'shared/modal_content/result_element' %>
-
+              <% if @results %>
+                <% @results.each do |result| %>
+                  <li class="result_items">
+                    <%= render 'shared/modal_content/result_element', :result => @result %>
+                  </li>
+                <% end %>
+              <% end %>
             </ul>
 
 

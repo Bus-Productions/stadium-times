@@ -30,7 +30,8 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'backstretch-rails'
 
-
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
