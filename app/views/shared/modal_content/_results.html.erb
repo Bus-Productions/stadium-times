@@ -1,0 +1,9 @@
+<% unless @results.empty? %>
+  <% @results.each do |result| %>
+    <li class="result_items">
+      <%= render 'shared/modal_content/result_element', :result => result %>
+    </li>
+  <% end %>
+<% else %>
+	 <%= render 'shared/modal_content/error_message' %>
+<% end %>

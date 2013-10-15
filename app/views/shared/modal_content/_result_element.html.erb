@@ -1,26 +1,22 @@
-              <li>
-                <a href='#'>
-                  <% if result %>
-                  <h3><%= result.title %></h3>
-                  <p>
-                    <%= result.text %> 
-                  </p>
-                  <% end %>
-                  <small class='meta'>
-                    <dl class='tags'>
-                      <dt>
-                        Topics:
-                        <dd>
-                          <a href='#'>NCAA Football</a>
-                        </dd>
-                        <dd>
-                          <a href='#'>Draft Picks</a>
-                        </dd>
-                        <dd>
-                          <a href='#'>%Rootbeer</a>
-                        </dd>
-                      </dt>
-                    </dl>
-                  </small>
-                </a>
-              </li>
+              <% if result %>
+                <li>
+                  <a href='<%= post_path(result) %>'>
+                    <h3><%= result.title %></h3>
+                    <p>
+                      <%= result.text || result.link %> 
+                    </p>
+                    <small class='meta'>
+                      <dl class='tags'>
+                        <% unless result.topics.empty? %>
+                          <dt>
+                            Topics:
+                            <% result.topics.each do |topic| %>
+                              <%= render 'shared/modal_content/topic_tag', :topic => topic %>
+                            <% end %>
+                          </dt>
+                        <% end %>
+                      </dl>
+                    </small>
+                  </a>
+                </li>
+              <% end %>

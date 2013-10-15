@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     end
 
     @results = @search.results
-    @result = @results.first
+
     respond_to do |format|
       format.js
     end
