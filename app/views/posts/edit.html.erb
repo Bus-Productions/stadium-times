@@ -1,6 +1,29 @@
+  
+    <!-- LIBS -->
+    <script src="/assets/js/edit_post.js"></script>
+    <script src="/js/libs/head.min.js"></script>
+    <script src="/js/libs/FileSaver.min.js"></script>
+    <script src="/js/libs/Blob.js"></script>
+    <script src="/js/libs/fullScreen.js"></script>
+
   <%= render 'layouts/main_content_wrap' %>
 
       <section class='main-content'>
+
+
+        <div class="text-options">
+          <div class="options">
+            <span class="no-overflow">
+              <span class="lengthen ui-inputs">
+                <button class="url useicons">&#xe005;</button>
+                <input class="url-input" type="text" placeholder="Type or Paste URL here"/>
+                <button class="bold">b</button>
+                <button class="italic">i</button>
+                <button class="quote">&rdquo;</button>
+              </span>
+            </span>
+          </div>
+        </div>
 
 
         <%= form_for(@post) do |f| %>
@@ -26,31 +49,46 @@
           
             <%= f.hidden_field :post_id, :value => @reply_to_post %>
 
-        <header class="main-header">
-          <div class="title">
-              <div class="btn-toolbar">
-                <div class="btn-group">
-                  <a id="save-status" class="btn light active" href="#">Saved!</a>
-                  <%= link_to "Delete", @post, :method => :delete, :class => "btn light" %>
-                  <a class="btn light" href="<%= publish_post_path(@post) %>">Publish</a>
-                </div>
+            <header class="main-header">
+              <div class="title">
+                  <div class="btn-toolbar">
+                    <div class="btn-group">
+                      <a id="save-status" class="btn light active" href="#">Saved!</a>
+                      <%= link_to "Delete", @post, :method => :delete, :class => "btn light" %>
+                      <a class="btn light" href="<%= publish_post_path(@post) %>">Publish</a>
+                    </div>
+                  </div>
               </div>
-          </div>
-        </header>
-
-        <header class="main-header">
-          <div class="editable-post-field title" id="top-title-div" contenteditable="true" onClick="this.contentEditable='true';" tabindex=1>
-              <h3 id="top-title-span"><%= (@post.title && (@post.title.length > 0)) ? @post.title : 'Type your title' %></h3>
-          </div>
-        </header>
-
-          <div class="editable-post-field" id="body-text-div" contenteditable="true" onClick="this.contentEditable='true';" tabindex=2>
-              <%= (@post.text && (@post.text.length > 0)) ? @post.text.html_safe : '<p id="body-text-span">Type your thoughts</p>'.html_safe %>
-          </div>
+            </header>
           
         <% end %>
 
+
+        <header contenteditable="true" class="header main-header h3 editable-post-field" id="top-title-span" tabindex=1>
+          <%= (@post.title && (@post.title.length > 0)) ? @post.title : 'Type your title' %>
+        </header>
+
+        <article contenteditable="true" class="content editable-post-field" id="body-text-div" tabindex=2>
+          <%= (@post.text && (@post.text.length > 0)) ? @post.text.html_safe : '<p id="body-text-span">Type your thoughts</p>'.html_safe %>
+        </article>
+
       </section>
+
+      <!-- JS -->
+    <script type="text/javascript">
+      // Load required scripts. 
+      head.js( 
+        "/js/utils.js",
+        "/js/ui.js",
+        "/js/editor.js",
+            function(){
+                
+                // Initiate ZenPen
+                editor.init();
+            ui.init();
+              }
+          );
+        </script>
 
       
 

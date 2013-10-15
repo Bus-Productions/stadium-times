@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   private
   def current_user_or_redirect
     if !current_user
-      redirect_to login_path
+      redirect_to root_path
       return false
     else
       return true
