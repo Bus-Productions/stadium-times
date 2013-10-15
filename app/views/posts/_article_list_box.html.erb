@@ -13,7 +13,7 @@
             </div>
           </header>
           <% if post.text %>
-            <p><%= post.text %></p>
+            <p><%= truncate(strip_tags(post.text.html_safe), :length => 200) %></p>
           <% end %>
           <small class='meta'>
             <p>

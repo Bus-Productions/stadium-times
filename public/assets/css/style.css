@@ -17,10 +17,13 @@
 
 
 blockquote {
-	border-left: 4px solid deepskyblue;
+	border-left: 4px solid #168dd9;
 	margin-left: -19px;
 	padding-left: 15px;
 	margin-right: 0px;
+	font-family: "ff-tisa-web-pro", Georgia, "Times New Roman-", Times, serif; font-size: 1.25em; line-height: 1.75em;
+	font-weight: 200;
+	font-style: italic;
 }
 
 .no-overflow {
