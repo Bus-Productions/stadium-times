@@ -9,14 +9,18 @@
                   </small>
                 </header>
                 <small class='meta'>
+
+                 <% if topics.count > 0 %> 
                   <dl class='tags'>
                     <dt>
-                      Topics:
-                      <% topics.each do |topic| %>
+                      Topics: 
+                      <% topics.each_with_index do |topic, index| %>
                         <%= render 'topic', :topic => topic %>
                       <% end %>
                     </dt>
                   </dl>
+                 <% end %>
+
                   <em>
                     <span class='ss-link'></span>
                     <%= time_ago_in_words(post.created_at) %> ago
