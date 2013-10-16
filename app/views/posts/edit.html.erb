@@ -109,10 +109,10 @@
         <section class='modal-body'>
           <ul class='list' id="search_results">
             <%= form_for @post, :url => publish_post_path(@post) do |f| %>
-              <%= f.fields_for :topics do |b| %>
+              <%= f.fields_for :topics_attributes do |b| %>
                 <% @all_topics.each do |topic| %>
-                  <%= check_box(topic.topic_name, topic.id) %>
-                  <%= b.label topic.topic_name %><br>
+                  <%= radio_button_tag(:topic, topic.id) %>
+                  <%= label_tag(:topic_name, topic.topic_name) %><br>
                 <% end %>
               <% end %>
             <footer class='modal-footer'>
