@@ -12,13 +12,7 @@
                 <small class='meta'>
                  <p>
                   <a href='<%= show_post_path(post.id, post.slug) %>'>
-                    <%= post.link? ? 'shared' : 'written' %> by <%= post.user.name %>
-                  </a>
-
-                  <% post.topics.each_with_index do |t, i| %><%=i == 0 ? ' in ' : ', '%><%=link_to t.topic_name, topic_path(t)%><% end %> 
-
-                  <a href='<%= show_post_path(post.id, post.slug) %>'>
-                    <%= time_ago_in_words(post.created_at) %> ago
+                    last edited <%= time_ago_in_words(post.created_at) %> ago
                   </a>
                 </p>
                 </small>
