@@ -7,12 +7,12 @@
 	<% if received_obj.class.to_s == "Post" %>
 		<a class='btn small light active' href='<%= spam_path(received_obj, 0) %>' id='spam' data-remote="true">
 		  <span class='ss-flag'></span>
-		  Flag as Spam
+		  Flagged as Spam
 		</a>
 	<% else %>
 		<a class='btn small light active' href='<%= spam_path(0, received_obj) %>' id='spam' data-remote="true">
 		  <span class='ss-flag'></span>
-		  Flag as Spam
+		  Flagged as Spam
 		</a>
 	<% end %>
 <% else %>
