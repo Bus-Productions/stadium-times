@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-  attr_accessible :link, :post_type, :text, :title, :user_id, :post_id, :status, :upvotes, :downvotes, :score, :spam_count
+  attr_accessible :link, :post_type, :text, :title, :user_id, :post_id, :status, :upvotes, :downvotes, :score, :spam_count, :slug
 
   belongs_to :user
 
@@ -72,6 +72,18 @@ class Post < ActiveRecord::Base
     (self.title && (self.title.length > 0)) ? self.title : 'Untitled'
   end
 
+  # SLUG
+
+  def update_slug
+    if self.title
+      string = self.title
+      if string.length == 0
+        string = 'untitled'
+      end
+      string = string.gsub(/[^0-9a-z ]/i, '').strip.squeeze(' ').downcase.gsub(' ', '-')
+      self.update_attribute(:slug, string)
+    end
+  end
 
   #SCORE
 
@@ -162,7 +174,7 @@ class Post < ActiveRecord::Base
   # LINK
 
   def link_for_post
-    self.post_type == 'link' ? self.link : "/posts/#{self.id}"
+    self.post_type == 'link' ? self.link : "/posts/#{self.id}/#{self.slug}"
   end
 
 

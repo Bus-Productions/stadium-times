@@ -136,6 +136,7 @@ class PostsController < ApplicationController
           @post.text = t
           @post.save!
         end
+        @post.update_slug
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
         format.js

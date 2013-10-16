@@ -33,8 +33,9 @@ StadiumTimes::Application.routes.draw do
 
 
   resources :posts
-  match "posts/new/:post_type", to: "posts#new", as: "new_link"
   match 'posts/:id/publish', to: 'posts#publish', as: 'publish_post'
+  match "posts/:id/:slug", to: "posts#show", as: "show_post"
+  match "posts/new/:post_type", to: "posts#new", as: "new_link"
   match 'posts/search', to: 'posts#search', as: 'search'
 
 
@@ -46,5 +47,11 @@ StadiumTimes::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
+
+  get "pages/help"
+  get "pages/about"
+  get "pages/legal"
+  get "pages/stadium"
+
 
 end

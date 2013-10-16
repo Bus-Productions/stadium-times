@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010214313) do
+ActiveRecord::Schema.define(:version => 20131016155717) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "user_id"
@@ -55,14 +55,15 @@ ActiveRecord::Schema.define(:version => 20131010214313) do
     t.string   "title"
     t.string   "text"
     t.string   "link"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.integer  "post_id"
     t.string   "status",                    :default => "draft"
     t.integer  "upvotes",                   :default => 0
     t.integer  "downvotes",                 :default => 0
     t.float    "score",                     :default => 0.0
     t.integer  "spam_count",                :default => 0
+    t.string   "slug",                      :default => "untitled"
   end
 
   create_table "postviews", :force => true do |t|
