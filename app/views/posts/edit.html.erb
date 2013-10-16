@@ -64,6 +64,8 @@
           
         <% end %>
 
+        <!-- Button to trigger modal -->
+        <!-- <a href="#topicModal" role="button" class="btn" data-toggle="modal">Fuck</a> -->
 
         <header contenteditable="true" class="header main-header h3 editable-post-field" id="top-title-span" tabindex=1>
           <%= (@post.title && (@post.title.length > 0)) ? @post.title : 'Type your title' %>
@@ -91,10 +93,8 @@
           );
         </script>
 
-      
-
       <%= render 'shared/author_box', :user => current_user %>
-
+      
   <%= render 'layouts/end_main_content_wrap' %>
 
 

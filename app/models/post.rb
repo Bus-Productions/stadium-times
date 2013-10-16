@@ -1,6 +1,10 @@
 class Post < ActiveRecord::Base
 
+<<<<<<< HEAD
   attr_accessible :link, :post_type, :text, :title, :user_id, :post_id, :status, :upvotes, :downvotes, :score, :spam_count, :slug
+=======
+  attr_accessible :link, :post_type, :text, :title, :user_id, :post_id, :status, :upvotes, :downvotes, :score, :spam_count, :topics
+>>>>>>> attempted adding topics
 
   belongs_to :user
 
@@ -17,6 +21,9 @@ class Post < ActiveRecord::Base
 
   has_many :post_and_topic_pairings
   has_many :topics, :through => :post_and_topic_pairings
+
+  accepts_nested_attributes_for :topics
+  
 
   # SEARCH
   searchable do 
