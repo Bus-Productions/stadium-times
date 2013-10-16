@@ -12,18 +12,16 @@
           
           <small class='meta'>
             <p>
-              <%= post.link? ? 'shared' : 'written' %> by
               <a href='<%= show_post_path(post.id, post.slug) %>'>
-                <%= author.name %>
-
-                <% post.topics.each_with_index do |t, i| %>
-                  <% if i == 0 %>in <% end %>
-                    <%= t.topic_name %>
-                <% end %> 
-
-                <%= time_ago_in_words(post.created_at) %> ago
-
+                <%= post.link? ? 'shared' : 'written' %> by <%= author.name %>
               </a>
+
+              <% post.topics.each_with_index do |t, i| %><%=i == 0 ? ' in ' : ', '%><%=link_to t.topic_name, topic_path(t)%><% end %> 
+
+              <a href='<%= show_post_path(post.id, post.slug) %>'>
+                <%= time_ago_in_words(post.created_at) %> ago
+              </a>
+
 
             </p>
             
