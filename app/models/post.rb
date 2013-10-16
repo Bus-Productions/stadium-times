@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-  attr_accessible :link, :post_type, :text, :title, :user_id, :post_id, :status, :upvotes, :downvotes, :score, :spam_count, :slug
+  attr_accessible :link, :post_type, :text, :title, :user_id, :post_id, :status, :upvotes, :downvotes, :score, :spam_count, :slug, :topics_attributes
 
   belongs_to :user
 

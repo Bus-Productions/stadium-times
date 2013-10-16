@@ -117,7 +117,9 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-
+    p "*"*50
+    p params
+    p "*"*50
     current_user_or_redirect ? nil : return
 
     @post = Post.find(params[:id])
