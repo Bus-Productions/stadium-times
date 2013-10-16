@@ -108,20 +108,20 @@
         </header>
         <section class='modal-body'>
           <ul class='list' id="search_results">
-            <%= form_for @post do |f| %>
+            <%= form_for @post, :url => publish_post_path(@post) do |f| %>
               <%= f.fields_for :topics do |b| %>
                 <% @all_topics.each do |topic| %>
-                  <%= b.check_box :topic_name, :value => topic.id %>
+                  <%= check_box(topic.topic_name, topic.id) %>
                   <%= b.label topic.topic_name %><br>
                 <% end %>
               <% end %>
             <footer class='modal-footer'>
-              <%= f.submit "Skip", :class => 'btn light', :dismiss => "modal" %>
-              <%= f.submit "Add Topic", :class => 'btn', :dismiss => "modal" %>
+              <%= f.submit "Skip", :class => 'btn light' %>
+              <%= f.submit "Add Topic", :class => 'btn' %>
             </footer>
             <% end %>
           </ul>
-          <br><br><br><br><br>
+          <br><br><br><br><br><br>
         </section>
       </div>
     </div>
