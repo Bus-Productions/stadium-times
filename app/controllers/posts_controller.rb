@@ -153,7 +153,6 @@ class PostsController < ApplicationController
   # POST /posts/1/publish
   # POST /posts/1/publish.json
   def publish
-
     current_user_or_redirect ? nil : return
 
     @post = Post.find(params[:id])

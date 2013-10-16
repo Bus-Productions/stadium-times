@@ -41,11 +41,14 @@
           </header>
           <section class='modal-body'>
             <ul class='list' id="topic_list">
-              <% if @all_topics %>
-                    <%= select(:post, :topic_id, return_options_for_topics(@all_topics)) %>
-              <% end %>
-            </ul>
+                <%= form_for @post do |f| %>
+                    <%= f.fields_for :topics do |t| %>
 
+                    <% end %>
+                  <%= f.submit 'Add Topics' %>
+                <% end %>
+              <br><br><br>
+            </ul>
 
             <div class='fade-off-text'></div>
           </section>
