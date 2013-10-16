@@ -25,10 +25,7 @@
                 <span class='ss-redo circle'></span>
                 Respond
               </a>
-              <a class='btn small light' href='#'>
-                <span class='ss-action'></span>
-                Share
-              </a>
+              <%= render 'shared/share', :post => @post %>
               <%= render 'shared/spam', received_obj: @post %>
             </div>
 
