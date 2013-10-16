@@ -73,6 +73,7 @@ class PostsController < ApplicationController
     current_user_or_redirect ? nil : return
 
     @post = Post.find(params[:id])
+    @all_topics = Topic.all
 
     if !@post.mine?(@current_user.id)
       redirect_to root_path
@@ -156,12 +157,12 @@ class PostsController < ApplicationController
     current_user_or_redirect ? nil : return
 
     @post = Post.find(params[:id])
-
+    
     if !@post.mine?(@current_user.id)
       redirect_to root_path
       return
     end
-
+    
     @post.status = 'live'
 
     respond_to do |format|

@@ -29,3 +29,29 @@
         </div>
       </div>
     </div>
+
+
+    <!-- Modals -->
+    <!-- Search Modal -->
+    <div aria-hidden='true' aria-labelledby='searchModalLabel' class='modal fade' id='topicModal' role='dialog' tabindex='-1'>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <header class='modal-header'>
+            <h4 class='modal-title'>Choose Topics</h4>
+          </header>
+          <section class='modal-body'>
+            <ul class='list' id="topic_list">
+              <% if @all_topics %>
+                    <%= select(:post, :topic_id, return_options_for_topics(@all_topics)) %>
+              <% end %>
+            </ul>
+
+
+            <div class='fade-off-text'></div>
+          </section>
+          <footer class='modal-footer'>
+            <button class='btn light' data-dismiss='modal' type='button'>Close</button>
+          </footer>
+        </div>
+      </div>
+    </div>
