@@ -2,7 +2,7 @@
 
       <%= render 'post_contents' %>
 
-      <%= render 'shared/author_box', :user => @post.user %>
+      <%= render 'shared/author_box', :user => @post.user, :post => @post %>
 
   <%= render 'layouts/end_main_content_wrap' %>
 

@@ -12,4 +12,12 @@
           <%= user.bio %>
           <a href='<%= user.vanity_url %>'><%= user.vanity_username %></a>
         </small>
+        <% if post %>
+          <header>
+            <hr class='elipsis'>
+          </header>
+          <small class='meta'>
+            <%= "Published #{formatted_date(post.updated_at)}" %>
+          </small>
+        <% end %>
       </aside>

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       @posts = @user.posts.draft.edited_recent
       @case = 'drafts'
     else
-      @posts = @user.posts.live
+      @posts = @user.posts.live.created_recent
     end
 
     respond_to do |format|

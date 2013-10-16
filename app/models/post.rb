@@ -72,6 +72,8 @@ class Post < ActiveRecord::Base
 
   scope :edited_recent, -> { order('updated_at DESC') }
 
+  scope :created_recent, -> { order('created_at DESC') }
+
 
   # ATTRIBUTES
 
