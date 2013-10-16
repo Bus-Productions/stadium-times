@@ -97,10 +97,12 @@ class PostsController < ApplicationController
 
     if @post.link?
       @post.status = 'live'
+      @post.link = "http://#{@post.link}" unless @post.link[/^https?/]
     end
 
     respond_to do |format|
       if @post.save
+        @post.update_slug
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else

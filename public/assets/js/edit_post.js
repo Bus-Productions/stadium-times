@@ -77,8 +77,11 @@ function check_formatting_body() {
   $('article#body-text-div p').each(function(){
     $(this).removeAttr('style');
     $(this).removeAttr('name');
+    $(this).removeAttr('class');
     $(this).find('a').removeAttr('style');
   });
+  $('article#body-text-div').find('blockquote').removeAttr('style').removeAttr('name').removeAttr('class');
+  $('article#body-text-div').find('span').removeAttr('style').removeAttr('name').removeAttr('class');
 }
 
 function save_post() {

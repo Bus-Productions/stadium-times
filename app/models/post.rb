@@ -30,6 +30,13 @@ class Post < ActiveRecord::Base
 
   validates_length_of :title, :maximum => 200, :allow_blank => false
 
+  before_save :format_url
+  validates_format_of :link, :with => URI::regexp(%w(http https))  
+
+  def format_url
+    self.link = "http://#{self.link}" unless self.link[/^https?/]
+  end
+
   def mine?(user_id)
     self.user_id == user_id
   end
