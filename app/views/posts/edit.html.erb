@@ -56,7 +56,8 @@
                     <div class="btn-group">
                       <a id="save-status" class="btn light active" href="#">Saved!</a>
                       <%= link_to "Delete", @post, :method => :delete, :class => "btn light" %>
-                      <a class="btn light" href="<%= publish_post_path(@post) %>">Publish</a>
+                     <!--  <a class="btn light" href="<%= publish_post_path(@post) %>">Publish</a> -->
+                     <a href="#topicModal" role="button" class="btn light" data-toggle="modal">Publish</a>
                     </div>
                   </div>
               </div>
@@ -94,5 +95,35 @@
       <%= render 'shared/author_box', :user => current_user, :post => nil %>
       
   <%= render 'layouts/end_main_content_wrap' %>
+
+  <!-- Modals -->
+  <!-- Topic Modal -->
+  <div aria-hidden='true' aria-labelledby='searchModalLabel' class='modal fade' id='topicModal' role='dialog' tabindex='-1'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <header class='modal-header'>
+          <h4 class='modal-title'>Pick a topic</h4>
+        </header>
+        <section class='modal-body'>
+          <ul class='list' id="search_results">
+            <%= form_for @post, :url => publish_post_path(@post) do |f| %>
+              <%= f.fields_for :topics_attributes do |b| %>
+                <% @all_topics.each do |topic| %>
+                  <%= radio_button_tag(:topic, topic.id) %>
+                  <%= label_tag(:topic_name, topic.topic_name) %><br>
+                <% end %>
+              <% end %>
+            <footer class='modal-footer'>
+              <%= f.submit "Skip", :class => 'btn light' %>
+              <%= f.submit "Add Topic", :class => 'btn' %>
+            </footer>
+            <% end %>
+          </ul>
+          <br><br><br><br><br><br>
+        </section>
+      </div>
+    </div>
+  </div>
+
 
 
