@@ -106,18 +106,12 @@
         </header>
         <section class='modal-body'>
           <ul class='list' id="search_results">
-            <%= form_for @post, :url => publish_post_path(@post) do |f| %>
-              <%= f.fields_for :topics_attributes do |b| %>
-                <% @all_topics.each do |topic| %>
-                  <%= radio_button_tag(:topic, topic.id) %>
-                  <%= label_tag(:topic_name, topic.topic_name) %><br>
-                <% end %>
-              <% end %>
-            <footer class='modal-footer'>
-              <%= f.submit "Skip", :class => 'btn light' %>
-              <%= f.submit "Add Topic", :class => 'btn' %>
-            </footer>
+            <% @all_topics.each do |topic| %>
+              <%= link_to topic.topic_name, publish_post_path(:id => @post.id, :topic=> topic.id) %><br>
             <% end %>
+            <footer class='modal-footer'>
+              <%= link_to "Skip", publish_post_path(@post), :class => 'btn light' %>
+            </footer>
           </ul>
           <br><br><br><br><br><br>
         </section>
