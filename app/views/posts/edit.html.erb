@@ -67,9 +67,7 @@
         <!-- Button to trigger modal -->
         <!-- <a href="#topicModal" role="button" class="btn" data-toggle="modal">Fuck</a> -->
 
-        <header contenteditable="true" class="header main-header h3 editable-post-field" id="top-title-span" tabindex=1>
-          <%= (@post.title && (@post.title.length > 0)) ? @post.title : 'Type your title' %>
-        </header>
+        <header contenteditable="true" class="header main-header h3 editable-post-field" id="top-title-span" tabindex=1><%= (@post.title && (@post.title.length > 0)) ? @post.title : 'Type your title' %></header>
 
         <article contenteditable="true" class="content editable-post-field" id="body-text-div" tabindex=2>
           <%= (@post.text && (@post.text != '<p></p>') && (@post.text != '<p><br></p>') && (@post.text.length > 0)) ? @post.text.html_safe : (render 'article_sample_instructions') %>

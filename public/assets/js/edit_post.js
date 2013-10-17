@@ -24,15 +24,21 @@ $(function() {
 
     var title_text_placeholder = 'Type your title'
     var title_text = $('#top-title-span').text();
+    console.log(title_text);
     if (title_text == title_text_placeholder) {
       $('#top-title-span').css('color', 'grey');
+      console.log('changed to grey');
     };
     $('#top-title-span').click(function () {
+
+        console.log('click');
+
         var $this = $(this),
             text = $.trim($this.text());
 
         // Force cursor at the beginning
         if (text === title_text_placeholder) {
+          console.log('force cursor');
             $this.text('');
             $this.focus();
             $this.text(title_text_placeholder);
@@ -40,25 +46,36 @@ $(function() {
     });
 
     $('#top-title-span').keydown(function (event) {
+      console.log('keydown');
         var $this = $(this),
             text = $.trim($this.text());
 
         if (text === title_text_placeholder) {
+          console.log('keydown ==');
+          console.log($this.text());
             $this.text('');
             $this.css('color', 'black');
         }
+        console.log($this.text());
     });
     $('#top-title-span').keyup(function (event) {
 
-        check_formatting_title();
+      var $this = $(this);
+      console.log($this.text());
+      console.log('keyup');
 
         var $this = $(this),
             text = $.trim($this.text());
 
         if (text === '') {
+          console.log('keyup ==');
             $this.text(title_text_placeholder);
             $this.css('color', 'grey');
+        } else {
+          check_formatting_title();
         }
+        console.log($this.text());
+        
     });
 
     $('#body-text-div').keyup(function (event) {
@@ -70,6 +87,29 @@ $(function() {
 
 function check_formatting_title() {
   var text = $('#top-title-span').text();
+  $('#top-title-span').find('a').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('hr').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('span').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h1').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h2').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h3').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h4').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h5').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h6').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h7').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h8').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h9').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('h10').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('b').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('i').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('header').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('small').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('aside').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('article').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('p').length > 0 ? replace_text(text) : 0;
+}
+
+function replace_text(text) {
   $('#top-title-span').html(text);
 }
 
