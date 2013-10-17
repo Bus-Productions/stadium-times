@@ -159,7 +159,10 @@ class PostsController < ApplicationController
     current_user_or_redirect ? nil : return
 
     @post = Post.find(params[:id])
-    @post.topics << Topic.find(params[:topic])
+    topic = Topic.where("id = ?", params[:topic]).first
+    if topic
+      @post.topics << topic unless @post.topics.include?(topic)
+    end
     
     if !@post.mine?(@current_user.id)
       redirect_to root_path
