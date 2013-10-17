@@ -30,8 +30,8 @@ $(document).ready(function(){
 	$('.post_vote_down').on("click", function(e){
 		$(this).addClass("active");
 		var vote_count = parseInt($(this).text());
-		var changed = vote_count - 1
-		$(this).html("<span class='ss-like'></span>" + changed.toString());
+		var changed = vote_count + 1
+		$(this).html("<span class='ss-dislike'></span>" + changed.toString());
 	});
 });
 	
