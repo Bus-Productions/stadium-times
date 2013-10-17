@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   # TOPICS 
   
   def set_featured_topics
-    @topics = Topic.featured(4)
+    @browsing_topics = Topic.featured(4)
   end
 
 
