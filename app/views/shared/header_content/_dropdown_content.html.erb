@@ -31,7 +31,7 @@
                     <a href='<%= topics_path %>'>Topics</a>
                   </h5>
                 </li>
-                <% @topics.each do |topic| %>
+                <% @browsing_topics.each do |topic| %>
                   <%= render 'shared/header_content/topic_in_dropdown', :topic => topic %>
                 <% end %>
               </ul>
