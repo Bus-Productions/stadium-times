@@ -50,7 +50,12 @@ $(function() {
         var $this = $(this),
             text = $.trim($this.text());
 
-        if (text === title_text_placeholder) {
+        var code = event.keyCode || event.which;
+        if (code == '9') {
+          console.log('tab pressed');
+        }
+
+        if (text === title_text_placeholder && code != '9') {
           console.log('keydown ==');
           console.log($this.text());
             $this.text('');
@@ -114,14 +119,64 @@ function replace_text(text) {
 }
 
 function check_formatting_body() {
+
+  if ($.trim($('#body-text-div').text()) == '') {
+    $('#body-text-div').html('<p>Type here...</p>');
+  }
+
+  // $( '#body-text-div' ).contents().eq( '0' ).filter( function(){
+  //     return this.nodeType != 1;
+  // } ).wrap( '<p />' );
+
+  // $( '#body-text-div' ).contents().each(function(){
+  //   console.log($(this).html());
+  //   console.log($(this).nodeType);
+  //   if ($(this).nodeType == 3) {
+  //     $(this).wrap('<p />');
+  //   }
+  // });
+
+  $( "#body-text-div" )
+  .contents()
+    .filter(function() {
+      return this.nodeType === 3;
+    })
+      .wrap( "<p></p>" )
+      .end()
+    .filter( "br" )
+    .remove();
+
+  var index = 0;
+  var empties = [];
   $('article#body-text-div p').each(function(){
+    // if ($.trim($(this).text())=='') {
+    //   ++index;
+    //   empties.push($(this));
+    //   if (index > 3) {
+    //     empties[0].remove();
+    //   };
+    // };
     $(this).removeAttr('style');
     $(this).removeAttr('name');
     $(this).removeAttr('class');
     $(this).find('a').removeAttr('style');
   });
-  $('article#body-text-div').find('blockquote').removeAttr('style').removeAttr('name').removeAttr('class');
-  $('article#body-text-div').find('span').removeAttr('style').removeAttr('name').removeAttr('class');
+  $('article#body-text-div blockquote').each(function(){
+    $(this).removeAttr('style');
+    $(this).removeAttr('name');
+    $(this).removeAttr('class');
+    $(this).find('a').removeAttr('style');
+  });
+  $('article#body-text-div span').each(function(){
+    $(this).replaceWith($(this).text());
+  });
+  $('article#body-text-div div').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div img').each(function(){
+    $(this).remove();
+  });
 }
 
 function save_post() {
