@@ -87,6 +87,14 @@ function setCommentTextBehavior() {
     $("#parent-comment-"+comment_id).before('<div id="comment_waiting_box"></div>');
   });
 
+  $(".reply-submit-button").click(function(){
+    var comment_id = $(this).attr('commentid');
+    $container = $("#parent-comment-"+comment_id);
+    $container.find('textarea').text('');
+    $container.find('form').hide();
+    $container.find('.comment-reply-text').show();
+  });
+
  $('.comment-area').bind('keypress', function() {var text = $(this).val();if (text.length==200) {return false;} else {return true;}});
 
   $('.comment-area').change(function(){
