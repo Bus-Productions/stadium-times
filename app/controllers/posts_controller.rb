@@ -30,10 +30,11 @@ class PostsController < ApplicationController
 
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @top_comments = @post.comments.top(2)
-    @comments = @post.comments.created_recent.limit(20)
-    @top_comments.each do |c|
-      @comments.delete(c)
+    @comments = @post.comments.created_recent.limit(15)
+    if @comments.count > 15
+      @top_comments = @post.comments.top(2)
+    else
+      @top_comments = []
     end
 
     if @post.text? && @post.draft?
