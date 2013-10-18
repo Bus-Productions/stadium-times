@@ -28,10 +28,6 @@ $(document).ready(function(){
 	 	var vote_count = parseInt($(this).text());
 	 	var changed = vote_count + 1;
 	 	$(this).html("<span class='ss-like'></span>" + changed.toString());
-	 	var post_route = $(this).closest(".post_vote").attr("id").split("_");
-		var post_id = post_route[1];
-		$.post("post_votes/" + post_id + "/up", function(){
-		});
 	});
 
 	$('.post_vote').on("click", ".post_vote_down", function(e){
@@ -41,10 +37,6 @@ $(document).ready(function(){
 	 	var vote_count = parseInt($(this).text());
 	 	var changed = vote_count + 1
 	 	$(this).html("<span class='ss-dislike'></span>" + changed.toString());
- 	 	var post_route = $(this).closest(".post_vote").attr("id").split("_");
- 		var post_id = post_route[1];
- 		$.post("post_votes/" + post_id + "/down", function(){
- 		});
 	});
 });
 	
