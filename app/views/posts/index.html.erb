@@ -1,15 +1,15 @@
 <%= render 'layouts/main_content_wrap' %>
 
       <%= render 'highlight_article' %>
+      <img src="/assets/images/rails.png">
 
       <!-- Article Index -->
       <section class='article-index'>
 
-      			<div class="post_pagination">
-      				<%= render(@posts) %>
-      			</div>
+      	<div class="post_pagination">
+      		<%= render(@posts) %>
+      	</div>
 
-      	
       	<%= will_paginate @posts %>
 
 
