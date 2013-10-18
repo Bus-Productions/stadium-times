@@ -5,12 +5,17 @@
       <!-- Article Index -->
       <section class='article-index'>
 
-        <% @posts.each do |p| %>
-          <%= render 'article_list_box', :author => p.user, :post => p %>
-        <% end %>
+      			<div class="post_pagination">
+      				<%= render(@posts) %>
+      			</div>
+
+      	
+      	<%= will_paginate @posts %>
+
 
       </section>
 
       <div class='article-index-bg'></div>
+
 
 <%= render 'layouts/end_main_content_wrap' %>

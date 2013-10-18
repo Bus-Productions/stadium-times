@@ -38,6 +38,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'koala', :git => 'https://github.com/arsduo/koala.git'
 
+gem 'will_paginate'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

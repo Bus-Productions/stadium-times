@@ -38,5 +38,20 @@ $(document).ready(function(){
 	 	var changed = vote_count + 1
 	 	$(this).html("<span class='ss-dislike'></span>" + changed.toString());
 	});
+
+});
+
+
+$(function() {
+  if ($('.pagination').length) {
+      $(window).scroll(function() {
+        var url = $('.pagination .next_page').attr('href');
+        if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+          $('.pagination').text('Fetching more posts...');
+          return $.getScript(url);
+        }
+      });
+    }
+    return $(window).scroll();
 });
 	

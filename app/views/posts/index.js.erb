@@ -1,0 +1,7 @@
+$('.post_pagination').append("<%= j render(@posts) %>"); 
+<% if @posts.next_page %>
+	$('.pagination').replaceWith('<%= j will_paginate(@posts) %>'); 
+<% else %>
+	$('.pagination').remove(); 
+<% end %>
+<% sleep 0.5 %>
