@@ -2,5 +2,5 @@ $('#new-comment-button').hide();
 $('.new-comment-box').blur();
 $('.new-comment-box').val('');
 
-$('#comments-container').prepend("<%= j render 'posts/comment_detail', :comment => @saved_comment %>");
+$('#comment_waiting_box').replaceWith("<%= j render 'posts/comment_detail', :comment => @saved_comment, :beta => (@saved_comment.comment_id) %>");
 setCommentTextBehavior();
