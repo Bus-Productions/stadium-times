@@ -26,6 +26,7 @@ class Comment < ActiveRecord::Base
   # SCOPES
 
   scope :top, ->(count) { order('score DESC').limit(count) }
+  scope :created_recent, -> { order('created_at DESC') }
 
 
   #SCORE
