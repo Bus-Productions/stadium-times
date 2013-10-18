@@ -4,7 +4,7 @@
               <a href='<%= post.link_for_post %>' target="<%= determine_target(post) %>" ><%= post.display_title %></a>
             </h2>
             <div class='article-controls'>
-              <div class='btn-group' id="votes_<%= post.id %>">
+              <div class='btn-group post_vote' id="votes_<%= post.id %>">
                 <%= render 'shared/vote_up_or_down_links', post: post %>
               </div>
             </div>

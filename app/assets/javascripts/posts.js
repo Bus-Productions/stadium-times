@@ -38,3 +38,4 @@ function update_post(id) {
     }
   });
 }
+

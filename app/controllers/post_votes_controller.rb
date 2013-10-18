@@ -9,6 +9,7 @@ class PostVotesController < ApplicationController
 
     respond_to do |format|
       format.js
+      format.html { render :nothing => true, :status => 200 }
     end
   end
 end
