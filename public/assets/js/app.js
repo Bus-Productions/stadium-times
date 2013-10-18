@@ -44,14 +44,6 @@ $('.filter-navbar#accordian').affix({
 })
 
 
-// Fade Action with Text Change for Reply To
-$("#fade-action").click(function(){
-  $("#fade-element").toggle('fast');
-  $('aside.conversation #fade-element').text(function(i, text){
-      return text === "Reply to Conversation" ? "Hide Reply" : "Reply to Conversation";
-  })
-});
-
 $('#comment-list').bind('mousewheel', function (e) {
 
     $(this).scrollTop($(this).scrollTop() - e.originalEvent.wheelDeltaY);
@@ -60,3 +52,49 @@ $('#comment-list').bind('mousewheel', function (e) {
     return false;
 
 });
+
+$('#new-comment-button').hide();
+$('.new-comment-box').focus(function(){
+  $('#new-comment-button').show();
+});
+
+function limitCommentCharacters(element) {
+  var text = element.val();
+  console.log(text);
+  console.log(text.length);
+  if (text.length > 200) {
+    element.val(text.substr(0,200));
+  };
+}
+
+function setCommentTextBehavior() {
+  // Fade Action with Text Change for Reply To
+  $(".comment-reply-text").click(function(){
+    $('.comment-reply-text').show();
+    $(this).hide();
+    var comment_id = $(this).attr('commentid');
+    $(".reply-to").hide();
+    $(".comment-"+comment_id+"#new_comment").toggle('fast');
+    // $('aside.conversation #fade-element').text(function(i, text){
+    //     return text === "Reply to Conversation" ? "Hide Reply" : "Reply to Conversation";
+    // })
+  });
+
+  $(".in-reply-to-comment").click(function(){
+    $(this).parent().hide();
+    var comment_id = $(this).attr('commentid');
+    $("#parent-comment-"+comment_id).removeClass('alpha');
+    $("#parent-comment-"+comment_id).before('<div id="comment_waiting_box"></div>');
+  });
+
+ $('.comment-area').bind('keypress', function() {var text = $(this).val();if (text.length==200) {return false;} else {return true;}});
+
+  $('.comment-area').change(function(){
+    limitCommentCharacters($(this));
+  });
+  $('.comment-area').keyup(function(){
+    limitCommentCharacters($(this));
+  });
+}
+setCommentTextBehavior();
+

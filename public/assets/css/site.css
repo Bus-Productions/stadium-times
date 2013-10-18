@@ -529,7 +529,7 @@ output { display: block; padding-top: 7px; font-size: 14px; line-height: 1.42857
 .form-control:focus { border-color: #66afe9; outline: 0; -webkit-box-shadow: none !important; box-shadow: none !important; }
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control { cursor: not-allowed; background-color: #959595; }
 
-textarea.form-control { height: auto; min-height: 160px; }
+textarea.form-control { height: auto; min-height: 60px; max-height: 60px; }
 
 .form-group { margin-bottom: 15px; }
 
@@ -808,6 +808,7 @@ span.caret { border-top: 4px solid #3b4148; position: relative; left: -2px; top:
 #fade-action { color: #168dd9; }
 
 #fade-element { display: none; }
+.reply-to#new_comment { display: none; }
 
 .btn { -webkit-transition: all 0.15s ease-in-out; transition: all 0.15s ease-in-out; }
 .btn.primary { background: #168dd9; color: #fbf9fb; font-weight: 200; letter-spacing: .1em; padding: 16px 24px; font-size: 14px; line-height: 1.33; border-radius: 4px; }

@@ -29,6 +29,12 @@ class PostsController < ApplicationController
   def show
 
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    @top_comments = @post.comments.top(2)
+    @comments = @post.comments.created_recent.limit(20)
+    @top_comments.each do |c|
+      @comments.delete(c)
+    end
 
     if @post.text? && @post.draft?
       redirect_to edit_post_path(@post)

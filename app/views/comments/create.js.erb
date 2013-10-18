@@ -1,0 +1,6 @@
+$('#new-comment-button').hide();
+$('.new-comment-box').blur();
+$('.new-comment-box').val('');
+
+$('#comments-container').prepend("<%= j render 'posts/comment_detail', :comment => @saved_comment %>");
+setCommentTextBehavior();
