@@ -1,5 +1,24 @@
 (function(f){function l(g,h){function d(a){if(!e){e=true;c.start&&c.start(a,b)}}function i(a,j){if(e){clearTimeout(k);k=setTimeout(function(){e=false;c.stop&&c.stop(a,b)},j>=0?j:c.delay)}}var c=f.extend({start:null,stop:null,delay:400},h),b=f(g),e=false,k;b.keypress(d);b.keydown(function(a){if(a.keyCode===8||a.keyCode===46)d(a)});b.keyup(i);b.blur(function(a){i(a,0)})}f.fn.typing=function(g){return this.each(function(h,d){l(d,g)})}})(jQuery);
 
+(function($) {
+    $.extend($.fn, {
+        makeCssInline: function() {
+            this.each(function(idx, el) {
+                var style = el.style;
+                var properties = [];
+                for(var property in style) { 
+                    if($(this).css(property)) {
+                        properties.push(property + ':' + $(this).css(property));
+                    }
+                }
+                this.style.cssText = properties.join(';');
+                $(this).children().makeCssInline();
+            });
+        }
+    });
+}(jQuery));
+
+
 $(function() {
 
     $('.editable-post-field').typing({
@@ -17,6 +36,13 @@ $(function() {
       if ((e.keyCode || e.which) == 13) {
         return false;
       }
+    });
+
+    $("#top-title-span").bind('copy', function() {
+      $('#top-title-span').makeCssInline();
+    });
+    $("#body-text-div").bind('copy', function() {
+      $('#body-text-div').makeCssInline();
     });
 
     //$('#top-title-span').get(0).focus();
@@ -171,6 +197,66 @@ function check_formatting_body() {
     $(this).replaceWith($(this).text());
   });
   $('article#body-text-div div').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h1').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h2').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h3').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h4').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h5').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h6').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h7').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h8').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h9').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div h10').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div ul').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div li').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div pre').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div article').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div section').each(function(){
     var this_text = $(this).text();
     $(this).replaceWith("<p>"+this_text+"</p>");
   });
