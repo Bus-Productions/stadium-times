@@ -21,7 +21,7 @@
   <link href='/assets/images/logos-icons/favicon.ico' rel='icon' type='images/png'>
   <!-- Style -->
 
-  <link href='/assets/css/style.css' rel='stylesheet'>
+  <link href='/assets/css/zenpen-style.css' rel='stylesheet'>
   <link href='/assets/css/fonts.css' rel='stylesheet'>
   <link href='/assets/css/site.css' rel='stylesheet'>
   <link href='/assets/fonts/ss-block/webfonts/ss-symbolicons-block.css' rel='stylesheet'>
@@ -71,6 +71,9 @@
     <script rel='javascript' src='/assets/js/pushy/pushy.min.js'></script>
     <script rel='javascript' src='http://zurb.com/playground/projects/off-canvas/javascripts/foundation/jquery.offcanvas.js'></script>
     <script rel='javascript' src='/assets/js/app.js'></script>
+
+    <%= (defined?(@compose) && @compose)? (render 'posts/zenpen') : nil  %>
+
     <!-- / Big Video -->
     <!-- / %script{:rel => "javascript", :src => "http://dfcb.github.io/BigVideo.js/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"} -->
     <!-- / %script{:rel => "javascript", :src => "http://vjs.zencdn.net/4.0/video.js"} -->
