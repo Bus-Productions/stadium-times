@@ -42,13 +42,23 @@ $(function() {
       $('#top-title-span').makeCssInline();
     });
     $("#body-text-div").bind('copy', function() {
-      $('#body-text-div').makeCssInline();
+      $('article#body-text-div p').each(function(){
+        $(this).makeCssInline();
+      });
+      $('article#body-text-div blockquote').each(function(){
+        $(this).makeCssInline();
+      });
     });
     $("#top-title-span").bind('cut', function() {
       $('#top-title-span').makeCssInline();
     });
     $("#body-text-div").bind('cut', function() {
-      $('#body-text-div').makeCssInline();
+      $('article#body-text-div p').each(function(){
+        $(this).makeCssInline();
+      });
+      $('article#body-text-div blockquote').each(function(){
+        $(this).makeCssInline();
+      });
     });
 
     $("#body-text-div").bind('paste', function() {
