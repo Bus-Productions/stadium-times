@@ -81,6 +81,7 @@ class PostsController < ApplicationController
 
     @post = Post.find(params[:id])
     @all_topics = Topic.all
+    @compose = true
 
     if !@post.mine?(@current_user.id)
       redirect_to root_path
