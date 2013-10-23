@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     @case = 'posts'
     if params[:display] == 'comments'
-      @comments = @user.comments
+      @comments = @user.comments.created_recent.limit(30)
       @case = 'comments'
     elsif params[:display] == 'upvoted'
       @posts = @user.upvoted_posts
