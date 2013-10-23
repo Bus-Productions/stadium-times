@@ -12,8 +12,8 @@
         </header>
         <ul class='saved-articles list'>
           <div class="topic_posts_pagination">
-              <%= render 'topic_post', :topic_posts => @topic_posts %>
+            <%= render(@topics) %>
           </div>
-          <%= will_paginate @topic_posts %>
+          <%= will_paginate @topics %>
         </ul>
       </section>

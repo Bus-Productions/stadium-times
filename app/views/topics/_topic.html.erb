@@ -1,0 +1,26 @@
+<li>
+  <div class='link-detail'>
+    <header>
+      <a href='<%= post_path(topic) %>'>
+        <h4><%= topic.display_title %></h4>
+      </a>
+      <small>
+        <em><%= topic.link %></em>
+      </small>
+    </header>
+    <small class='meta'>
+      <em>
+        <%= topic.link? ? 'shared' : 'written' %> by
+        <a href='<%= show_post_path(topic.id, topic.slug) %>'>
+          <%= topic.user.name %>
+          <%= time_ago_in_words(topic.created_at) %> ago
+        </a>
+      </em>
+    </small>
+  </div>
+  <div class='profile-detail'>
+    <div class='avatar'>
+      <img alt='<%= topic.user.name %>' class='img-circle' src='<%= topic.user.profile_picture %>'>
+    </div>
+  </div>
+</li>

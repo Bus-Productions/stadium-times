@@ -14,11 +14,11 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])
-    @topic_posts = @topic.posts.paginate(:page => params[:page], :per_page => 4)
+    @topics = @topic.posts.paginate(:page => params[:page], :per_page => 4)
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @topic }
+      format.js
     end
   end
 
