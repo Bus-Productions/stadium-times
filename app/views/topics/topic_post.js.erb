@@ -1,4 +1,4 @@
-$('.topic_posts_pagination').append("<%= j render 'topic_post', :topic_posts => @topic_posts %>"); //this is the line that isnt working.
+$('.topic_posts_pagination').append("<%= j render(@topic_posts)%>"); //this is the line that isnt working.
 <% if @topic_posts.next_page %>
 	$('.pagination').replaceWith('<%= j will_paginate(@topic_posts) %>'); 
 <% else %>
