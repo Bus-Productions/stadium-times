@@ -4,24 +4,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    p "*"*50
-    p params
-    p "*"*50
 
     @user = User.find(params[:id])
-    @comments = @user.comments.created_recent.paginate(:page => params[:page], :per_page => 7)
 
     @case = 'posts'
     if params[:display] == 'comments'
+      @comments = @user.comments.created_recent.paginate(:page => params[:page], :per_page => 7)
       @case = 'comments'
     elsif params[:display] == 'upvoted'
-      @posts = @user.upvoted_posts
+      @posts = @user.upvoted_posts.paginate(:page => params[:page], :per_page => 7)
       @case = 'upvotes'
     elsif params[:display] == 'drafts'
-      @posts = @user.posts.draft.edited_recent
+      @posts = @user.posts.draft.edited_recent.paginate(:page => params[:page], :per_page => 7)
       @case = 'drafts'
     else
-      @posts = @user.posts.live.created_recent
+      @posts = @user.posts.live.created_recent.paginate(:page => params[:page], :per_page => 7)
     end
 
     respond_to do |format|

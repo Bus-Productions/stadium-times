@@ -1,42 +1,67 @@
+
+function enablePagination(type) { 
+  switch(type)
+  {
+    case "posts": 
+      var first_time = $('.post_pagination').length;
+      if (first_time == 0) {
+        $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
+      }
+      else {
+        <% @posts.each do |post| %>
+          $('.post_pagination').append("<%= j render 'post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
+        <% end %>
+      }
+      <% if @posts.next_page %>
+        $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "posts" }) %>'); 
+      <% else %>
+        $('.pagination').remove(); 
+      <% end %>
+      <% sleep 0.5 %> 
+      break; 
+    case "drafts": 
+      var first_time = $('.draft_pagination').length;
+
+      if (first_time == 0) {
+        $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
+      }
+      else {
+        <% @posts.each do |post| %>
+          $('.post_pagination').append("<%= j render 'post_written_by_user', :post => post %>");
+        <% end %>
+      }
+      <% if @posts.next_page %>
+        $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "drafts" }) %>'); 
+      <% else %>
+        $('.pagination').remove(); 
+      <% end %>
+      <% sleep 0.5 %>
+      break; 
+    
+  }
+}
+
+
 <% if @case == 'posts' %>
   $('#article_button').addClass('active');
   $('#comment_button').removeClass('active');
   $('#upvote_button').removeClass('active');
   $('#drafts_button').removeClass('active');
-  $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
 <% elsif @case == 'drafts' %>
   $('#drafts_button').addClass('active');
   $('#article_button').removeClass('active');
   $('#comment_button').removeClass('active');
   $('#upvote_button').removeClass('active');
-  $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
 <% elsif @case == 'comments' %>
   $('#comment_button').addClass('active');
   $('#article_button').removeClass('active');
   $('#upvote_button').removeClass('active');
   $('#drafts_button').removeClass('active');
-  var second_round = $('.comment_pagination').length;
-  if (second_round == 0) {
-    $('.backend-user-container').replaceWith('<%= j render("comment_user_list") %>');
-  }
-  else {
-    <% @comments.each do |c| %>
-      $('.comment_pagination').append("<%= j render 'comment_detail', :comment => c %>");
-    <% end %>
-  }
-  <% if @comments.next_page %>
-    $('.pagination').replaceWith('<%= j will_paginate(@comments, :params => { :controller => "users", :action => "show", :display => "comments" }) %>'); 
-  <% else %>
-    $('.pagination').remove(); 
-  <% end %>
-  <% sleep 0.5 %>
-
-
 <% elsif @case == 'upvotes' %>
   $('#upvote_button').addClass('active');
   $('#comment_button').removeClass('active');
   $('#article_button').removeClass('active');
   $('#drafts_button').removeClass('active');
-  $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
 <% end %>
+enablePagination("<%= @case %>")
 setCommentTextBehavior();
