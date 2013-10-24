@@ -40,6 +40,8 @@ gem 'koala', :git => 'https://github.com/arsduo/koala.git'
 
 gem 'will_paginate'
 
+gem 'clockwork'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
