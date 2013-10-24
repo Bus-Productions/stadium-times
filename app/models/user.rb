@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
       end
       user.oauth_token = auth.credentials.token
       user.save!
+      user.delay.add_to_overall_mailing_list
     end
   end
 
@@ -131,5 +132,13 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  # MAILING LISTS
+
+  def add_to_overall_mailing_list
+    gb = Gibbon::API.new("d11ed4383fba5209f0e706d912dbba6c-us7")
+    gb.throws_exceptions = false
+    gb.lists.subscribe({:id => '08ac9be67c', :email => {:email => self.email }, :merge_vars => {:FNAME => self.name, :LNAME => ''}, :double_optin => false})
+  end
 
 end
