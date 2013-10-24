@@ -14,7 +14,13 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])
-    @posts = @topic.posts.live.sorted_score.paginate(:page => params[:page], :per_page => 4)
+    
+    if params[:sort] == 'new'
+      @posts = @topic.posts.live.created_recent.paginate(:page => params[:page], :per_page => 4)
+    else
+      @posts = @topic.posts.live.sorted_score.paginate(:page => params[:page], :per_page => 4)
+    end
+    @link_location = 'topic'
 
     respond_to do |format|
       format.html # show.html.erb

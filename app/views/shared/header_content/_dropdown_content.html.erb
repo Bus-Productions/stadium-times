@@ -38,14 +38,14 @@
               <ul class='filter-list'>
                 <li class='list-title'>
                   <h5 class='tag'>
-                    <a href='#'>Sort By</a>
+                    <a href='#'>Browse By</a>
                   </h5>
                 </li>
                 <li>
-                  <%= link_to 'Popular', browse_link('home', nil, 'score') %>
+                  <%= link_to 'Popular', browse_link((defined?(@link_location) ? @link_location : 'home'), (defined?(@topic) ? @topic : nil), 'score') %>
                 </li>
                 <li>
-                  <%= link_to 'New', browse_link('home', nil, 'new') %>
+                  <%= link_to 'New', browse_link((defined?(@link_location) ? @link_location : 'home'), (defined?(@topic) ? @topic : nil), 'new') %>
                 </li>
               </ul>
               <div class='filter-slider-list'>
