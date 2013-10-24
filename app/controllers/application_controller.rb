@@ -62,4 +62,11 @@ class ApplicationController < ActionController::Base
     @results = @post_search.results + @topic_search.results
   end
 
+  # LINKS
+
+  def browse_link(location, topic, order)
+    location == 'topics' ? "/topics/#{topic.id}?sort=#{order}" : "/?sort=#{order}"
+  end
+  helper_method :browse_link
+
 end
