@@ -16,7 +16,9 @@
                 <%= comment.comment_text %>
               </p>
               <div>
+                
                 <% if comment.in_reply_to_comment && (defined?(beta) ? (beta ? false : true) : true ) %><span><%= link_to "In reply to #{comment.in_reply_to_comment.user.name}", comment_path(comment.in_reply_to_comment), :remote => true, class: 'in-reply-to-comment smaller', :commentid => comment.id %> &sdot; </span><% end %>
+
                 <a class="comment-reply-text smaller" id='fade-action' commentid="<%= comment.id %>" href="#">Reply</a>
 
               </div>
