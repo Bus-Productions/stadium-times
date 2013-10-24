@@ -1,45 +1,3 @@
-
-function enablePagination(type) { 
-  switch(type)
-  {
-    case "posts": 
-      var first_time = $('.post_pagination').length;
-      if (first_time == 0) {
-        $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
-      }
-      else {
-        <% @posts.each do |post| %>
-          $('.post_pagination').append("<%= j render 'post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
-        <% end %>
-      }
-      <% if @posts.next_page %>
-        $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "posts" }) %>'); 
-      <% else %>
-        $('.pagination').remove(); 
-      <% end %>
-      <% sleep 0.5 %> 
-      break; 
-    case "drafts": 
-      var first_time = $('.draft_pagination').length;
-      if (first_time == 0) {
-        $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
-      }
-      else {
-        <% @posts.each do |post| %>
-          $('.draft_pagination').append("<%= j render 'drafts_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
-        <% end %>
-      }
-      <% if @posts.next_page %>
-        $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "drafts" }) %>'); 
-      <% else %>
-        $('.pagination').remove(); 
-      <% end %>
-      <% sleep 0.5 %> 
-      break; 
-  }
-}
-
-
 <% if @case == 'posts' %>
   $('#article_button').addClass('active');
   $('#comment_button').removeClass('active');
@@ -61,5 +19,67 @@ function enablePagination(type) {
   $('#article_button').removeClass('active');
   $('#drafts_button').removeClass('active');
 <% end %>
-enablePagination("<%= @case %>")
+enablePagination("<%= @case %>");
 setCommentTextBehavior();
+
+
+function enablePagination(type) { 
+  switch(type)
+  {
+    case "posts": 
+      console.log("in posts");
+      var first_time = $('.post_pagination').length;
+      if (first_time == 0) {
+        $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
+      }
+      else {
+        <% @posts.each do |post| %>
+          $('.post_pagination').append("<%= j render 'post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
+        <% end %>
+      }
+      <% if @posts.next_page %>
+        $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "posts" }) %>'); 
+      <% else %>
+        $('.pagination').remove(); 
+      <% end %>
+      <% sleep 0.5 %> 
+      break; 
+      
+    case "drafts": 
+      console.log("in drafts");
+      var first_time = $('.draft_pagination').length;
+      if (first_time == 0) {
+        $('.backend-user-container').replaceWith('<%= j render("draft_user_list") %>');
+      }
+      else {
+        <% @posts.each do |post| %>
+          $('.draft_pagination').append("<%= j render 'drafts_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
+        <% end %>
+      }
+      <% if @posts.next_page %>
+        $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "drafts" }) %>'); 
+      <% else %>
+        $('.pagination').remove(); 
+      <% end %>
+      <% sleep 0.5 %> 
+      break; 
+
+    case "comments":
+      var first_time = $('.comment_pagination').length;
+      if (first_time == 0) {
+        $('.backend-user-container').replaceWith('<%= j render("comment_user_list") %>');
+      }
+      else {
+        <% @comments.each do |c| %>
+          $('.comment_pagination').append("<%= j render 'comment_detail', :comment => c %>");
+        <% end %>
+      }
+      <% if @comments.next_page %>
+        $('.pagination').replaceWith('<%= j will_paginate(@comments, :params => { :controller => "users", :action => "show", :display => "comments" }) %>'); 
+      <% else %>
+        $('.pagination').remove(); 
+      <% end %>
+      <% sleep 0.5 %>
+      break; 
+  }
+}
