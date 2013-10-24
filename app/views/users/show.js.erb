@@ -24,10 +24,10 @@ setCommentTextBehavior();
 
 
 function enablePagination(type) { 
-  switch(type)
-  {
-    case "posts": 
-      console.log("in posts");
+
+  
+  <% if @case == 'posts' %>
+
       var first_time = $('.post_pagination').length;
       if (first_time == 0) {
         $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
@@ -43,10 +43,9 @@ function enablePagination(type) {
         $('.pagination').remove(); 
       <% end %>
       <% sleep 0.5 %> 
-      break; 
-      
-    case "drafts": 
-      console.log("in drafts");
+  
+  <% elsif @case == 'drafts' %>
+
       var first_time = $('.draft_pagination').length;
       if (first_time == 0) {
         $('.backend-user-container').replaceWith('<%= j render("draft_user_list") %>');
@@ -62,9 +61,9 @@ function enablePagination(type) {
         $('.pagination').remove(); 
       <% end %>
       <% sleep 0.5 %> 
-      break; 
+  
+  <% elsif @case == 'comments' %>
 
-    case "comments":
       var first_time = $('.comment_pagination').length;
       if (first_time == 0) {
         $('.backend-user-container').replaceWith('<%= j render("comment_user_list") %>');
@@ -80,6 +79,7 @@ function enablePagination(type) {
         $('.pagination').remove(); 
       <% end %>
       <% sleep 0.5 %>
-      break; 
-  }
+
+  <% end %>
+
 }

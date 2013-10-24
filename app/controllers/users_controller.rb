@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
 
-    @case = 'posts'
     if params[:display] == 'comments'
       @comments = @user.comments.created_recent.paginate(:page => params[:page], :per_page => 7)
       @case = 'comments'
@@ -19,6 +18,7 @@ class UsersController < ApplicationController
       @case = 'drafts'
     else
       @posts = @user.posts.live.created_recent.paginate(:page => params[:page], :per_page => 7)
+      @case = 'posts'
     end
 
     respond_to do |format|
