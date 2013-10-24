@@ -107,6 +107,10 @@ class Post < ActiveRecord::Base
     self.upvotes-self.downvotes
   end
 
+  def update_score
+    self.update_attribute(:score, self.current_score)
+  end
+
 
   #POSTVIEWS
 

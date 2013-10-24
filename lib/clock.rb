@@ -5,6 +5,8 @@ require 'backend_jobs'
 
 include Clockwork
 
+every(3.minutes, 'Queuing post scores' ) { BackendJobs.new(1).score_posts.delay }
+
 # every(1.minute, 'Queuing execution of portfolio daily open calculation') { PassOverPortfoliosJob.new(1).record_daily_open.delay }
 # every(1.minute, 'Queuing execution of stocks daily open calculation') { PassOverStocksJob.new(1).record_daily_open.delay }
 
