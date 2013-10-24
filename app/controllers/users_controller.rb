@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if params[:display] == 'comments'
       @comments = @user.comments.created_recent.paginate(:page => params[:page], :per_page => 7)
       @case = 'comments'
-    elsif params[:display] == 'upvoted'
+    elsif params[:display] == 'upvotes'
       @posts = @user.upvoted_posts.paginate(:page => params[:page], :per_page => 7)
       @case = 'upvotes'
     elsif params[:display] == 'drafts'

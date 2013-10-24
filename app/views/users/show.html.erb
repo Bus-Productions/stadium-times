@@ -8,7 +8,7 @@
                   <%= link_to "Posts", users_display_path(@user, 'posts'), remote: true, :class => "btn light active", :id => "article_button" %>
                   <% if me?(@user.id) %><%= link_to "Drafts", users_display_path(@user, 'drafts'), remote: true, :class => "btn light", :id => "drafts_button" %><% end %>
                   <%= link_to "Comments", users_display_path(@user, 'comments'), remote: true, :class => "btn light", :id => "comment_button" %>
-                  <%= link_to "Upvotes", users_display_path(@user, 'upvoted'), remote: true, :class => "btn light", :id => "upvote_button" %>
+                  <%= link_to "Upvotes", users_display_path(@user, 'upvotes'), remote: true, :class => "btn light", :id => "upvote_button" %>
                 </div>
               </div>
             </div>
