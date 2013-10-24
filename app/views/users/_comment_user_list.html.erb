@@ -1,5 +1,3 @@
         <ul class='comment-list list backend-user-container'>
-            <% @comments.each do |comment| %>
-              <%= render 'comment_user_detail', :comment => comment, :user => comment.user %>
-            <% end %>
+        	<%= render 'pagination' %>
         </ul>

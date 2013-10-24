@@ -14,8 +14,12 @@
             </div>
             <hr>
           </header>
+
+          <% if @posts %>
+            <%= render 'post_user_list' %>
+          <% end %>
           
-          <%= render 'post_user_list' %>
+          <%= will_paginate @comments %>
           
         </section>
         

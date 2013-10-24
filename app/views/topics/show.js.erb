@@ -1,6 +1,9 @@
-$('.topic_posts_pagination').append("<%= j render(@topics) %>");
-<% if @topics.next_page %>
-	$('.pagination').replaceWith('<%= j will_paginate(@topics) %>'); 
+<% @posts.each do |p| %>
+	$('.topic_posts_pagination').append("<%= j render 'topic_post', :topic => p %>");
+<% end %>
+
+<% if @posts.next_page %>
+	$('.pagination').replaceWith('<%= j will_paginate(@posts) %>'); 
 <% else %>
 	$('.pagination').remove(); 
 <% end %>

@@ -40,7 +40,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   # USER INFO
 
   def vanity_username

@@ -1,0 +1,29 @@
+
+<li id="parent-comment-<%= comment.id %>" class='<%= defined?(beta) ? (beta ? "" : "alpha") : "alpha" %>'>
+  <div class='profile-detail'>
+    <div class='avatar'>
+      <img alt='<%= comment.user.name %>' class='img-circle' src='<%= comment.user.profile_picture %>'>
+    </div>
+  </div>
+  <div class='comment-detail'>
+    <header>
+      <h4><%= link_to comment.post.display_title, comment.post.link_for_post %></h4>
+      <small class='meta'>
+        <em><%= time_ago_in_words(comment.created_at) %> ago</em>
+      </small>
+    </header>
+    <p>
+      <%= comment.comment_text %>
+    </p>
+    <div>
+      <% if comment.in_reply_to_comment && (defined?(beta) ? (beta ? false : true) : true ) %><span><%= link_to "In reply to #{comment.in_reply_to_comment.user.name}", comment_path(comment.in_reply_to_comment), :remote => true, class: 'in-reply-to-comment smaller', :commentid => comment.id %></span><% end %>
+
+    </div>
+
+  </div>
+</li>
+      
+      
+      
+      
+    

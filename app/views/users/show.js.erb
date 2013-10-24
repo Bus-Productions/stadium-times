@@ -15,7 +15,23 @@
   $('#article_button').removeClass('active');
   $('#upvote_button').removeClass('active');
   $('#drafts_button').removeClass('active');
-  $('.backend-user-container').replaceWith('<%= j render("comment_user_list") %>');
+  var second_round = $('.comment_pagination').length;
+  if (second_round == 0) {
+    $('.backend-user-container').replaceWith('<%= j render("comment_user_list") %>');
+  }
+  else {
+    <% @comments.each do |c| %>
+      $('.comment_pagination').append("<%= j render 'comment_detail', :comment => c %>");
+    <% end %>
+  }
+  <% if @comments.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate(@comments, :params => { :controller => "users", :action => "show", :display => "comments" }) %>'); 
+  <% else %>
+    $('.pagination').remove(); 
+  <% end %>
+  <% sleep 0.5 %>
+
+
 <% elsif @case == 'upvotes' %>
   $('#upvote_button').addClass('active');
   $('#comment_button').removeClass('active');

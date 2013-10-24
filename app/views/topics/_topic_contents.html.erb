@@ -12,8 +12,10 @@
         </header>
         <ul class='saved-articles list'>
           <div class="topic_posts_pagination">
-            <%= render(@topics) %>
+            <% @posts.each do |p| %>
+              <%= render 'topic_post', :topic => p %>
+            <% end %>
           </div>
-          <%= will_paginate @topics %>
+          <%= will_paginate @posts %>
         </ul>
       </section>
