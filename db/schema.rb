@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016155717) do
+ActiveRecord::Schema.define(:version => 20131024154602) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "user_id"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20131016155717) do
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "comment_text"
     t.integer  "comment_id"
     t.integer  "user_id"
     t.integer  "post_id"
@@ -32,7 +31,24 @@ ActiveRecord::Schema.define(:version => 20131016155717) do
     t.integer  "downvotes",    :default => 0
     t.float    "score",        :default => 0.0
     t.integer  "spam_count",   :default => 0
+    t.text     "comment_text"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "post_and_topic_pairings", :force => true do |t|
     t.integer  "post_id"
@@ -51,19 +67,19 @@ ActiveRecord::Schema.define(:version => 20131016155717) do
 
   create_table "posts", :force => true do |t|
     t.string   "post_type"
-    t.integer  "user_id",    :limit => 255
     t.string   "title"
-    t.string   "text"
     t.string   "link"
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "post_id"
-    t.string   "status",                    :default => "draft"
-    t.integer  "upvotes",                   :default => 0
-    t.integer  "downvotes",                 :default => 0
-    t.float    "score",                     :default => 0.0
-    t.integer  "spam_count",                :default => 0
-    t.string   "slug",                      :default => "untitled"
+    t.string   "status",     :default => "draft"
+    t.integer  "upvotes",    :default => 0
+    t.integer  "downvotes",  :default => 0
+    t.float    "score",      :default => 0.0
+    t.integer  "spam_count", :default => 0
+    t.string   "slug",       :default => "untitled"
+    t.integer  "user_id"
+    t.text     "text"
   end
 
   create_table "postviews", :force => true do |t|
