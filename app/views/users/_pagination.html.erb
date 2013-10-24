@@ -1,5 +1,13 @@
+<% if @comments %>
  	<div class="comment_pagination">
  		<% @comments.each do |comment| %>
  			<%= render "comment_detail", :comment => comment %>
  		<% end  %>
  	</div>
+<% else %>
+	<div class="post_pagination">
+		<% @posts.each do |post| %>
+			<%= render "post_written_by_user", :post => post, :topics => post.topics, :user => post.user %>
+		<% end  %>
+	</div>
+<% end %>

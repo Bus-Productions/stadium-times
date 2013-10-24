@@ -21,13 +21,12 @@ function enablePagination(type) {
       break; 
     case "drafts": 
       var first_time = $('.draft_pagination').length;
-
       if (first_time == 0) {
         $('.backend-user-container').replaceWith('<%= j render("post_user_list") %>');
       }
       else {
         <% @posts.each do |post| %>
-          $('.post_pagination').append("<%= j render 'post_written_by_user', :post => post %>");
+          $('.draft_pagination').append("<%= j render 'drafts_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
         <% end %>
       }
       <% if @posts.next_page %>
@@ -35,9 +34,8 @@ function enablePagination(type) {
       <% else %>
         $('.pagination').remove(); 
       <% end %>
-      <% sleep 0.5 %>
+      <% sleep 0.5 %> 
       break; 
-    
   }
 }
 
