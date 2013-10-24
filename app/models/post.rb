@@ -66,6 +66,7 @@ class Post < ActiveRecord::Base
 
   scope :top, ->(count) { order('score DESC').limit(count) }
   scope :highlighted_article, ->{ where("text is NOT NULL").order('score DESC').limit(1) }
+  scope :sorted_score, ->{ order('score DESC') }
 
   scope :most_upvotes, ->(count) { order('upvotes DESC').limit(count) }
   scope :today, -> { where('created_at > ?', 24.hours.ago) }

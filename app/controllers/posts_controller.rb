@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @body_class = 'home'
     @browsing = 'Popular Articles'
 
-    @posts = Post.live.paginate(:page => params[:page], :per_page => 15)
+    @posts = Post.live.sorted_score.paginate(:page => params[:page], :per_page => 15)
     @topics = Topic.all
     
     @highlighted_article = Post.highlighted_article.first
