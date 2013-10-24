@@ -43,6 +43,8 @@ gem 'will_paginate'
 gem 'clockwork'
 gem 'delayed_job_active_record'
 
+gem 'gibbon'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
