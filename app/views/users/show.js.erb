@@ -40,7 +40,7 @@ function enablePagination(type) {
       <% if @posts.next_page %>
         $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "posts" }) %>'); 
       <% else %>
-        $('.pagination').remove(); 
+        $('.pagination').html("That's it."); 
       <% end %>
       <% sleep 0.5 %> 
   
@@ -58,7 +58,7 @@ function enablePagination(type) {
       <% if @posts.next_page %>
         $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "drafts" }) %>'); 
       <% else %>
-        $('.pagination').remove(); 
+        $('.pagination').html("That's it."); 
       <% end %>
       <% sleep 0.5 %> 
   
@@ -76,7 +76,7 @@ function enablePagination(type) {
       <% if @comments.next_page %>
         $('.pagination').replaceWith('<%= j will_paginate(@comments, :params => { :controller => "users", :action => "show", :display => "comments" }) %>'); 
       <% else %>
-        $('.pagination').remove(); 
+        $('.pagination').html("That's it."); 
       <% end %>
       <% sleep 0.5 %>
 
