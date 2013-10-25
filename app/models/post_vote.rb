@@ -9,7 +9,7 @@ class PostVote < ActiveRecord::Base
 
   def add_interactions
     #comment author
-    Interaction.find_or_create_by_user_id_and_post_id(self.post.user.id, self.post_id)
+    Interaction.find_or_create_by_user_id_and_post_vote_id(self.post.user.id, self.id)
   end
 
 end

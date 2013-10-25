@@ -213,7 +213,7 @@ class Post < ActiveRecord::Base
   def add_interactions
     #reply post author
     if self.live?
-      Interaction.find_or_create_by_user_id_and_post_id(self.in_reply_to_post.user.id, self.post_id) if self.post_id
+      Interaction.find_or_create_by_user_id_and_post_id(self.in_reply_to_post.user.id, self.id) if self.post_id
     end
   end
 

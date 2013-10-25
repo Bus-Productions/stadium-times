@@ -11,7 +11,7 @@ class CommentVote < ActiveRecord::Base
 
   def add_interactions
     #comment author
-    Interaction.find_or_create_by_user_id_and_comment_id(self.comment.user.id, self.comment_id)
+    Interaction.find_or_create_by_user_id_and_comment_vote_id(self.comment.user.id, self.id)
   end
   
 end
