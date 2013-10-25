@@ -11,6 +11,9 @@
 
 # POSTS
 
+u = User.new(:provider => "facebook", :name => "Seed Account")
+u.save!
+
 p = Post.new(:post_type => "link", :user_id => 1, :title => "Florida is da bomb", :status => "live", :upvotes => 25, :downvotes => 1, :spam_count => 1, :post_id => nil, :link => "http://espn.go.com")
 p.save!
 p.score = p.current_score
