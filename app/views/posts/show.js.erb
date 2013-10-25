@@ -1,7 +1,10 @@
-$(document).ready(function(){
-	var comments = $('.comment-list');
-	comments.on("scroll", function() {
-	  console.log("scrolling bitchez");
-	});
-});	
-	
+<% @comments.each do |comment| %>
+  $('.comments_pagination').append("<%= j render 'comment_detail', :comment => comment %>");
+<% end %>
+
+<% if @comments.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@comments) %>'); 
+<% else %>
+  $('.pagination').remove(); 
+<% end %>
+<% sleep 0.5 %>
