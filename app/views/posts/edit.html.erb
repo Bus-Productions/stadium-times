@@ -33,8 +33,7 @@
                     <div class="btn-group">
                       <a id="save-status" class="btn light active" href="#">Saved!</a>
                       <%= link_to "Delete", @post, :method => :delete, :class => "btn light" %>
-                     <!--  <a class="btn light" href="<%= publish_post_path(@post) %>">Publish</a> -->
-                     <a href="#topicModal" role="button" class="btn light" data-toggle="modal">Publish</a>
+                      <a class="btn light" href="<%= publish_post_path(@post) %>">Publish</a>
                     </div>
                   </div>
               </div>
@@ -69,29 +68,6 @@
           <button class="quote">&rdquo;</button>
         </span>
       </span>
-    </div>
-  </div>
-
-  <!-- Modals -->
-  <!-- Topic Modal -->
-  <div aria-hidden='true' aria-labelledby='searchModalLabel' class='modal fade' id='topicModal' role='dialog' tabindex='-1'>
-    <div class='modal-dialog'>
-      <div class='modal-content'>
-        <header class='modal-header'>
-          <h4 class='modal-title'>Pick a topic</h4>
-        </header>
-        <section class='modal-body'>
-          <ul class='list' id="search_results">
-            <% @all_topics.each do |topic| %>
-              <%= link_to topic.topic_name, publish_post_path(:id => @post.id, :topic=> topic.id) %><br>
-            <% end %>
-            <footer class='modal-footer'>
-              <%= link_to "Skip", publish_post_path(@post), :class => 'btn light' %>
-            </footer>
-          </ul>
-          <br><br><br><br><br><br>
-        </section>
-      </div>
     </div>
   </div>
 
