@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        @comment.add_interactions.delay
+        @comment.delay.add_interactions
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
         @saved_comment = @comment

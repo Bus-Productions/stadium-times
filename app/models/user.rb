@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
     else
       pv = PostVote.create({:vote => vote, :user_id => self.id, :post_id => post.id})
       post.add_vote(vote)
-      pv.add_interactions.delay
+      pv.delay.add_interactions
     end
   end
 
@@ -111,7 +111,7 @@ class User < ActiveRecord::Base
     else
       cv = CommentVote.create({:vote => vote, :user_id => self.id, :comment_id => comment.id})
       comment.add_vote(vote)
-      cv.add_interactions.delay
+      cv.delay.add_interactions
     end
   end
 
