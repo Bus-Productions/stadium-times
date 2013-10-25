@@ -34,10 +34,6 @@ $(function() {
       var comments = $('.comments_pagination');
 
       sidebar.scroll(function() {
-        console.log("*******");
-        console.log(sidebar.scrollTop());
-        console.log(comments.height() - 100);
-        console.log("*******");
         var url = $('.pagination .next_page').attr('href');
         if (url && sidebar.scrollTop() > comments.height() - 100) {
           $('.pagination').html("Fetching more results...");
