@@ -8,22 +8,13 @@ $(document).ready(function(){
     });
   });
 
-  $('.post_vote').on("click", ".post_vote_up", function(e){
+  $('.main').on("click", ".post_vote_up", function(e){
     e.preventDefault(); 
     $(this).addClass("active");
     $(this).next(".post_vote_down").removeClass("active"); 
     var vote_count = parseInt($(this).text());
     var changed = vote_count + 1;
     $(this).html("<span class='ss-like'></span>" + changed.toString());
-  });
-
-  $('.post_vote').on("click", ".post_vote_down", function(e){
-    e.preventDefault(); 
-    $(this).addClass("active");
-    $(this).siblings(".post_vote_up").removeClass("active"); 
-    var vote_count = parseInt($(this).text());
-    var changed = vote_count + 1
-    $(this).html("<span class='ss-dislike'></span>" + changed.toString());
   });
 
 });
