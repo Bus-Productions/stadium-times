@@ -3,7 +3,7 @@
       <aside class='conversation'>
         <ul class='comment-list list' id='comment-list'>
 
-          <%= current_user ? (render 'new_comment', :user => current_user) : nil %>
+          <%= logged_in ? (render 'new_comment', :user => current_user) : nil %>
 
           <div id="comments-container">
             <% @top_comments.each do |comment| %>

@@ -29,3 +29,25 @@
         </div>
       </div>
     </div>
+
+
+    <% if !logged_in %>
+
+      <div aria-hidden='true' aria-labelledby='searchModalLabel' class='modal fade' id='signupModal' role='dialog' tabindex='-1'>
+        <div class='modal-dialog'>
+          <div class='modal-content'>
+            <header class='modal-header'>
+              <h4 class='modal-title'>Join the Greatest Sports Community</h4>
+            </header>
+            <section class='modal-body'>
+              <%= link_to "Sign in with Facebook", "/auth/facebook", :class => 'btn dark' %>
+              <%= link_to "Sign in with Twitter", "/auth/twitter", :class => 'btn dark' %>
+            </section>
+            <footer class='modal-footer'>
+              <button class='btn light' data-dismiss='modal' type='button'>Close</button>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+    <% end %>

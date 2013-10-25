@@ -41,7 +41,8 @@
                 <div class='form-group'>
                   <%= f.text_area :comment_text, class: 'form-control comment-area', :placeholder => 'Type your reply...' %>
                 </div>
-                <button class='btn primary reply-submit-button' commentid="<%= comment.id %>" type='submit'>Post Comment</button>
+                
+                <%= link_or_signup_modal?('Post Comment', 'btn primary', "<button class='btn primary reply-submit-button' commentid='#{comment.id}' type='submit'>Post Comment</button>") %>
 
               <% end %>
 

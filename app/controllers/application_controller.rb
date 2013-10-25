@@ -30,6 +30,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :me?
 
+  private 
+  def logged_in
+    if session[:id]
+      true
+    else
+      false
+    end
+  end
+  helper_method :logged_in
+
 
   # POSTS
 
@@ -64,9 +74,16 @@ class ApplicationController < ActionController::Base
 
   # LINKS
 
+  private
   def browse_link(location, topic, order)
     location == 'topic' ? "/topics/#{topic.id}?sort=#{order}" : "/?sort=#{order}"
   end
   helper_method :browse_link
+
+  private
+  def link_or_signup_modal?(text, style, normal)
+    logged_in ? normal.html_safe : "<a href='#signupModal' role='button' class='#{style}' data-toggle='modal'>#{text}</a>".html_safe
+  end
+  helper_method :link_or_signup_modal?
 
 end

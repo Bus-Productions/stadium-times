@@ -3,13 +3,21 @@
 <% end %>
 
 <% if post_vote %>
+
 	<% if post_vote.vote == "up" %>
-		<%= link_to content_tag(:span, nil, :class => 'ss-like') + "#{post.upvote_count_text}", vote_path(post, "up"), :class => "btn small light active post_vote_up", :remote => true %>
+
+    <%= link_or_signup_modal?("<span class='ss-like'></span>#{post.upvote_count_text}".html_safe, 'btn small light active', (link_to content_tag(:span, nil, :class => 'ss-like') + "#{post.upvote_count_text}", vote_path(post, "up"), :class => "btn small light active post_vote_up", :remote => true)) %>
+
 	<% else %>
-		<%= link_to content_tag(:span, nil, :class => 'ss-like') + "#{post.upvote_count_text}", vote_path(post, "up"), :class => "btn small light post_vote_up", :remote => true %>
+
+    <%= link_or_signup_modal?("<span class='ss-like'></span>#{post.upvote_count_text}".html_safe, 'btn small light', (link_to content_tag(:span, nil, :class => 'ss-like') + "#{post.upvote_count_text}", vote_path(post, "up"), :class => "btn small light post_vote_up", :remote => true)) %>
+
 	<% end %>
+
 <% else %>
-	<%= link_to content_tag(:span, nil, :class => 'ss-like') + "#{post.upvote_count_text}", vote_path(post, "up"), :class => "btn small light post_vote_up", :remote => true %>
+
+  <%= link_or_signup_modal?("<span class='ss-like'></span>#{post.upvote_count_text}".html_safe, 'btn small light', (link_to content_tag(:span, nil, :class => 'ss-like') + "#{post.upvote_count_text}", vote_path(post, "up"), :class => "btn small light post_vote_up", :remote => true)) %>
+
 <% end %>
 
 
