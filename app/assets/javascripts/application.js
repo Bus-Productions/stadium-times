@@ -10,13 +10,13 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require modernizr.min.js
 //= require bootstrap/affix.js
 //= require bootstrap/carousel.js
 //= require bootstrap/dropdown.js
 //= require bootstrap/collapse.js
 //= require bootstrap/modal.js
 //= require bootstrap/transition.js
+//= require jquery
+//= require jquery_ujs
+//= require modernizr.min.js
 //= require pushy.min.js
