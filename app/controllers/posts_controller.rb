@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments.created_recent.limit(15)
+    @comments = @post.comments.created_recent.paginate(:page => params[:page], :per_page => 7)
     if @comments.count > 15
       @top_comments = @post.comments.top(2)
     else
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @post }
+      format.js
     end
   end
 

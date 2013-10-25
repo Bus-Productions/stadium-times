@@ -12,9 +12,12 @@
           </div>          
 
           <div id="comments-container">
-            <% @comments.each do |comment| %>
-              <%= render 'comment_detail', :comment => comment %>
-            <% end %>
+            <div class="comments_pagination">
+              <% @comments.each do |comment| %>
+                <%= render 'comment_detail', :comment => comment %>
+              <% end %>
+            </div>
+            <%= will_paginate @comments %>
           </div>
 
         </ul>
