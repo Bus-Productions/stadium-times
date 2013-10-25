@@ -21,10 +21,19 @@ $(document).ready(function(){
 
 
 $(function() {
-  if ($('.pagination').length) {
+  if ($('.pagination').length && !$('#comments-container').length) {
       $(window).scroll(function() {
         var url = $('.pagination .next_page').attr('href');
         if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+          $('.pagination').html("Fetching more results...");
+          return $.getScript(url);
+        }
+      });
+    }else if($('.pagination').length && $('#comments-container').length) {
+      var comments = $('.comment-list')
+      comments.scroll(function() {
+        var url = $('.pagination .next_page').attr('href');
+        if (url && comments.scrollTop() > $(document).height() - comments.height()) {
           $('.pagination').html("Fetching more results...");
           return $.getScript(url);
         }
