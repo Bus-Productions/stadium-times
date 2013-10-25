@@ -11,8 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery-backstretch
 //= require jquery_ujs
 //= require bootstrap
-//= require modernizr-2.6.2.min.js
-//= require zurb-responsive-tables.js
+//= require modernizr.min.js
+//= require pushy.min.js
