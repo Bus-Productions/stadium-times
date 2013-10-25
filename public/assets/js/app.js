@@ -32,10 +32,11 @@ $(function() {
     }else if($('.pagination').length && $('#comments-container').length) {
       var sidebar = $('.comment-list');
       var comments = $('.comments_pagination');
+      var child = $(comments[0].children[0]).height(); 
 
       sidebar.scroll(function() {
         var url = $('.pagination .next_page').attr('href');
-        if (url && sidebar.scrollTop() > comments.height() - 100) {
+        if (url && sidebar.scrollTop() > comments.height() - child*4) {
           $('.pagination').html("Fetching more results...");
           return $.getScript(url);
         }
