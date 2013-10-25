@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require modernizr.min.js
+//= require bootstrap/affix.js
+//= require bootstrap/carousel.js
+//= require bootstrap/dropdown.js
+//= require bootstrap/collapse.js
+//= require bootstrap/modal.js
+//= require bootstrap/transition.js
 //= require pushy.min.js

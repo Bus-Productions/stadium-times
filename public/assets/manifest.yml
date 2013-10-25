@@ -25,8 +25,10 @@ patterns-bgs/navbar-bg.jpg: patterns-bgs/navbar-bg-ff78e94d0ff0649d69bbb040985a0
 patterns-bgs/navbar-bg/index.jpg: patterns-bgs/navbar-bg-ff78e94d0ff0649d69bbb040985a0707.jpg
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-2962159d7c9f323a7dbe6c23cc224de3.js
-application/index.js: application-2962159d7c9f323a7dbe6c23cc224de3.js
+application.js: application-324ed67ecb0fcc0672299c1bfba97b95.js
+application/index.js: application-324ed67ecb0fcc0672299c1bfba97b95.js
+bootstrap/tests/index.html: bootstrap/tests/index-4138acc49cc6564593b2132d4bf84f82.html
+bootstrap/tests.html: bootstrap/tests/index-4138acc49cc6564593b2132d4bf84f82.html
 application.css: application-4e1c83aee4efc6dfda6f86e06a0bab7e.css
 application/index.css: application-4e1c83aee4efc6dfda6f86e06a0bab7e.css
 ss-symbolicons-block.eot: ss-symbolicons-block-985135520e3e375b20b7b0736e631501.eot
