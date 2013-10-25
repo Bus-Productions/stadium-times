@@ -1,0 +1,19 @@
+      
+      <section class='article-focus main-content'>
+
+        <article>
+
+          <header>
+            <h3>
+              <a href='<%= comment.post.link_for_post %>' target="<%= determine_target(comment.post) %>">
+                <%= comment.post.display_title %>
+              </a>
+            </h3>
+            <%= comment.post.in_reply_to_post ? (render 'in_reply_to_post', :post => comment.post.in_reply_to_post) : nil %>
+          </header>
+          
+          <%= render 'posts/comment_detail', :comment => comment %>
+
+        </article>
+
+      </section>

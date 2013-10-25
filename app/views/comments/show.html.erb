@@ -1,25 +1,7 @@
-<p id="notice"><%= notice %></p>
+  <%= render 'layouts/main_content_wrap' %>
 
-<p>
-  <b>Comment text:</b>
-  <%= @comment.comment_text %>
-</p>
+      <%= render 'comment_contents', :comment => @this_comment %>
 
-<p>
-  <b>Comment:</b>
-  <%= @comment.comment_id %>
-</p>
+      <%= render 'shared/author_box', :user => @this_comment.user, :post => nil %>
 
-<p>
-  <b>User:</b>
-  <%= @comment.user_id %>
-</p>
-
-<p>
-  <b>Post:</b>
-  <%= @comment.post_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+  <%= render 'layouts/end_main_content_wrap' %>
