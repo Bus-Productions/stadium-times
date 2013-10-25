@@ -13,6 +13,8 @@ class Comment < ActiveRecord::Base
 
   has_many :spams
 
+  has_many :interactions
+
   
   #VALIDATIONS
 
@@ -71,6 +73,15 @@ class Comment < ActiveRecord::Base
     else 
       CommentVote.find_by_comment_id_and_user_id(self.id, user.id)
     end
+  end
+
+  # INTERACTIONS
+
+  def add_interactions
+    #post author
+    Interaction.find_or_create_by_user_id_and_comment_id(self.post.user.id, self.id)
+    #in_reply author (if exists)
+    Interaction.find_or_create_by_user_id_and_comment_id(self.in_reply_to_comment.user.id, self.id) if self.comment_id
   end
   
 end

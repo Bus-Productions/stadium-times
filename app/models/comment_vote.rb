@@ -3,5 +3,15 @@ class CommentVote < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :comment
+
+  has_many :interactions
+
+
+  # INTERACTIONS
+
+  def add_interactions
+    #comment author
+    Interaction.find_or_create_by_user_id_and_comment_id(self.comment.user.id, self.comment_id)
+  end
   
 end

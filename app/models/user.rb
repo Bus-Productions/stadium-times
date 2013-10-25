@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   has_many :spams
 
+  has_many :interactions
+
   
 
   def self.from_omniauth(auth)
@@ -96,15 +98,21 @@ class User < ActiveRecord::Base
       v.vote = vote
       v.save!
     else
-      PostVote.create({:vote => vote, :user_id => self.id, :post_id => post.id})
+      pv = PostVote.create({:vote => vote, :user_id => self.id, :post_id => post.id})
       post.add_vote(vote)
+      pv.add_interactions.delay
     end
   end
 
   def vote_on_comment(vote, comment)
     v = self.comment_votes.find_by_comment_id(comment.id)
-    v ? v.update_attribute(:vote, vote) : CommentVote.create({:vote => vote, :user_id => self.id, :comment_id => comment.id})
-    v ? nil : comment.add_vote(vote)
+    if v
+      v.update_attribute(:vote, vote)
+    else
+      cv = CommentVote.create({:vote => vote, :user_id => self.id, :comment_id => comment.id})
+      comment.add_vote(vote)
+      cv.add_interactions.delay
+    end
   end
 
 

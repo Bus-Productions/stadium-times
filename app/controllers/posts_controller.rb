@@ -115,7 +115,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        @post.update_slug
+        @post.update_slug.delay
+        @post.add_interactions.delay
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
@@ -185,6 +186,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        @post.add_interactions.delay
         format.html { redirect_to @post, notice: 'Post was successfully published.' }
         format.json { head :no_content }
         format.js

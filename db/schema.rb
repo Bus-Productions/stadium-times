@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131024154602) do
+ActiveRecord::Schema.define(:version => 20131025221445) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "user_id"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20131024154602) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "interactions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.integer  "comment_id"
+    t.integer  "comment_vote_id"
+    t.integer  "post_vote_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "post_and_topic_pairings", :force => true do |t|
     t.integer  "post_id"
