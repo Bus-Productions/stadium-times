@@ -16,7 +16,5 @@
 //= require bootstrap/collapse.js
 //= require bootstrap/modal.js
 //= require bootstrap/transition.js
-//= require jquery
-//= require jquery_ujs
 //= require modernizr.min.js
 //= require pushy.min.js

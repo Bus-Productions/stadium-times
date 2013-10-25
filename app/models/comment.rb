@@ -64,5 +64,13 @@ class Comment < ActiveRecord::Base
   def marked_as_spam(user_id)
     Spam.find_by_comment_id_and_user_id(self.id, user_id)
   end
+
+  def voted_on(user)
+    if !user
+      return false
+    else 
+      CommentVote.find_by_comment_id_and_user_id(self.id, user.id)
+    end
+  end
   
 end

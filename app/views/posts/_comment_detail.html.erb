@@ -21,6 +21,8 @@
 
                 <a class="comment-reply-text smaller" id='fade-action' commentid="<%= comment.id %>" href="#">Reply</a>
 
+                <%= render 'posts/comment_vote_up', :comment => comment %>
+
               </div>
               
               <%= form_for @comment, :remote => true, :html => {:class => "reply-to comment-#{comment.id}", 'id' => 'fade-element', 'role' => 'form'} do |f| %>

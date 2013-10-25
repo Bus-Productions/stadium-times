@@ -1,0 +1,8 @@
+ &sdot; 
+<% comment_vote = comment.voted_on(current_user) %>
+<% if comment_vote %>
+  <span class="comment-vote-text smaller-green">Voted <%= comment_vote.vote == 'up' ? 'Up' : 'Down' %></span>
+<% else %>
+  <%= link_or_signup_modal?('Vote Up', 'comment-vote-text smaller', (link_to "Vote Up", comment_votes_path("comment_vote[user_id]" => (current_user ? current_user.id : nil), "comment_vote[comment_id]" => comment.id, "comment_vote[vote]" => 'up'), :method => :post, :remote => true, class: 'comment-vote-text smaller', :onclick => "javascript:onCommentVote(this, 'vote-id-#{comment.id}');")) %>
+<% end %>
+ <span class="comment-vote-text smaller-green">(<span id='<%= "vote-id-#{comment.id}" %>'><%= comment.upvotes %></span>)</span>

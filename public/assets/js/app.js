@@ -154,3 +154,10 @@ function setCommentTextBehavior() {
 }
 setCommentTextBehavior();
 
+function onCommentVote(e, id) {
+  $(e).replaceWith('<span class="comment-vote-text smaller-green">Voted Up</span>');
+  var count = parseInt( $("#"+id).text() );
+  ++count;
+  $("#"+id).text(count);
+}
+
