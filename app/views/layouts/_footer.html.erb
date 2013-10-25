@@ -2,10 +2,10 @@
         <nav>
           <ul>
             <li>
-              <a href='<%= new_post_path %>'>Write an Article</a>
+              <%= link_or_signup_modal?("Write an Article", '', ("<a href='#{new_post_path}'>Write an Article</a>")) %>
             </li>
             <li>
-              <a href='<%= new_link_path("link") %>'>Submit a Link</a>
+              <%= link_or_signup_modal?("Submit a Link", '', ("<a href='#{new_link_path('link')}'>Submit a Link</a>")) %>
             </li>
           </ul>
         </nav>

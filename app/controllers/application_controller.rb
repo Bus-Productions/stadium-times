@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   private 
   def logged_in
-    if session[:id]
+    if session[:user_id]
       true
     else
       false

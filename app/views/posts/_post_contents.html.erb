@@ -21,10 +21,9 @@
               <div class='btn-group post_vote' id="votes_<%= @post.id %>">
                 <%= render 'shared/vote_up_or_down_links', post: @post %>
               </div>
-              <a class='btn small light' href='<%= new_post_path(:r => @post.id) %>'>
-                <span class='ss-redo circle'></span>
-                Respond
-              </a>
+              
+              <%= link_or_signup_modal?("<span class='ss-redo circle'></span>Respond".html_safe, 'btn small light', ("<a class='btn small light' href='#{new_post_path(:r => @post.id)}'><span class='ss-redo circle'></span>Respond</a>")) %>
+
               <%= render 'shared/share', :post => @post %>
               <%= render 'shared/spam', received_obj: @post %>
             </div>
