@@ -9,7 +9,7 @@
               <header>
                 <h4><%= link_to comment.post.display_title, comment.post.link_for_post %></h4>
                 <small class='meta'>
-                  <em><%= time_ago_in_words(comment.created_at) %> ago</em>
+                  <em><%= link_to "#{time_ago_in_words(comment.created_at)} ago", comment_path(comment) %></em>
                 </small>
               </header>
               <p>
