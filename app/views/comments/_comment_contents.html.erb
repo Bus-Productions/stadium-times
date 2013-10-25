@@ -8,7 +8,7 @@
                   <%= comment.post.display_title %>
                 </a>
               </h3>
-              <%= comment.post.in_reply_to_post ? (render 'in_reply_to_post', :post => comment.post.in_reply_to_post) : nil %>
+              <%= comment.post.in_reply_to_post ? (render 'posts/in_reply_to_post', :post => comment.post.in_reply_to_post) : nil %>
             </div>
           </header>
           
