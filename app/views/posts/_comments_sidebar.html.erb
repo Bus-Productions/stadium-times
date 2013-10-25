@@ -6,13 +6,10 @@
           <%= logged_in ? (render 'new_comment', :user => current_user) : nil %>
 
           <div id="comments-container">
-            <% @top_comments.each do |comment| %>
-              <%= render 'comment_detail', :comment => comment %>
-            <% end %>
-          </div>          
-
-          <div id="comments-container">
             <div class="comments_pagination">
+              <% @top_comments.each do |comment| %>
+                <%= render 'comment_detail', :comment => comment %>
+              <% end %>
               <% @comments.each do |comment| %>
                 <%= render 'comment_detail', :comment => comment %>
               <% end %>
