@@ -25,7 +25,6 @@ setCommentTextBehavior();
 
 function enablePagination(type) { 
 
-  
   <% if @case == 'posts' %>
 
       var first_time = $('.post_pagination').length;
@@ -40,7 +39,7 @@ function enablePagination(type) {
       <% if @posts.next_page %>
         $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "posts" }) %>'); 
       <% else %>
-        $('.pagination').remove(); 
+        $('.pagination').html("That's it."); 
       <% end %>
       <% sleep 0.5 %> 
   
@@ -58,7 +57,7 @@ function enablePagination(type) {
       <% if @posts.next_page %>
         $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "drafts" }) %>'); 
       <% else %>
-        $('.pagination').remove(); 
+        $('.pagination').html("That's it."); 
       <% end %>
       <% sleep 0.5 %> 
   
@@ -76,9 +75,27 @@ function enablePagination(type) {
       <% if @comments.next_page %>
         $('.pagination').replaceWith('<%= j will_paginate(@comments, :params => { :controller => "users", :action => "show", :display => "comments" }) %>'); 
       <% else %>
-        $('.pagination').remove(); 
+        $('.pagination').html("That's it."); 
       <% end %>
       <% sleep 0.5 %>
+
+    <% elsif @case == 'upvotes' %>
+
+        var first_time = $('.upvote_pagination').length;
+        if (first_time == 0) {
+          $('.backend-user-container').replaceWith('<%= j render("upvote_user_list") %>');
+        }
+        else {
+          <% @posts.each do |post| %>
+            $('.upvote_pagination').append("<%= j render 'post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
+          <% end %>
+        }
+        <% if @posts.next_page %>
+          $('.pagination').replaceWith('<%= j will_paginate(@posts, :params => { :controller => "users", :action => "show", :display => "upvotes" }) %>'); 
+        <% else %>
+          $('.pagination').html("That's it."); 
+        <% end %>
+        <% sleep 0.5 %> 
 
   <% end %>
 
