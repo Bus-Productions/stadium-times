@@ -1,4 +1,4 @@
- &sdot; 
+
 <% comment_vote = comment.voted_on(current_user) %>
 <% if comment_vote %>
   <span class="comment-vote-text smaller-green">Voted <%= comment_vote.vote == 'up' ? 'Up' : 'Down' %></span>
