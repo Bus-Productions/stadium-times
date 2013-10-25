@@ -36,7 +36,7 @@ $(function() {
 
       sidebar.scroll(function() {
         var url = $('.pagination .next_page').attr('href');
-        if (url && sidebar.scrollTop() > comments.height() - child*4) {
+        if (url && ( sidebar.scrollTop() > (comments.height() - $(window).height()) )) {
           $('.pagination').html("Fetching more results...");
           return $.getScript(url);
         }
