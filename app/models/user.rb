@@ -140,5 +140,6 @@ class User < ActiveRecord::Base
     gb.throws_exceptions = false
     gb.lists.subscribe({:id => '08ac9be67c', :email => {:email => self.email }, :merge_vars => {:FNAME => self.name, :LNAME => ''}, :double_optin => false})
   end
+  
 
 end
