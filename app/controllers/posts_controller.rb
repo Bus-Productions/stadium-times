@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments.created_recent.paginate(:page => params[:page], :per_page => 4)
+    @comments = @post.comments.created_recent.paginate(:page => params[:page], :per_page => 5)
     if @comments.count > 15
       @top_comments = @post.comments.top(2)
     else
