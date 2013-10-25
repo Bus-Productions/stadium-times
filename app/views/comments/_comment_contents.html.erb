@@ -1,5 +1,5 @@
       
-      <section class='article-focus main-content'>
+      <section class='main-content'>
 
         <article>
 
@@ -12,7 +12,9 @@
             <%= comment.post.in_reply_to_post ? (render 'in_reply_to_post', :post => comment.post.in_reply_to_post) : nil %>
           </header>
           
-          <%= render 'posts/comment_detail', :comment => comment %>
+          <ul class="comment-list list backend-user-container">
+            <%= render 'posts/comment_detail', :comment => comment %>
+          </ul>
 
         </article>
 

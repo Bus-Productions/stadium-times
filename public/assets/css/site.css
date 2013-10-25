@@ -794,7 +794,7 @@ aside.conversation { background: #f9f8f7; }
 aside.conversation form.reply-to { margin-top: 20px; }
 aside.conversation ul.comment-list { overflow: scroll; padding-bottom: 80px; }
 
-ul.comment-list { padding-top: 34px; }
+ul.comment-list { padding-top: 0px; }
 ul.comment-list li { padding: 16px 24px 16px 60px; margin: 0; -webkit-transition: background 0.15s ease-in-out; transition: background 0.15s ease-in-out; }
 ul.comment-list li:hover { background: #f3f1ee; }
 ul.comment-list li.alpha { padding-left: 24px; padding-bottom: 32px; }
