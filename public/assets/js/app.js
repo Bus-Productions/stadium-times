@@ -30,10 +30,12 @@ $(function() {
         }
       });
     }else if($('.pagination').length && $('#comments-container').length) {
-      var comments = $('.comment-list')
-      comments.scroll(function() {
+      var sidebar = $('.comment-list');
+      var comments = $('.comments_pagination');
+
+      sidebar.scroll(function() {
         var url = $('.pagination .next_page').attr('href');
-        if (url && comments.scrollTop() > $(document).height() - comments.height()) {
+        if (url && sidebar.scrollTop() > comments.height() - 100) {
           $('.pagination').html("Fetching more results...");
           return $.getScript(url);
         }
