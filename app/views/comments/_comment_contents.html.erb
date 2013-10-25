@@ -1,15 +1,13 @@
       
       <section class='main-content'>
 
-          <header class="main-header">
-            <div class="title">
+          <header>
               <h3>
                 <a href='<%= comment.post.link_for_post %>' target="<%= determine_target(comment.post) %>">
                   <%= comment.post.display_title %>
                 </a>
               </h3>
               <%= comment.post.in_reply_to_post ? (render 'posts/in_reply_to_post', :post => comment.post.in_reply_to_post) : nil %>
-            </div>
           </header>
           
           <ul class="comment-list list backend-user-container">
