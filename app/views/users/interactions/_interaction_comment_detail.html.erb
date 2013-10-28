@@ -1,0 +1,53 @@
+        <ul class='comment-list list backend-user-container'>          
+          <li id="parent-comment-<%= comment.id %>" class='<%= defined?(beta) ? (beta ? "" : "alpha") : "alpha" %>'>
+            <div class='profile-detail'>
+              <div class='avatar'>
+                <img alt='<%= comment.user.name %>' class='img-circle' src='<%= comment.user.profile_picture %>'>
+              </div>
+            </div>
+            <div class='comment-detail'>
+              <header>
+                <h4><%= comment.user.name %></h4>
+                <small class='meta'>
+                  <em><%= link_to "#{time_ago_in_words(comment.created_at)} ago", comment_path(comment) %></em>
+                </small>
+              </header>
+              <p>
+                <%= comment.comment_text %>
+              </p>
+              <div>
+                
+                <% if comment.in_reply_to_comment && (defined?(beta) ? (beta ? false : true) : true ) %><span><%= link_to "In reply to #{comment.in_reply_to_comment.user.name}", comment_path(comment.in_reply_to_comment), :remote => true, class: 'in-reply-to-comment smaller', :commentid => comment.id %> &sdot; </span><% end %>
+
+                <a class="comment-reply-text smaller" id='fade-action' commentid="<%= comment.id %>" href="#">Reply &sdot; </a>
+
+                <%= render 'posts/comment_vote_up', :comment => comment %>
+
+              </div>
+              
+              <%= form_for @comment, :remote => true, :html => {:class => "reply-to comment-#{comment.id}", 'id' => 'fade-element', 'role' => 'form'} do |f| %>
+                <% if @comment.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+                    <ul>
+                    <% @comment.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                <%= f.hidden_field :comment_id, :value => comment.id %>
+                <%= f.hidden_field :user_id, :value => (current_user ? current_user.id : nil) %>
+                <%= f.hidden_field :post_id, :value => (@post ? @post.id : comment.post_id) %>
+                <div class='form-group'>
+                  <%= f.text_area :comment_text, class: 'form-control comment-area', :placeholder => 'Type your reply...' %>
+                </div>
+                
+                <%= link_or_signup_modal?('Post Comment', 'btn primary', "<button class='btn primary reply-submit-button' commentid='#{comment.id}' type='submit'>Post Comment</button>") %>
+
+              <% end %>
+
+            </div>
+          </li>
+        </ul>

@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     else
       @interactions = @user.interactions.created_recent.paginate(:page => params[:page], :per_page => 7)
       @case = 'interactions'
+      @comment = Comment.new
     end
 
     respond_to do |format|

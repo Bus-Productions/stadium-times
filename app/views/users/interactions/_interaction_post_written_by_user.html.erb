@@ -1,0 +1,34 @@
+          <ul class='saved-articles list backend-user-container'>
+            <li>
+              <div class='link-detail'>
+                <header>
+                  <a href='<%= show_post_path(post.id, post.slug) %>'>
+                    <h4><%= post.display_title %></h4>
+                  </a>
+                  <small>
+                    <em><%= post.link %></em>
+                  </small>
+                </header>
+
+                <small class='meta'>
+                 <p>
+                  <a href='<%= show_post_path(post.id, post.slug) %>'>
+                    <%= post.link? ? 'shared' : 'written' %> by <%= post.user.name %>
+                  </a>
+
+                  <%= link_to " in reply to #{post.in_reply_to_post.display_title} ", post.in_reply_to_post.link_for_post %>
+
+                  <a href='<%= show_post_path(post.id, post.slug) %>'>
+                    <%= time_ago_in_words(post.created_at) %> ago
+                  </a>
+                </p>
+                </small>
+
+              </div>
+              <div class='profile-detail'>
+                <div class='avatar'>
+                  <img alt='<%= post.user.name %>' class='img-circle' src='<%= post.user.profile_picture %>'>
+                </div>
+              </div>
+            </li>
+          </ul>

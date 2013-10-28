@@ -1,0 +1,20 @@
+          <ul class='saved-articles list backend-user-container'>
+            <li>
+              <div class='link-detail'>
+
+                <small class='meta'>
+                 <p>
+
+                  <%= link_to "#{comment_vote.user.name} voted up your comment on \"#{comment_vote.comment.post.display_title}\" #{time_ago_in_words(comment_vote.created_at)} ago.", comment_path(comment_vote.comment) %>
+
+                </p>
+                </small>
+
+              </div>
+              <div class='profile-detail'>
+                <div class='avatar'>
+                  <img alt='<%= comment_vote.user.name %>' class='img-circle' src='<%= comment_vote.user.profile_picture %>'>
+                </div>
+              </div>
+            </li>
+          </ul>
