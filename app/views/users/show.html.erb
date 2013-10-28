@@ -22,6 +22,8 @@
           <% elsif @interactions %>
             <%= render 'interactions_user_list' %>
             <%= will_paginate @interactions %>
+          <% else %>
+            <%= render 'no_posts_to_show' %>
           <% end %>
           
         </section>
