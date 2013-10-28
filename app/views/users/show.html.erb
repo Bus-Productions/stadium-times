@@ -19,11 +19,11 @@
           <% if @posts %>
             <%= render 'post_user_list' %>
             <%= will_paginate @posts %>
-          <% elsif @interactions %>
+          <% elsif !@interactions.empty? %>
             <%= render 'interactions_user_list' %>
             <%= will_paginate @interactions %>
           <% else %>
-            <div class="pagination"><ul></ul></div>
+            <%= render 'empty_pagination_div' %>
           <% end %>
 
         </section>

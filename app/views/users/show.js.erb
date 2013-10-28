@@ -67,7 +67,7 @@ function enablePagination(type) {
       <% if @interactions.next_page %>
         $('.pagination').replaceWith('<%= j will_paginate(@interactions, :params => { :controller => "users", :action => "show", :display => "interactions" }) %>'); 
       <% else %>
-        $('.pagination').html("That's it."); 
+        $('.pagination').replaceWith("<div class='pagination'><ul></ul></div>"); 
       <% end %>
       <% sleep 0.5 %> 
 
@@ -90,9 +90,9 @@ function enablePagination(type) {
       <% sleep 0.5 %> 
   
   <% elsif @case == 'comments' %>
-
       var first_time = $('.comment_pagination').length;
       if (first_time == 0) {
+        console.log($('.backend-user-container'));
         $('.backend-user-container').replaceWith('<%= j render("comment_user_list") %>');
       }
       else {
