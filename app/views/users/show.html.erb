@@ -17,6 +17,8 @@
 
           <% if @posts %>
             <%= render 'post_user_list' %>
+          <% else %>
+            <%= render 'no_posts_to_show' %>
           <% end %>
           
           <%= will_paginate @posts %>
