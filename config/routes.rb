@@ -34,7 +34,7 @@ StadiumTimes::Application.routes.draw do
 
 
 
-  resources :users, only: [:index, :show, :edit]
+  resources :users, only: [:show, :edit]
   match "users/:id/:display", to: "users#show", as: "users_display"
 
 
