@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
 
     @body_class = 'home'
-    @browsing = 'Popular Articles'
+    params[:sort] == "new" ? @browsing = 'Newest Articles' : @browsing = 'Popular Articles'
 
     if params[:sort] == 'new'
       @posts = Post.live.created_recent.paginate(:page => params[:page], :per_page => 15)
