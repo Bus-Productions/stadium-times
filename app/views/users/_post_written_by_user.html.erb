@@ -26,7 +26,7 @@
               </div>
               <div class='profile-detail'>
                 <div class='avatar'>
-                  <img alt='<%= post.user.name %>' class='img-circle' src='<%= post.user.profile_picture %>'>
+                  <a href="<%= user_path(post.user) %>" border="0"><img alt='<%= post.user.name %>' class='img-circle' src='<%= post.user.profile_picture %>'></a>
                 </div>
               </div>
             </li>

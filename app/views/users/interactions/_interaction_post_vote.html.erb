@@ -13,7 +13,7 @@
               </div>
               <div class='profile-detail'>
                 <div class='avatar'>
-                  <img alt='<%= post_vote.user.name %>' class='img-circle' src='<%= post_vote.user.profile_picture %>'>
+                  <a href="<%= user_path(post_vote.user) %>" border="0"><img alt='<%= post_vote.user.name %>' class='img-circle' src='<%= post_vote.user.profile_picture %>'></a>
                 </div>
               </div>
             </li>
