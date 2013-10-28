@@ -7,6 +7,14 @@ class Interaction < ActiveRecord::Base
   belongs_to :post_vote 
   belongs_to :comment_vote
 
+
+  # SCOPES
+
+  scope :created_recent, -> { order('created_at DESC') }
+
+
+  # METHODS
+  
   def interaction_type
     if comment_id
       'comment'

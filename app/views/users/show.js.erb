@@ -3,21 +3,31 @@
   $('#comment_button').removeClass('active');
   $('#upvote_button').removeClass('active');
   $('#drafts_button').removeClass('active');
+  $('#activity_button').removeClass('active');
+<% elsif @case == 'interactions' %>
+  $('#activity_button').addClass('active');
+  $('#drafts_button').removeClass('active');
+  $('#article_button').removeClass('active');
+  $('#comment_button').removeClass('active');
+  $('#upvote_button').removeClass('active');
 <% elsif @case == 'drafts' %>
   $('#drafts_button').addClass('active');
   $('#article_button').removeClass('active');
   $('#comment_button').removeClass('active');
   $('#upvote_button').removeClass('active');
+  $('#activity_button').removeClass('active');
 <% elsif @case == 'comments' %>
   $('#comment_button').addClass('active');
   $('#article_button').removeClass('active');
   $('#upvote_button').removeClass('active');
   $('#drafts_button').removeClass('active');
+  $('#activity_button').removeClass('active');
 <% elsif @case == 'upvotes' %>
   $('#upvote_button').addClass('active');
   $('#comment_button').removeClass('active');
   $('#article_button').removeClass('active');
   $('#drafts_button').removeClass('active');
+  $('#activity_button').removeClass('active');
 <% end %>
 enablePagination("<%= @case %>");
 setCommentTextBehavior();
@@ -43,6 +53,24 @@ function enablePagination(type) {
       <% end %>
       <% sleep 0.5 %> 
   
+  <% elsif @case == 'interactions' %>
+
+      var first_time = $('.interactions_pagination').length;
+      if (first_time == 0) {
+        $('.backend-user-container').replaceWith('<%= j render("interactions_user_list") %>');
+      }
+      else {
+        <% @interactions.each do |i| %>
+          $('.interactions_pagination').append("<%= j render 'interactions_for_user', :interaction => i %>");
+        <% end %>
+      }
+      <% if @interactions.next_page %>
+        $('.pagination').replaceWith('<%= j will_paginate(@interactions, :params => { :controller => "users", :action => "show", :display => "interactions" }) %>'); 
+      <% else %>
+        $('.pagination').html("That's it."); 
+      <% end %>
+      <% sleep 0.5 %> 
+
   <% elsif @case == 'drafts' %>
 
       var first_time = $('.draft_pagination').length;

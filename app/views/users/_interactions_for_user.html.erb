@@ -1,0 +1,7 @@
+<% if interaction.interaction_type == 'post' %>
+  <%= render 'post_written_by_user', :post => interaction.post, :topics => interaction.post.topics, :user => interaction.post.user %>
+<% elsif interaction.interaction_type == 'comment' %>
+  <%= render 'comment_detail', :comment => interaction.comment %>
+<% elsif interaction.interaction_type == 'post_vote' %>
+<% elsif interaction.interaction_type == 'comment_vote' %>
+<% end %>

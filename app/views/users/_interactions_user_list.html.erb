@@ -1,0 +1,8 @@
+          <ul class='saved-articles list backend-user-container'>
+                  <div class="interactions_pagination">
+                    <% @interactions.each do |i| %>
+                      <%= render 'interactions_for_user', :interaction => i %>
+                    <% end %>
+                  </div>    
+          </ul>
+            

@@ -7,18 +7,27 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
 
-    if params[:display] == 'comments'
+    case_var = params[:display]
+
+    if !me?(@user.id) && (case_var != 'posts' && case_var != 'comments' && case_var != 'upvotes')
+      case_var = 'posts'
+    end
+
+    if case_var == 'posts'
+      @posts = @user.posts.live.created_recent.paginate(:page => params[:page], :per_page => 7)
+      @case = 'posts'
+    elsif case_var == 'comments'
       @comments = @user.comments.created_recent.paginate(:page => params[:page], :per_page => 7)
       @case = 'comments'
-    elsif params[:display] == 'upvotes'
+    elsif case_var == 'upvotes'
       @posts = @user.upvoted_posts.paginate(:page => params[:page], :per_page => 7)
       @case = 'upvotes'
-    elsif params[:display] == 'drafts'
+    elsif case_var == 'drafts'
       @posts = @user.posts.draft.edited_recent.paginate(:page => params[:page], :per_page => 7)
       @case = 'drafts'
     else
-      @posts = @user.posts.live.created_recent.paginate(:page => params[:page], :per_page => 7)
-      @case = 'posts'
+      @interactions = @user.interactions.created_recent.paginate(:page => params[:page], :per_page => 7)
+      @case = 'interactions'
     end
 
     respond_to do |format|
