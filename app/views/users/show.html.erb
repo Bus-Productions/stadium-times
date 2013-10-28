@@ -22,8 +22,10 @@
           <% elsif @interactions %>
             <%= render 'interactions_user_list' %>
             <%= will_paginate @interactions %>
+          <% else %>
+            <div class="pagination"><ul></ul></div>
           <% end %>
-          
+
         </section>
         
         <%= render 'shared/author_box', :user => @user, :post => nil %>
