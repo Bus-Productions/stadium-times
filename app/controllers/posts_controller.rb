@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.live.sorted_score.paginate(:page => params[:page], :per_page => 15)
     end
-    @topics = Topic.all
+    # @topics = Topic.all
     
     @highlighted_article = Post.highlighted_article.first
 
@@ -84,7 +84,7 @@ class PostsController < ApplicationController
     current_user_or_redirect ? nil : return
 
     @post = Post.find(params[:id])
-    @all_topics = Topic.all
+    # @all_topics = Topic.all
     @compose = true
 
     if !@post.mine?(@current_user.id)
@@ -172,10 +172,10 @@ class PostsController < ApplicationController
     current_user_or_redirect ? nil : return
 
     @post = Post.find(params[:id])
-    topic = Topic.where("id = ?", params[:topic]).first
-    if topic
-      @post.topics << topic unless @post.topics.include?(topic)
-    end
+    # topic = Topic.where("id = ?", params[:topic]).first
+    # if topic
+    #   @post.topics << topic unless @post.topics.include?(topic)
+    # end
     
     if !@post.mine?(@current_user.id)
       redirect_to root_path
