@@ -1,36 +1,4 @@
-    <!-- Modals -->
-    <!-- Search Modal -->
-    <div aria-hidden='true' aria-labelledby='searchModalLabel' class='modal fade' id='searchModal' role='dialog' tabindex='-1'>
-      <div class='modal-dialog'>
-        <div class='modal-content'>
-          <header class='modal-header'>
-            <h4 class='modal-title'>Search</h4>
-          </header>
-          <section class='modal-body'>
-              <%= form_tag search_path, :remote => true do %>
-                  <%= text_field_tag :search, params[:search], :class => 'form-control', :placeholder => "What are you looking for?" %>
-              <% end %>
-            <ul class='list' id="search_results">
-              <% if @results %>
-                  <% @results.each_with_index do |result, index| %>
-                    <% if index == 0 %>
-                    <% end %>
-                    <%= render 'shared/modal_content/result_element', :result => result, :class_type => result.class.to_s %>
-                  <% end %>
-              <% end %>
-            </ul>
-
-
-            <div class='fade-off-text'></div>
-          </section>
-          <footer class='modal-footer'>
-            <button class='btn light' data-dismiss='modal' type='button'>Close</button>
-          </footer>
-        </div>
-      </div>
-    </div>
-
-
+    
     <% if !logged_in %>
 
       <div aria-hidden='true' aria-labelledby='searchModalLabel' class='modal fade' id='signupModal' role='dialog' tabindex='-1'>
