@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
 
     @user = User.find(params[:id])
+    @title = @user.name
 
     case_var = params[:display]
 
@@ -41,6 +42,7 @@ class UsersController < ApplicationController
   def edit
 
     @user = User.find(params[:id])
+    @title = @user.name
 
     if @user.id != current_user.id
       redirect_to root_path

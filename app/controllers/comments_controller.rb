@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
   # GET /comments/1.json
   def show
     @this_comment = Comment.find(params[:id])
+    @title = "Comment for #{@this_comment.post.display_title}"
     @comment = Comment.new
 
     respond_to do |format|
