@@ -12,7 +12,7 @@ class BackendJobs < Struct.new(:blank)
    end
 
    def score_comments
-    Comment.each do |c|
+    Comment.all.each do |c|
       c.delay.update_score
       puts "SCORING COMMENT ID: #{c.id}"
     end
