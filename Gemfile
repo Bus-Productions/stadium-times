@@ -12,6 +12,7 @@ end
 group :production do
   gem 'pg'
   gem 'faker'
+  gem 'newrelic_rpm'
 end
 
 
