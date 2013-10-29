@@ -160,6 +160,7 @@ class Post < ActiveRecord::Base
 
   def publish_post
     self.change_to_status('live')
+    self.update_created_at
   end
 
   def unpublish_post
@@ -172,6 +173,10 @@ class Post < ActiveRecord::Base
 
   def change_to_status(new_status)
     self.update_attribute(:status, new_status)
+  end
+
+  def update_created_at
+    self.update_attribute(:created_at, DateTime.now)
   end
 
 

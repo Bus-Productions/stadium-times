@@ -187,6 +187,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        @post.update_created_at
         @post.delay.add_interactions
         format.html { redirect_to @post.link_for_post, notice: 'Post was successfully published.' }
         format.json { head :no_content }
