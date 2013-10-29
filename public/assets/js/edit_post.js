@@ -39,25 +39,25 @@ $(function() {
     });
 
     $("#top-title-span").bind('copy', function() {
-      $('#top-title-span').makeCssInline();
+      //$('#top-title-span').makeCssInline();
     });
     $("#body-text-div").bind('copy', function() {
       $('article#body-text-div p').each(function(){
-        $(this).makeCssInline();
+        //$(this).makeCssInline();
       });
       $('article#body-text-div blockquote').each(function(){
-        $(this).makeCssInline();
+        //$(this).makeCssInline();
       });
     });
     $("#top-title-span").bind('cut', function() {
-      $('#top-title-span').makeCssInline();
+      //$('#top-title-span').makeCssInline();
     });
     $("#body-text-div").bind('cut', function() {
       $('article#body-text-div p').each(function(){
-        $(this).makeCssInline();
+        //$(this).makeCssInline();
       });
       $('article#body-text-div blockquote').each(function(){
-        $(this).makeCssInline();
+        //$(this).makeCssInline();
       });
     });
 
@@ -236,6 +236,16 @@ function check_formatting_body() {
     $(this).removeAttr('class');
     $(this).find('a').removeAttr('style');
   });
+  $('article#body-text-div i').each(function(){
+    $(this).removeAttr('style');
+    $(this).removeAttr('name');
+    $(this).removeAttr('class');
+  });
+  $('article#body-text-div b').each(function(){
+    $(this).removeAttr('style');
+    $(this).removeAttr('name');
+    $(this).removeAttr('class');
+  });
   $('article#body-text-div br').each(function(){
     $(this).remove();
   });
@@ -347,6 +357,14 @@ function check_formatting_body() {
     $(this).replaceWith("<p>"+this_text+"</p>");
   });
   $('article#body-text-div iframe').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div em').each(function(){
+    var this_text = $(this).text();
+    $(this).replaceWith("<p>"+this_text+"</p>");
+  });
+  $('article#body-text-div small').each(function(){
     var this_text = $(this).text();
     $(this).replaceWith("<p>"+this_text+"</p>");
   });
