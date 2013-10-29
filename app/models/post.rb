@@ -197,6 +197,10 @@ class Post < ActiveRecord::Base
     self.post_type == 'link' ? self.link : "/posts/#{self.id}/#{self.slug}"
   end
 
+  def formatted_link_for_post
+    "%2Fposts%2F#{self.id}%2F#{self.slug}"
+  end
+
 
   # LINK
 
