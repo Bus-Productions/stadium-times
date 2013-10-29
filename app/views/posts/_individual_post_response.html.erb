@@ -1,0 +1,30 @@
+<li>
+  <div class='link-detail'>
+    <header style="margin-top:0px; margin-bottom:0px;">
+      <a href='<%= show_post_path(post.id, post.slug) %>'>
+        <h4><%= post.display_title %></h4>
+      </a>
+      <small>
+        <em><%= post.link %></em>
+      </small>
+    </header>
+
+    <small class='meta'>
+     <p>
+      <a href='<%= show_post_path(post.id, post.slug) %>'>
+        <%= post.link? ? 'shared' : 'written' %> by <%= post.user.name %>
+      </a>
+
+      <a href='<%= show_post_path(post.id, post.slug) %>'>
+        <%= time_ago_in_words(post.created_at) %> ago
+      </a>
+    </p>
+    </small>
+
+  </div>
+  <div class='profile-detail'>
+    <div class='avatar'>
+      <a href="<%= user_path(post.user) %>" border="0"><img alt='<%= post.user.name %>' class='img-circle' src='<%= post.user.profile_picture %>'></a>
+    </div>
+  </div>
+</li>
