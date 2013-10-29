@@ -71,7 +71,7 @@ class Post < ActiveRecord::Base
   scope :infant, -> { where('status = ?', 'infant') }
 
   scope :top, ->(count) { order('score DESC').limit(count) }
-  scope :highlighted_article, ->{ where("post_type = 'text' AND text IS NOT NULL").order('score DESC').limit(1) }
+  scope :highlighted_article, ->{ live.where("post_type = 'text' AND text IS NOT NULL").order('score DESC').limit(1) }
   scope :sorted_score, ->{ order('score DESC') }
 
   scope :most_upvotes, ->(count) { order('upvotes DESC').limit(count) }
