@@ -1,6 +1,6 @@
 <% if current_user %>
 	<% if current_user.provider == "facebook" %>
-		<a class="btn small light" onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<%= post.display_title %>&amp;p[url]=<%= post.link_for_post %>&amp;p[images][0]='','sharer','toolbar=0,status=0,width=580,height=325');" href="javascript: void(0)"><span class='ss-action'></span>
+		<a class="btn small light" onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<%= post.display_title %>&amp;p[url]=<%= post.link_for_post %>&amp;p[images][0]=http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0027/3719/273719v2-max-250x250.png','sharer','toolbar=0,status=0,width=580,height=325');" href="javascript: void(0)"><span class='ss-action'></span>
 		Share</a>
 
 	<% else %>
