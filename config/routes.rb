@@ -42,10 +42,10 @@ StadiumTimes::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
-  match 'help', to: 'pages#help'
-  match 'about', to: 'pages#about'
-  match 'legal', to: 'pages#legal'
-  match 'stadium', to: 'pages#stadium'
+  match 'help', to: 'pages#help', as: "pages_help"
+  match 'about', to: 'pages#about', as: "pages_about"
+  match 'legal', to: 'pages#legal', as: "pages_legal"
+  match 'stadium', to: 'pages#stadium', as: "pages_stadium"
 
 
 end
