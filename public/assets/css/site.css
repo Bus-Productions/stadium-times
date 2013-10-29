@@ -412,6 +412,7 @@ article header h1, article header h2, article header h3, article header h4, arti
 article header .action-btn-wrap { display: block; }
 
 section.article-focus article header, section.article-focus header, article.highlight-article article header, article.highlight-article header { margin-top: 20px; margin-bottom: 20px; }
+section.article-focus article header.response-posts-show-page { margin-top: 0px; margin-bottom: 0px; }
 
 article p a:hover { text-decoration: underline; }
 
