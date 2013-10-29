@@ -104,7 +104,7 @@ class Post < ActiveRecord::Base
   #SCORE
 
   def current_score
-    p = self.vote_difference
+    p = self.vote_difference + self.comments.count
     t = (Time.now.to_i - self.created_at.to_time.to_i)/3600.0
     g = 1.8
     return (p-1)/((t+2)**g)
