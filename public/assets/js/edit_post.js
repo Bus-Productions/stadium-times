@@ -434,6 +434,8 @@ function save_post() {
 }
 
 function update_post(id) {
+  check_formatting_title();
+  check_formatting_body();
   var url = '/posts/'+id+'.js';
   $.ajax({
     type: 'PUT',
