@@ -180,6 +180,7 @@ function check_formatting_title() {
   $('#top-title-span').find('iframe').length > 0 ? replace_text(text) : 0;
   $('#top-title-span').find('audio').length > 0 ? replace_text(text) : 0;
   $('#top-title-span').find('video').length > 0 ? replace_text(text) : 0;
+  $('#top-title-span').find('script').length > 0 ? replace_text(text) : 0;
 }
 
 function replace_text(text) {
@@ -357,6 +358,9 @@ function check_formatting_body() {
     $(this).remove();
   });
   $('article#body-text-div video').each(function(){
+    $(this).remove();
+  });
+  $('article#body-text-div script').each(function(){
     $(this).remove();
   });
 }
