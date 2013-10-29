@@ -1,6 +1,6 @@
 <% if current_user %>
 	<% if current_user.provider == "facebook" %>
-		<a class="btn small light" onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]='<%= post.display_title %>'&amp;p[url]=http://www.stadiumtimes.com/<%= post.link_for_post %>&amp;p[images][0]=<?php echo $image;?>','sharer','toolbar=0,status=0,width=548,height=325');" href="javascript: void(0)"><span class='ss-action'></span>
+		<a class="btn small light" onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]='<%= post.display_title %>'&amp;p[url]=<%= post.link_for_post %>&amp;p[images][0]=<?php echo $image;?>','sharer','toolbar=0,status=0,width=548,height=325');" href="javascript: void(0)"><span class='ss-action'></span>
 		Share</a>
 	<% else %>
 		<a href="https://twitter.com/share?url=http%3A%2F%2Fstadiumtimes.com<%= post.formatted_link_for_post %>&text='<%= post.display_title %>'&via=stadiumtimes" class="btn small light" target="_blank"><span class='ss-action'></span>

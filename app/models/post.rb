@@ -198,7 +198,7 @@ class Post < ActiveRecord::Base
   end
 
   def formatted_link_for_post
-    "%2Fposts%2F#{self.id}%2F#{self.slug}"
+    self.post_type == 'link' ? self.link : "http%3A%2F%2Fstadiumtimes.com%2Fposts%2F#{self.id}%2F#{self.slug}"
   end
 
 
