@@ -1,0 +1,9 @@
+<% unless @responses.empty? %>
+	<em>Posts in reply: </em>     
+
+	<ul class='saved-articles list backend-user-container'>
+		<% @responses.each do |post| %>
+			<%= render 'shared/post_written_by_user', :post => post, :user => post.user %>
+		<% end %>
+	</ul>
+<% end %>

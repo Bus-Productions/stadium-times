@@ -43,7 +43,7 @@ function enablePagination(type) {
       }
       else {
         <% @posts.each do |post| %>
-          $('.post_pagination').append("<%= j render 'post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
+          $('.post_pagination').append("<%= j render 'shared/post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
         <% end %>
       }
       <% if @posts.next_page %>
@@ -115,7 +115,7 @@ function enablePagination(type) {
         }
         else {
           <% @posts.each do |post| %>
-            $('.upvote_pagination').append("<%= j render 'post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
+            $('.upvote_pagination').append("<%= j render 'shared/post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>");
           <% end %>
         }
         <% if @posts.next_page %>

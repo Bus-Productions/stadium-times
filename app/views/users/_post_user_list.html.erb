@@ -1,7 +1,7 @@
           <ul class='saved-articles list backend-user-container'>
 	            		<div class="post_pagination">
 	            			<% @posts.each do |post| %>
-	            				<%= render 'post_written_by_user', :post => post, :topics => post.topics, :user => post.user %>
+	            				<%= render 'shared/post_written_by_user', :post => post, :user => post.user %>
 	            			<% end %>
 	            		</div>		
           </ul>
