@@ -236,6 +236,9 @@ function check_formatting_body() {
     $(this).removeAttr('class');
     $(this).find('a').removeAttr('style');
   });
+  $('article#body-text-div br').each(function(){
+    $(this).remove();
+  });
   $('article#body-text-div span').each(function(){
     $(this).replaceWith($(this).text());
   });
