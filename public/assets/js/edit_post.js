@@ -247,7 +247,9 @@ function check_formatting_body() {
     $(this).removeAttr('class');
   });
   $('article#body-text-div br').each(function(){
-    $(this).remove();
+    $(this).removeAttr('style');
+    $(this).removeAttr('name');
+    $(this).removeAttr('class');
   });
   $('article#body-text-div span').each(function(){
     $(this).replaceWith($(this).text());
