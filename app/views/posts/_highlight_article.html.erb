@@ -5,7 +5,7 @@
             <h2 class='super'><%= @highlighted_article.display_title %></h2>
           </header>
           <p class='lead'>
-            <%= truncate(@highlighted_article.text, length: 200, separator: ' ').html_safe %>
+            <%= truncate(strip_tags(@highlighted_article.text), length: 200, separator: ' ').html_safe %>
           </p>
           <a class='primary highlight btn' href='<%= post_path(@highlighted_article) %>'>View Article</a>
         </article>
