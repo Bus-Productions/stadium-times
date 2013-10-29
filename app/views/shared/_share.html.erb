@@ -4,12 +4,12 @@
 		Share</a>
 
 	<% else %>
-		<a href="https://twitter.com/share?url=<%= post.formatted_link_for_post %>&text='<%= post.display_title %>'&via=stadiumtimes" class="btn small light" target="_blank"><span class='ss-action'></span>
+		<a href="https://twitter.com/share?url=<%= post.formatted_link_for_post %>&text='<%= post.display_title %>'&via=stadiumtimes&amp;source=webclient" class="btn small light" target="_blank"><span class='ss-action'></span>
 		Share</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 	<% end %>
 <% else %>
-		<a href="https://twitter.com/share?url=<%= post.formatted_link_for_post %>&text='<%= post.display_title %>'&via=stadiumtimes" class="btn small light" target="_blank"><span class='ss-action'></span>
+		<a href="https://twitter.com/share?url=<%= post.formatted_link_for_post %>&text='<%= post.display_title %>'&via=stadiumtimes&amp;source=webclient" class="btn small light" target="_blank"><span class='ss-action'></span>
 		Share</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <% end %>
