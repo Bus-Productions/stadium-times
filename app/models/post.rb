@@ -122,7 +122,7 @@ class Post < ActiveRecord::Base
 
   def update_score
     self.update_attribute(:score, self.current_score)
-    p_score > ENV['P_THRESHOLD'].to_i ? self.delay.push_to_social_media : nil
+    self.p_score > ENV['P_THRESHOLD'].to_i ? self.delay.push_to_social_media : nil
   end
 
 
@@ -135,7 +135,7 @@ class Post < ActiveRecord::Base
     end
     text = "#{text} #{self.link_for_post}"
 
-    m = SocialMessage.first_or_initialize_by_post_id_and_message_type(self.id, 'post_share')
+    m = SocialMessage.find_or_initialize_by_post_id_and_message_type(self.id, 'post_share')
     if !m.id
       m.message_text = text
       m.save!
