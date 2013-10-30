@@ -21,6 +21,8 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :topics
 
   has_many :interactions
+
+  has_many :social_messages
   
 
   # SEARCH
@@ -104,7 +106,7 @@ class Post < ActiveRecord::Base
   #SCORE
 
   def current_score
-    p = self.vote_difference + self.comments.count
+    p = self.p_score
     t = (Time.now.to_i - self.created_at.to_time.to_i)/3600.0
     g = 1.8
     return (p-1)/((t+2)**g)
@@ -114,8 +116,30 @@ class Post < ActiveRecord::Base
     self.upvotes-self.downvotes
   end
 
+  def p_score
+    self.vote_difference + self.comments.count
+  end
+
   def update_score
     self.update_attribute(:score, self.current_score)
+    p_score > ENV['p_threshold'] ? self.delay.push_to_social_media : nil
+  end
+
+
+  # SOCIAL MEDIA
+
+  def push_to_social_media
+    text = "'#{self.display_title}'"
+    if self.user.provider == 'twitter'
+      text = "#{text} via @#{self.user.screen_name}"
+    end
+    text = "#{text} #{self.link_for_post}"
+
+    m = SocialMessage.first_or_initialize_by_post_id_and_message_type(self.id, 'post_share')
+    if !m.id
+      m.save!
+      m.send_message
+    end
   end
 
 
