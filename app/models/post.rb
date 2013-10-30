@@ -129,15 +129,20 @@ class Post < ActiveRecord::Base
   # SOCIAL MEDIA
 
   def push_to_social_media
-    text = "\"#{self.display_title}\""
-    if self.user.provider == 'twitter'
-      text = "#{text} via @#{self.user.screen_name}"
-    end
-    text = "#{text} #{self.external_link_for_post}"
+    max_length = 110
+
+    name = " via @#{self.user.screen_name} "
+
+    title_length = max_length - name.length - 2 #the 2 is for the quotes on either end
+
+    title_body = self.display_title.truncate(title_length)
+    title_full = "\"#{title_body}\""
+
+    message_text = "#{title_full}#{name}#{self.external_link_for_post}"
 
     m = SocialMessage.find_or_initialize_by_post_id_and_message_type(self.id, 'post_share')
     if !m.id
-      m.message_text = text
+      m.message_text = message_text
       m.save!
       m.send_message
     end
