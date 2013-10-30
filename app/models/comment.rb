@@ -15,6 +15,8 @@ class Comment < ActiveRecord::Base
 
   has_many :interactions
 
+  has_many :social_messages
+
   
   #VALIDATIONS
 
@@ -46,6 +48,13 @@ class Comment < ActiveRecord::Base
 
   def update_score
     self.update_attribute(:score, self.current_score)
+  end
+
+
+  # LINK
+
+  def link_for_comment
+    "http://www.stadiumtimes.com#{comment_path(self)}"
   end
 
 
@@ -91,7 +100,12 @@ class Comment < ActiveRecord::Base
   def push_to_social_media
     if !self.user.muted? && self.user.provider == 'twitter' && self.post.provider == 'twitter'
       
-      
+      m = SocialMessage.find_or_initialize_by_comment_id_and_user_id_and_message_type(self.id, self.user.id, 'comment_conversation')
+      if !m.id
+        m.format_message_text_twitter("@#{self.post.user.screen_name}", self.comment_text, "", "- @#{self.user.screen_name}", self.link_for_comment)
+        m.save!
+        m.send_message
+      end
 
     end
   end

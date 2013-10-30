@@ -1,9 +1,11 @@
 class SocialMessage < ActiveRecord::Base
-  attr_accessible :message_text, :message_type, :user_id, :post_id
+  attr_accessible :message_text, :message_type, :user_id, :post_id, :comment_id
 
   belongs_to :user
 
   belongs_to :post
+
+  belongs_to :comment
 
   
 
@@ -12,6 +14,8 @@ class SocialMessage < ActiveRecord::Base
       self.send_tweet(self.message_text, "1390309333-ZOzONLBaLxhjdIS2vhfUIkPJUJwsg30CxEriewR", "3IjtOjqEasWsJ1YNR5N2zSJpDELVvSnYohrIcVBNui9KY")
     elsif message_type == 'post_share'
       self.send_tweet(self.message_text, "1390309333-ZOzONLBaLxhjdIS2vhfUIkPJUJwsg30CxEriewR", "3IjtOjqEasWsJ1YNR5N2zSJpDELVvSnYohrIcVBNui9KY")
+    elsif message_type == 'comment_conversation'
+      self.send_tweet(self.message_text, self.user.oauth_token, self.user.oauth_secret)
     end
   end
 
