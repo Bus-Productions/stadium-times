@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   def show
 
     @post = Post.find(params[:id])
-    @responses = @post.post_replies.limit(10)
+    @responses = @post.post_replies.live.limit(10)
     @title = @post.display_title
     @comment = Comment.new
     @comments = @post.comments.created_recent.paginate(:page => params[:page], :per_page => 5)
