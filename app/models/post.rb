@@ -129,11 +129,11 @@ class Post < ActiveRecord::Base
   # SOCIAL MEDIA
 
   def push_to_social_media
-    text = "'#{self.display_title}'"
+    text = "\"#{self.display_title}\""
     if self.user.provider == 'twitter'
       text = "#{text} via @#{self.user.screen_name}"
     end
-    text = "#{text} #{self.link_for_post}"
+    text = "#{text} http://www.stadiumtimes.com#{self.link_for_post}"
 
     m = SocialMessage.find_or_initialize_by_post_id_and_message_type(self.id, 'post_share')
     if !m.id
