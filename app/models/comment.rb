@@ -54,7 +54,7 @@ class Comment < ActiveRecord::Base
   # LINK
 
   def link_for_comment
-    "http://www.stadiumtimes.com#{comment_path(self)}"
+    "http://www.stadiumtimes.com/comments/#{self.id}"
   end
 
 
