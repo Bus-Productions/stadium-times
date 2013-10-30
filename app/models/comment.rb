@@ -104,7 +104,7 @@ class Comment < ActiveRecord::Base
       
       m = SocialMessage.find_or_initialize_by_comment_id_and_user_id_and_message_type(self.id, self.user.id, 'comment_conversation')
       if !m.id
-        m.format_message_text_twitter("@#{self.post.user.screen_name}", self.comment_text, "", "- @#{self.user.screen_name}", self.link_for_comment)
+        m.format_message_text_twitter("@#{self.post.user.screen_name}", "", self.comment_text, "cc @#{self.user.screen_name}", self.link_for_comment)
         m.save!
         m.send_message
       end
