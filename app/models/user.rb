@@ -40,8 +40,13 @@ class User < ActiveRecord::Base
         user.bio = auth.info.description
       end
       user.oauth_token = auth.credentials.token
-      user.save!
-      user.delay.add_to_overall_mailing_list
+      if !user.id
+        user.save!
+        user.delay.add_to_overall_mailing_list
+        user.delay.send_welcome_social_message
+      else
+        user.save!
+      end
     end
   end
 
