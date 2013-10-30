@@ -37,6 +37,7 @@ gem 'sunspot_solr'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'koala', :git => 'https://github.com/arsduo/koala.git'
+gem 'twitter'
 
 gem 'will_paginate'
 
