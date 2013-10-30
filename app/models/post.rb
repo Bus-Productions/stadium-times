@@ -122,7 +122,7 @@ class Post < ActiveRecord::Base
 
   def update_score
     self.update_attribute(:score, self.current_score)
-    p_score > ENV['P_THRESHOLD'] ? self.delay.push_to_social_media : nil
+    p_score > ENV['P_THRESHOLD'].to_i ? self.delay.push_to_social_media : nil
   end
 
 
