@@ -87,5 +87,14 @@ class Comment < ActiveRecord::Base
     #in_reply author (if exists)
     Interaction.find_or_create_by_user_id_and_comment_id(self.in_reply_to_comment.user.id, self.id) if self.comment_id
   end
+
+  def push_to_social_media
+    if !self.user.muted? && self.user.provider == 'twitter' && self.post.provider == 'twitter'
+      
+      
+
+    end
+  end
+
   
 end

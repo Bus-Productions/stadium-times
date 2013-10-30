@@ -28,4 +28,33 @@ class SocialMessage < ActiveRecord::Base
        p e
   end
 
+  def format_message_text_twitter(front, quote, body, back, link)
+    
+    max_length = 110
+
+    if front.length > 0
+      front = "#{front} "
+    end
+    if back.length > 0
+      back = "#{back} "
+    end
+
+    current_available = max_length - front.length - back.length
+
+    if quote.length > 0
+      quote = "\"#{quote.truncate(current_available)}\" "
+    end
+
+    current_available = current_available - quote.length - 1
+
+    if body.length > 0
+      body = "#{body.truncate(current_available)} "
+    end
+
+    self.message_text = "#{front}#{quote}#{body}#{back}#{link}"
+
+    return self.message_text
+
+  end
+
 end

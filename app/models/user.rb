@@ -77,6 +77,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def muted?
+    false
+  end
+
 
 
   # TOPICS
