@@ -7,6 +7,6 @@
           <p class='lead'>
             <%= truncate(strip_tags(@highlighted_article.text), length: 200, separator: ' ').html_safe %>
           </p>
-          <a class='primary highlight btn' href='<%= post_path(@highlighted_article) %>'>View Article</a>
+          <a class='primary highlight btn' href='<%= @highlighted_article.link_for_post %>'>View Article</a>
         </article>
       </section>
