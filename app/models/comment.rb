@@ -95,10 +95,12 @@ class Comment < ActiveRecord::Base
     Interaction.find_or_create_by_user_id_and_comment_id(self.post.user.id, self.id)
     #in_reply author (if exists)
     Interaction.find_or_create_by_user_id_and_comment_id(self.in_reply_to_comment.user.id, self.id) if self.comment_id
+    #send social media interactions
+    self.delay.push_to_social_media
   end
 
   def push_to_social_media
-    if !self.user.muted? && self.user.provider == 'twitter' && self.post.provider == 'twitter'
+    if !self.user.muted? && self.user.provider == 'twitter' && self.post.provider == 'twitter' && self.user.id != self.post.user.id
       
       m = SocialMessage.find_or_initialize_by_comment_id_and_user_id_and_message_type(self.id, self.user.id, 'comment_conversation')
       if !m.id
