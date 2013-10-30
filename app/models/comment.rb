@@ -101,12 +101,16 @@ class Comment < ActiveRecord::Base
 
   def push_to_social_media
     if !self.user.muted? && self.user.provider == 'twitter' && self.post.user.provider == 'twitter' && self.user.id != self.post.user.id
-      
-      m = SocialMessage.find_or_initialize_by_comment_id_and_user_id_and_message_type(self.id, self.user.id, 'comment_conversation')
-      if !m.id
-        m.format_message_text_twitter((in_reply_to_comment ? "@#{self.in_reply_to_comment.user.screen_name}" : "@#{self.post.user.screen_name}"), self.comment_text, "", "@StadiumTimes", self.link_for_comment)
-        m.save!
-        m.send_message
+
+      if in_reply_to_comment && in_reply_to_comment.user.id == self.user.id
+        return
+      else
+        m = SocialMessage.find_or_initialize_by_comment_id_and_user_id_and_message_type(self.id, self.user.id, 'comment_conversation')
+        if !m.id
+          m.format_message_text_twitter((in_reply_to_comment ? "@#{self.in_reply_to_comment.user.screen_name}" : "@#{self.post.user.screen_name}"), self.comment_text, "", "@StadiumTimes", self.link_for_comment)
+          m.save!
+          m.send_message
+        end
       end
 
     end
