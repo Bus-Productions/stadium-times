@@ -1,7 +1,7 @@
 StadiumTimes::Application.routes.draw do
 
   root :to => "posts#index"
-  
+  match "index", to: "posts#index"
 
   resources :post_and_topic_pairings
 
