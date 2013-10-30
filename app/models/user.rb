@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   has_many :interactions
 
+  has_many :social_messages
+
   
 
   def self.from_omniauth(auth)
@@ -149,6 +151,17 @@ class User < ActiveRecord::Base
     gb = Gibbon::API.new("d11ed4383fba5209f0e706d912dbba6c-us7")
     gb.throws_exceptions = false
     gb.lists.subscribe({:id => '08ac9be67c', :email => {:email => self.email }, :merge_vars => {:FNAME => self.name, :LNAME => ''}, :double_optin => false})
+  end
+
+  # SOCIAL MESSAGES
+
+  def send_welcome_social_message
+    m = SocialMessage.new({:user_id => self.id, :message_type => self.provider})
+    if m.message_type == 'twitter'
+      m.message_text = "@#{self.screen_name} Welcome to the @StadiumTimes club! Let us know if you have any questions."
+      m.save!
+      m.send_message
+    end
   end
   
 
