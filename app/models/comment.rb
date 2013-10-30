@@ -100,7 +100,7 @@ class Comment < ActiveRecord::Base
   end
 
   def push_to_social_media
-    if !self.user.muted? && self.user.provider == 'twitter' && self.post.provider == 'twitter' && self.user.id != self.post.user.id
+    if !self.user.muted? && self.user.provider == 'twitter' && self.post.user.provider == 'twitter' && self.user.id != self.post.user.id
       
       m = SocialMessage.find_or_initialize_by_comment_id_and_user_id_and_message_type(self.id, self.user.id, 'comment_conversation')
       if !m.id
