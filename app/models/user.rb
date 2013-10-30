@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :provider, :uid, :screen_name, :profile_picture, :bio
+  attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :oauth_secret, :provider, :uid, :screen_name, :profile_picture, :bio
 
   has_many :posts
 
@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
         user.bio = auth.info.description
       end
       user.oauth_token = auth.credentials.token
+      user.oauth_secret = auth.credentials.secret
       if !user.id
         user.save!
         user.delay.add_to_overall_mailing_list
