@@ -13,6 +13,9 @@ class SocialMessage < ActiveRecord::Base
 
   def send_tweet(text)
     Twitter.update(text)
+    rescue => e
+       #Either create an object where the error is log, or output it to what ever log you wish.
+       p e
   end
 
 end
