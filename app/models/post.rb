@@ -137,6 +137,7 @@ class Post < ActiveRecord::Base
 
     m = SocialMessage.first_or_initialize_by_post_id_and_message_type(self.id, 'post_share')
     if !m.id
+      m.message_text = text
       m.save!
       m.send_message
     end
