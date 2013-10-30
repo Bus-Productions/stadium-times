@@ -133,7 +133,7 @@ class Post < ActiveRecord::Base
     if self.user.provider == 'twitter'
       text = "#{text} via @#{self.user.screen_name}"
     end
-    text = "#{text} http://www.stadiumtimes.com#{self.link_for_post}"
+    text = "#{text} #{self.external_link_for_post}"
 
     m = SocialMessage.find_or_initialize_by_post_id_and_message_type(self.id, 'post_share')
     if !m.id
@@ -225,6 +225,10 @@ class Post < ActiveRecord::Base
 
   def link_for_post
     self.post_type == 'link' ? self.link : "/posts/#{self.id}/#{self.slug}"
+  end
+
+  def external_link_for_post
+    self.post_type == 'link' ? self.link : "http://www.stadiumtimes.com/posts/#{self.id}/#{self.slug}"
   end
 
   def formatted_link_for_post

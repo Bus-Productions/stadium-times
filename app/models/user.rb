@@ -41,12 +41,6 @@ class User < ActiveRecord::Base
       end
       user.oauth_token = auth.credentials.token
       user.oauth_secret = auth.credentials.secret
-      p "AUTH CREDENTIALS"
-      p auth.credentials
-      p "AUTH CREDENTIALS SECRET"
-      p auth.credentials.secret
-      p "AUTH CREDENTIALS LOCAL VAR"
-      p user.oauth_secret
       if !user.id
         user.save!
         user.delay.add_to_overall_mailing_list

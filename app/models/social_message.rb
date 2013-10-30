@@ -9,14 +9,20 @@ class SocialMessage < ActiveRecord::Base
 
   def send_message
     if message_type == 'twitter'
-      self.send_tweet(self.message_text)
+      self.send_tweet(self.message_text, "1390309333-ZOzONLBaLxhjdIS2vhfUIkPJUJwsg30CxEriewR", "3IjtOjqEasWsJ1YNR5N2zSJpDELVvSnYohrIcVBNui9KY")
     elsif message_type == 'post_share'
-      self.send_tweet(self.message_text)
+      self.send_tweet(self.message_text, "1390309333-ZOzONLBaLxhjdIS2vhfUIkPJUJwsg30CxEriewR", "3IjtOjqEasWsJ1YNR5N2zSJpDELVvSnYohrIcVBNui9KY")
     end
   end
 
-  def send_tweet(text)
-    Twitter.update(text)
+  def send_tweet(text, token, secret)
+    
+    tweeter = Twitter::Client.new(
+      :oauth_token => token,
+      :oauth_token_secret => secret
+    )
+
+    tweeter.update(text)
     rescue => e
        #Either create an object where the error is log, or output it to what ever log you wish.
        p e
