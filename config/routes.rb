@@ -41,6 +41,9 @@ StadiumTimes::Application.routes.draw do
   match "users/:id/:display", to: "users#show", as: "users_display"
 
 
+  resources :device_tokens, only: [:create, :update]
+
+
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signup/:verify', to: 'posts#index', as: 'verify_login'
