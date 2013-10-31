@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ios_device_token: MyString
+  android_device_token: MyString
+  user_id: 1
+
+two:
+  ios_device_token: MyString
+  android_device_token: MyString
+  user_id: 1

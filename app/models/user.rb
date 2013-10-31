@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   has_many :social_messages
 
+  has_many :device_tokens
+
   
   # VALIDATIONS
 

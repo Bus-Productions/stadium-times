@@ -90,6 +90,7 @@ GEM
     multi_json (1.8.1)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
+    net-http-persistent (2.8)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
@@ -139,6 +140,9 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.1.0)
+    rapns (3.3.2)
+      multi_json (~> 1.0)
+      net-http-persistent
     rdoc (3.12.2)
       json (~> 1.4)
     rsolr (1.0.9)
@@ -194,6 +198,7 @@ DEPENDENCIES
   omniauth-twitter
   pg
   rails (= 3.2.13)
+  rapns
   sass-rails (~> 3.2.3)
   sqlite3
   sunspot_rails

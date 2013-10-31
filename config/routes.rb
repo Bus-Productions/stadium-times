@@ -1,5 +1,8 @@
 StadiumTimes::Application.routes.draw do
 
+  resources :device_tokens
+
+
   root :to => "posts#index"
   match "index", to: "posts#index"
 
