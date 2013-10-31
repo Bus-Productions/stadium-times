@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031205323) do
+ActiveRecord::Schema.define(:version => 20131031210029) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "user_id"
@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(:version => 20131031205323) do
     t.integer  "post_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "push_notifications", :force => true do |t|
+    t.integer  "device_token_id"
+    t.string   "message"
+    t.string   "push_notification_type"
+    t.string   "status"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "rapns_apps", :force => true do |t|
