@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.js
-      format.json { render json: @posts }
+      format.json { render json: @posts.as_json(:methods => [:external_link_for_post, :display_title, :created_at, :id] ) }
     end
   end
 
