@@ -4,4 +4,6 @@ class DeviceToken < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :push_notifications
+
 end
