@@ -16,6 +16,12 @@ class PostsController < ApplicationController
     
     @highlighted_article = Post.highlighted_article.first
 
+    if params[:verify] == 'true'
+      @show_verify_login_modal = true
+    else
+      @show_verify_login_modal = false
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.js

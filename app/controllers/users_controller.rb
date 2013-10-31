@@ -52,5 +52,28 @@ class UsersController < ApplicationController
     end
 
   end
+
+
+  def update
+
+    @user = User.find(params[:id])
+    @title = @user.name
+
+    if @user.id != unverified_user.id || params[:user][:email].length < 4
+      redirect_to root_path
+      return
+    end
+
+    @user.update_attributes(params[:user])
+
+    @user.follow_twitter ? @user.delay.follow_stadium_times_twitter : nil
+    @user.delay.add_to_overall_mailing_list
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
+
+  end
   
 end

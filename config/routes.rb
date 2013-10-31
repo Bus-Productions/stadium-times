@@ -34,12 +34,13 @@ StadiumTimes::Application.routes.draw do
 
 
 
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :update]
   match "users/:id/:display", to: "users#show", as: "users_display"
 
 
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
+  match 'signup/:verify', to: 'posts#index', as: 'verify_login'
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
   match 'help', to: 'pages#help', as: "pages_help"

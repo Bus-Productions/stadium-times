@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :oauth_secret, :provider, :uid, :screen_name, :profile_picture, :bio
+  attr_accessible :email, :name, :oauth_expires_at, :oauth_token, :oauth_secret, :provider, :uid, :screen_name, :profile_picture, :bio, :follow_twitter
 
   has_many :posts
 
@@ -23,6 +23,18 @@ class User < ActiveRecord::Base
   has_many :social_messages
 
   
+  # VALIDATIONS
+
+  validate :check_email, :on => :update
+
+  def check_email
+    regex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
+    if email.nil? || regex.match(email).nil?
+      return false
+    end
+    return true
+  end
+
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -79,6 +91,10 @@ class User < ActiveRecord::Base
 
   def muted?
     false
+  end
+
+  def verified?
+    self.email
   end
 
 
@@ -172,6 +188,17 @@ class User < ActiveRecord::Base
       m.save!
       m.send_message
     end
+  end
+
+  def follow_stadium_times_twitter
+    tweeter = Twitter::Client.new(
+      :oauth_token => self.oauth_token,
+      :oauth_token_secret => self.oauth_secret
+    )
+    tweeter.follow('stadiumtimes')
+    rescue => e
+       #Either create an object where the error is log, or output it to what ever log you wish.
+       p e
   end
   
 

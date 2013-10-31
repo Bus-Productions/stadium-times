@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131030191454) do
+ActiveRecord::Schema.define(:version => 20131031184406) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "user_id"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20131030191454) do
     t.string   "profile_picture"
     t.string   "bio"
     t.string   "oauth_secret"
+    t.boolean  "follow_twitter"
   end
 
 end

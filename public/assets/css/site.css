@@ -481,6 +481,8 @@ h5, .h5, footer#site-footer li a { font-size: 1em; }
 
 h6, .h6 { font-size: 14px; }
 
+h7, .h7 { font-size: 1.0em; }
+
 h2.super { color: #f6c447; font-size: 2.75em; line-height: 1.25em; margin-top: 40px; }
 
 hr.elipsis { border: 0; position: relative; }

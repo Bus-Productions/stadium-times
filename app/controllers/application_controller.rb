@@ -6,8 +6,18 @@ class ApplicationController < ActionController::Base
   private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if @current_user && !@current_user.verified?
+      @current_user = nil
+    end
+    @current_user
   end
   helper_method :current_user
+
+  private
+  def unverified_user
+    @unverified_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :unverified_user
 
   private
   def current_user_or_redirect
@@ -32,7 +42,7 @@ class ApplicationController < ActionController::Base
 
   private 
   def logged_in
-    if session[:user_id]
+    if current_user
       true
     else
       false
