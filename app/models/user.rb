@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
   validate :check_email, :on => :update
 
   def strip_white_space
-    self.email.strip!
+    if self.email
+      self.email.strip!
+    end
   end
 
   def check_email
