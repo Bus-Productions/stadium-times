@@ -27,7 +27,13 @@ class User < ActiveRecord::Base
   
   # VALIDATIONS
 
+  before_validation :strip_white_space
+
   validate :check_email, :on => :update
+
+  def strip_white_space
+    self.email.strip!
+  end
 
   def check_email
     regex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
