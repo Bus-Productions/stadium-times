@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     user = User.find_or_initialize_by_uid_and_provider(params[:user_id], 'twitter')
     user.from_mobile(params[:user])
     respond_to do |format|
-      format.json { render json: { user.as_json(:methods => :verified? ) } }
+      format.json { render json: user }
     end
   end
   
