@@ -71,6 +71,7 @@ class User < ActiveRecord::Base
     info = self.lookup_twitter_user(params[:user_id])
 
     if info
+      p info
       self.provider = 'twitter'
       self.uid = info.id
       self.name = info.name
