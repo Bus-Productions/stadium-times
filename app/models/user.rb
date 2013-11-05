@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.from_mobile(params)
+  def from_mobile(params)
     self.oauth_token = params[:oauth_token]
     self.oauth_secret = params[:oauth_token_secret]
     info = self.lookup_twitter_user(params[:user_id])
