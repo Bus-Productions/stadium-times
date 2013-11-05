@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def create_mobile
     user = User.find_or_initialize_by_uid_and_provider(params[:user_id], 'twitter')
-    user.from_mobile(params[:user])
+    user.from_mobile(params)
     respond_to do |format|
       format.json { render json: user }
     end
