@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   def from_mobile(params)
     self.oauth_token = params[:oauth_token]
     self.oauth_secret = params[:oauth_token_secret]
-    info = self.lookup_twitter_user(params[:user_id])
+    info = self.lookup_twitter_user(params[:screen_name])
 
     if info
       p info
@@ -229,12 +229,12 @@ class User < ActiveRecord::Base
   end
 
 
-  def lookup_twitter_user(id)
+  def lookup_twitter_user(sn)
     tweeter = Twitter::Client.new(
       :oauth_token => self.oauth_token,
       :oauth_token_secret => self.oauth_secret
     )
-    tweeter.user(id)
+    tweeter.user(sn)
     rescue => e
        #Either create an object where the error is log, or output it to what ever log you wish.
        p e
