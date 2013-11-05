@@ -65,6 +65,30 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.from_mobile(params)
+    self.oauth_token = params[:oauth_token]
+    self.oauth_secret = params[:oauth_token_secret]
+    info = self.lookup_twitter_user(params[:user_id])
+
+    if info
+      self.provider = 'twitter'
+      self.uid = info.id
+      self.name = info.name
+      self.screen_name = info.screen_name
+      self.profile_picture = self.fix_profile_picture_string(info.profile_image_url)
+      self.bio = info.description
+
+      if !self.id
+        self.save!
+        self.delay.add_to_overall_mailing_list
+        self.delay.send_welcome_social_message
+      else
+        self.save!
+      end
+
+    end
+  end
+
   # USER INFO
 
   def vanity_username
@@ -198,6 +222,18 @@ class User < ActiveRecord::Base
       :oauth_token_secret => self.oauth_secret
     )
     tweeter.follow('stadiumtimes')
+    rescue => e
+       #Either create an object where the error is log, or output it to what ever log you wish.
+       p e
+  end
+
+
+  def lookup_twitter_user(id)
+    tweeter = Twitter::Client.new(
+      :oauth_token => self.oauth_token,
+      :oauth_token_secret => self.oauth_secret
+    )
+    tweeter.user(id)
     rescue => e
        #Either create an object where the error is log, or output it to what ever log you wish.
        p e
