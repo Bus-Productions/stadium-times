@@ -55,7 +55,4 @@ StadiumTimes::Application.routes.draw do
   match 'legal', to: 'pages#legal', as: "pages_legal"
   match 'stadium', to: 'pages#stadium', as: "pages_stadium"
 
-  match 'mbl/create_post', to: 'post#create_mbl'
-
-
 end
