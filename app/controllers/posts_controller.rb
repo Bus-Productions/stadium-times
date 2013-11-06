@@ -229,4 +229,31 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /mbl/create_post.json
+
+  def create_mbl
+    p "*"*50
+    p params
+    p "*"*50
+    # @post = Post.new(params[:post])
+    # @post.user_id = @current_user.id
+
+    # if @post.link?
+    #   @post.status = 'live'
+    #   @post.link = "http://#{@post.link}" unless @post.link[/^https?/]
+    # end
+
+    # respond_to do |format|
+    #   if @post.save
+    #     @post.delay.update_slug
+    #     @post.delay.add_interactions
+    #     format.html { redirect_to @post, notice: 'Post was successfully created.' }
+    #     format.json { render json: @post, status: :created, location: @post }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @post.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  end
 end
