@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   def unverified_user
     @unverified_user ||= User.find(session[:user_id]) if session[:user_id]
     @unverified_user ||= User.find(params[:id]) if !@unverified_user
+    return @unverified_user
   end
   helper_method :unverified_user
 
