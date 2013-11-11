@@ -20,12 +20,9 @@ class ApplicationController < ActionController::Base
 
   private
   def unverified_user
-    p params
-    p "*"*50
-    p session[:user_id]
-    p "*"*50
-    @unverified_user ||= User.find(session[:user_id]) if session[:user_id]
-    @unverified_user ||= User.find(params[:id]) if !@unverified_user
+    user ||= User.find(session[:user_id]) if session[:user_id]
+    user ||= User.find(params[:id]) if !@unverified_user
+    user
   end
   helper_method :unverified_user
 
