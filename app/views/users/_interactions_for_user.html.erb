@@ -2,8 +2,8 @@
   <%= render 'users/interactions/interaction_post_written_by_user', :post => interaction.post, :topics => interaction.post.topics, :user => interaction.post.user %>
 <% elsif interaction.interaction_type == 'comment' %>
   <%= render 'users/interactions/interaction_comment_detail', :comment => interaction.comment %>
-<% elsif interaction.interaction_type == 'post_vote' %>
+<% elsif interaction.interaction_type == 'post_vote' && interaction.post_vote.post %>
   <%= render 'users/interactions/interaction_post_vote', :post_vote => interaction.post_vote %>
-<% elsif interaction.interaction_type == 'comment_vote' %>
+<% elsif interaction.interaction_type == 'comment_vote' && interaction.comment_vote.comment %>
   <%= render 'users/interactions/interaction_comment_vote', :comment_vote => interaction.comment_vote %>
 <% end %>
