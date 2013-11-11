@@ -25,7 +25,9 @@
         <div class='modal-dialog'>
           <div class='modal-content'>
 
-            <%= form_for unverified_user do |f| %>
+            <% @unverified_user = unverified_user %>
+            
+            <%= form_for @unverified_user do |f| %>
 
               <header class='modal-header' style="align:center; text-align:center;">
                 <h4 class='modal-title'>STADIUM TIMES</h4>
